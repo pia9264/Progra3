@@ -6,13 +6,21 @@ public class Ruta {
   private String route;
   private int duration[];
   private int precio;
-  private int horallegada;
-    public Ruta(String id, String route, int[] duration, int precio, int horallegada) {
+  private String horallegada;
+    public Ruta(String id, String route, int[] duration, int precio, String horallegada) {
         this.id = id;
         this.route = route;
         this.duration = duration;
         this.precio = precio;
         this.horallegada = horallegada;
+    }
+
+    Ruta() {
+      this.id = "";
+      this.route = "";
+      this.duration = new int[2];
+      this.precio = 0;
+      this.horallegada = "";
     }
 
     public String getId() {
@@ -47,11 +55,11 @@ public class Ruta {
         this.precio = precio;
     }
 
-    public int getHorallegada() {
+    public String getHorallegada() {
         return horallegada;
     }
 
-    public void setHorallegada(int horallegada) {
+    public void setHorallegada(String horallegada) {
         this.horallegada = horallegada;
     }
 
