@@ -10,8 +10,17 @@ public class Avion {
     private int numberPassengers;
     private int numberRows;
     private int seatsPeRrow;
+    private Ruta ruta;
 
     public Avion() {
+        this.id = "";
+        this.age = 0;
+        this.model = "";
+        this.trademark = "";
+        this.numberPassengers = 0;
+        this.numberRows = 0;
+        this.seatsPeRrow =6;
+        this.ruta = new Ruta();
     }
 
     public Avion(String id, int age, String model, String trademark, int numberPassengers, int numberRows, int seatsPeRrow) {
@@ -24,6 +33,14 @@ public class Avion {
         this.seatsPeRrow = seatsPeRrow;
     }
 
+    
+    public Ruta getRuta() {
+        return ruta;
+    }
+
+    public void setRuta(Ruta ruta) {
+        this.ruta = ruta;
+    }
     /**
      * @return the id
      */
