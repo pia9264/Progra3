@@ -12,7 +12,7 @@ package piasystemairline.Presentation.EdicionPersona;
 public class Controller {
 
     public Controller(Model PersonaModel, View PersonaVista) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
     }
     
 }
