@@ -33,6 +33,16 @@ public class Dao {
         }
     }
     
+     public void VueloAdd(Vuelo v) throws Exception {
+    String sql="insert into Vuelo (id,origin,detiny,date,dateBack,quantity)"+
+         "values('%s','%s','%s','%s','%s','%s')";
+        sql=String.format(sql,v.getId(),v.getOrigin(),v.getDestiny(),v.getDate(),v.getDateBack(),v.getQuantity());
+        int count=db.executeUpdate(sql);
+        if (count==0){
+            throw new Exception("Vuelo ya existe");
+        }
+    }
+    
     public void AvionAdd(Avion a)throws Exception {
      String sql="insert into Avion (id,age,model,trademark,numberPassengers,"
              + "numberRows,seatsRows,Ruta_id)"+
@@ -55,17 +65,7 @@ public class Dao {
             throw new Exception("Ruta ya existe");
         }
     }
-//    
-//     public void EstadoAdd(EstadoCivil e) throws Exception {
-//        String sql="insert into estado (codigo,detalle) "+
-//                "values('%s','%s')";
-//        sql=String.format(sql,e.getCodigo(),e.getDetalle());
-//        int count=db.executeUpdate(sql);
-//        if (count==0){
-//            throw new Exception("Estado ya existe");
-//        }
-//     
-//     }
+    
     
     
  //---------------------------UPDATES---------------------------------------   
@@ -214,8 +214,9 @@ public class Dao {
             p.setWorkphone(rs.getInt("workPhone"));
             p.setAddress(rs.getString("address"));
             p.setMobile(rs.getInt("mobile"));
-            p.setVuelo(new Vuelo());
-
+            p.setVuelo(new Vuelo(rs.getString("id"),rs.getString("origin"),
+                    rs.getString("destiny"),rs.getString("date"),
+                    rs.getString("dateBack"),Integer.parseInt(rs.getString("quantity"))));
             return p;
         } catch (SQLException ex) {
             return null;
@@ -231,7 +232,7 @@ public class Dao {
             v.setDateBack(rs.getString("dateBack"));
             v.setDestiny(rs.getString("destiny"));
             v.setOrigin(rs.getString("origin"));
-            v.setQuantity(rs.getInt("quantity"));
+            v.setQuantity(Integer.parseInt(rs.getString("quantity")));
            return v;
         } catch (SQLException ex) {
            return null;

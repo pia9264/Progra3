@@ -10,7 +10,8 @@ public class Vuelo {
   private String dateBack;
   private int quantity;
   
-    public Vuelo(String origin, String destiny, String date, String dateBack, int quantity) {
+    public Vuelo(String id,String origin, String destiny, String date, String dateBack, int quantity) {
+        this.id = id;
         this.origin = origin;
         this.destiny = destiny;
         this.date = date;
@@ -19,6 +20,12 @@ public class Vuelo {
     }
 
     public Vuelo() {
+        this.id = "";
+        this.origin = "";
+        this.destiny = "";
+        this.date = "";
+        this.dateBack = "";
+        this.quantity = 0;
     }
    
     
