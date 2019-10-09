@@ -3,26 +3,58 @@ package piasystemairline.Logic;
 
 public class Ruta {
   private String id;
-  private String route;
-  private int duration[];
-  private int precio;
-  private String horallegada;
-    public Ruta(String id, String route, int[] duration, int precio, String horallegada) {
+  private String name;
+  private String duration;
+  private int price;
+  private String arrivalTime;
+  private int discount;
+  private String schedule;
+
+   
+    public Ruta(String id, String name,String duration, int price, String arrivalTime, int discount, String schedule) {
         this.id = id;
-        this.route = route;
+        this.name = name;
+
         this.duration = duration;
-        this.precio = precio;
-        this.horallegada = horallegada;
+        this.price = price;
+        this.arrivalTime = arrivalTime;
+        this.discount = discount;
+        this.schedule = schedule;
     }
 
     public Ruta() {
       this.id = "";
-      this.route = "";
-      this.duration = new int[2];
-      this.precio = 0;
-      this.horallegada = "";
+      this.name = "";
+      this.duration ="";
+      this.price = 0;
+      this.arrivalTime = "";
+      this.schedule = "";
     }
 
+    
+     public String getSchedule() {
+        return schedule;
+    }
+
+    public void setSchedule(String schedule) {
+        this.schedule = schedule;
+    }
+
+    
+    public int getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(int discount) {
+        this.discount = discount;
+    }
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
     public String getId() {
         return id;
     }
@@ -31,36 +63,28 @@ public class Ruta {
         this.id = id;
     }
 
-    public String getRoute() {
-        return route;
-    }
-
-    public void setRoute(String route) {
-        this.route = route;
-    }
-
-    public int[] getDuration() {
+    public String getDuration() {
         return duration;
     }
 
-    public void setDuration(int[] duration) {
+    public void setDuration(String duration) {
         this.duration = duration;
     }
 
-    public int getPrecio() {
-        return precio;
+    public int getPrice() {
+        return price;
     }
 
-    public void setPrecio(int precio) {
-        this.precio = precio;
+    public void setPrice(int precio) {
+        this.price = precio;
     }
 
-    public String getHorallegada() {
-        return horallegada;
+    public String getArrivalTime() {
+        return arrivalTime;
     }
 
-    public void setHorallegada(String horallegada) {
-        this.horallegada = horallegada;
+    public void setArrivalTime(String arrivalTime) {
+        this.arrivalTime = arrivalTime;
     }
 
 }
