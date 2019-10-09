@@ -177,7 +177,7 @@ public class PiaAPP extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel buscarVuelo;
     private javax.swing.JButton contactenos;
-    private javax.swing.JPanel fondo;
+    public javax.swing.JPanel fondo;
     private javax.swing.JButton historia;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
