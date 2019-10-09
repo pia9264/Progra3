@@ -10,5 +10,9 @@ package piasystemairline.Presentation.EdicionRuta;
  * @author anibalchavesbadilla
  */
 public class Controller {
+
+    public Controller(Model RutaModel, View RutaVista) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

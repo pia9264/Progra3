@@ -10,5 +10,9 @@ package piasystemairline.Presentation.EdicionAvion;
  * @author anibalchavesbadilla
  */
 public class Controller {
+
+    public Controller(Model AvionModel, View AvionVista) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
