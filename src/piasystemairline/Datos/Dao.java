@@ -22,11 +22,11 @@ public class Dao {
     
     public void PersonaAdd(Persona p) throws Exception{
         String sql="insert into persona (user,pass,name,lastname,email,"
-                + "dateBirth,address,workphone,mobile,Vuelo_id)"+
-                   "values('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s')";
+                + "dateBirth,address,workPhone,mobile,Vuelo_id,isAdmin)"+
+                   "values('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s')";
         sql=String.format(sql,p.getUser(),p.getName(),p.getLastName(),
                 p.getEmail(),p.getDatebirth(),p.getAddress(),p.getWorkphone(),
-                p.getMobile(),p.getVuelo().getId());
+                p.getMobile(),p.getVuelo().getId(),p.getIsAdmin());
         int count=db.executeUpdate(sql);
         if (count==0){
             throw new Exception("Persona ya existe");
@@ -36,7 +36,8 @@ public class Dao {
      public void VueloAdd(Vuelo v) throws Exception {
     String sql="insert into Vuelo (id,origin,detiny,date,dateBack,quantity)"+
          "values('%s','%s','%s','%s','%s','%s')";
-        sql=String.format(sql,v.getId(),v.getOrigin(),v.getDestiny(),v.getDate(),v.getDateBack(),v.getQuantity());
+        sql=String.format(sql,v.getId(),v.getOrigin(),v.getDestiny(),v.getDate(),
+                v.getDateBack(),Integer.toString(v.getQuantity()));
         int count=db.executeUpdate(sql);
         if (count==0){
             throw new Exception("Vuelo ya existe");
@@ -47,16 +48,17 @@ public class Dao {
      String sql="insert into Avion (id,age,model,trademark,numberPassengers,"
              + "numberRows,seatsRows,Ruta_id)"+
          "values('%s','%s','%s','%s','%s','%s','%s','%s')";
-        sql=String.format(sql,a.getId(),a.getAge(),a.getModel(),
-                a.getTrademark(),a.getNumberPassengers(),a.getNumberRows(),
-                a.getSeatsPeRrow(),a.getRuta().getId());
+        sql=String.format(sql,a.getId(),Integer.toString(a.getAge()),a.getModel(),
+                a.getTrademark(),Integer.toString(a.getNumberPassengers()),
+                Integer.toString(a.getNumberRows()),Integer.toString(a.getSeatsPeRrow())
+                ,a.getRuta().getId());
         int count=db.executeUpdate(sql);
         if (count==0){
             throw new Exception("Avion ya existe");
         }
     }
 
-    public void PersonaAdd(Ruta r) throws Exception {
+    public void RutaAdd(Ruta r) throws Exception {
     String sql="insert into Ruta (id,routeName,duration,price,arrivalTime,discount,schedule)"+
          "values('%s','%s','%s','%s','%s','%s','%s')";
         sql=String.format(sql,r.getId(),r.getName(),r.getDuration(),r.getPrice(),r.getArrivalTime(),r.getDiscount(),r.getSchedule());
@@ -211,9 +213,9 @@ public class Dao {
             p.setLastName(rs.getString("lastName"));
             p.setDatebirth(rs.getString("datebirth"));
             p.setEmail(rs.getString("email"));
-            p.setWorkphone(rs.getInt("workPhone"));
+            p.setWorkphone(rs.getString("workPhone"));
             p.setAddress(rs.getString("address"));
-            p.setMobile(rs.getInt("mobile"));
+            p.setMobile(rs.getString("mobile"));
             p.setVuelo(new Vuelo(rs.getString("id"),rs.getString("origin"),
                     rs.getString("destiny"),rs.getString("date"),
                     rs.getString("dateBack"),Integer.parseInt(rs.getString("quantity"))));

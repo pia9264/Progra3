@@ -23,7 +23,7 @@ public class Model {
     }
     
     public void agregarRuta(Ruta r) throws Exception{
-       Datos.PersonaAdd(r);
+       Datos.RutaAdd(r);
     }
     
     //  INSTANCE

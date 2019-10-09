@@ -4,7 +4,22 @@ package piasystemairline.Logic;
 
 public class Persona {
 
-    public Persona(String user, String pass, String name, String lastName, String email, String datebirth, String address, int workphone, int mobile) {
+   private String user;
+   private String pass;
+   private String name;
+   private String lastName;
+   private String email;
+   private String datebirth;
+   private String address;
+   private String workphone;
+   private String mobile;
+   private Vuelo vuelo;
+   private char isAdmin;
+   
+   
+    public Persona(String user, String pass, String name, String lastName, 
+            String email, String datebirth, String address, String workphone, 
+            String mobile,char isAdmin) {
         this.user = user;
         this.pass = pass;
         this.name = name;
@@ -14,21 +29,32 @@ public class Persona {
         this.address = address;
         this.workphone = workphone;
         this.mobile = mobile;
+        this.isAdmin = isAdmin;
         
     }
-
     public Persona() {
+        this.user = "";
+        this.pass = "";
+        this.name = "";
+        this.lastName = "";
+        this.email = "";
+        this.datebirth = "";
+        this.address = "";
+        this.workphone = "";
+        this.mobile = "";
+        this.isAdmin = 0;
+    
     }
-   private String user;
-   private String pass;
-   private String name;
-   private String lastName;
-   private String email;
-   private String datebirth;
-   private String address;
-   private int workphone;
-   private int mobile;
-   private Vuelo vuelo;
+    public char getIsAdmin() {
+        return isAdmin;
+    }
+
+    public void setIsAdmin(char isAdmin) {
+        this.isAdmin = isAdmin;
+    }
+
+  
+ 
 
     public Vuelo getVuelo() {
         return vuelo;
@@ -141,28 +167,28 @@ public class Persona {
     /**
      * @return the workphone
      */
-    public int getWorkphone() {
+    public String getWorkphone() {
         return workphone;
     }
 
     /**
      * @param workphone the workphone to set
      */
-    public void setWorkphone(int workphone) {
+    public void setWorkphone(String workphone) {
         this.workphone = workphone;
     }
 
     /**
      * @return the mobile
      */
-    public int getMobile() {
+    public String getMobile() {
         return mobile;
     }
 
     /**
      * @param mobile the mobile to set
      */
-    public void setMobile(int mobile) {
+    public void setMobile(String mobile) {
         this.mobile = mobile;
     }
     
