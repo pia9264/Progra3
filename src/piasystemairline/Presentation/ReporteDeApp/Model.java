@@ -1,14 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package piasystemairline.Presentation.ReporteDeApp;
 
-/**
- *
- * @author anibalchavesbadilla
- */
-public class Model {
-    
+import java.util.Observable;
+import java.util.Observer;
+
+
+public class Model extends Observable{
+    public Model() {
+   
+    }
+    @Override
+    public void addObserver(Observer o){
+     super.addObserver(o);
+     this.setChanged();
+     this.notifyObservers();
+    }
 }

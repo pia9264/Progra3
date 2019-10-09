@@ -15,7 +15,7 @@ public class Ruta {
         this.horallegada = horallegada;
     }
 
-    Ruta() {
+    public Ruta() {
       this.id = "";
       this.route = "";
       this.duration = new int[2];

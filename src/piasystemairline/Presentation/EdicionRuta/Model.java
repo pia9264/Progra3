@@ -1,14 +1,36 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package piasystemairline.Presentation.EdicionRuta;
 
-/**
- *
- * @author anibalchavesbadilla
- */
-public class Model {
+import java.util.Observable;
+import java.util.Observer;
+import piasystemairline.Logic.Ruta;
+
+
+public class Model extends Observable{
+  private Ruta ruta;
     
+    public Model(Ruta ruta) {
+        this.ruta = ruta;
+    }
+
+    public Model() {
+     ruta = new Ruta();
+    }
+    
+    
+    public Ruta getAvion() {
+         return ruta;
+    }
+
+    public void setAvion(Ruta ruta) {
+        this.ruta = ruta;
+        this.setChanged();
+        this.notifyObservers();
+    }
+     @Override
+    public void addObserver(Observer o){
+     super.addObserver(o);
+     this.setChanged();
+     this.notifyObservers();
+    }  
 }
