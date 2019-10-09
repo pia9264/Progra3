@@ -16,17 +16,7 @@ public class Model extends Observable{
     public Model() {
        persona = new Persona();
     }
-    
-    
-    public Persona getAvion() {
-         return persona;
-    }
-
-    public void setAvion(Persona persona) {
-        this.persona = persona;
-        this.setChanged();
-        this.notifyObservers();
-    }
+  
      @Override
     public void addObserver(Observer o){
      super.addObserver(o);
