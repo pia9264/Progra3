@@ -5,24 +5,16 @@
  */
 package piasystemairline.Presentation.App;
 
-
-import java.beans.PropertyVetoException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.event.InternalFrameEvent;
 
-/**
- *
- * @author anibalchavesbadilla
- */
 public class PiaAPP extends javax.swing.JFrame {
    ControllerApp controlador;
     public PiaAPP() {
+        cargarFondo();
         initComponents();
         PantallaCompleta();
         salir.setVisible(false);
+        
     }
 
     /**
@@ -38,7 +30,7 @@ public class PiaAPP extends javax.swing.JFrame {
         historia = new javax.swing.JButton();
         contactenos = new javax.swing.JButton();
         referente = new javax.swing.JButton();
-        buscarVuelo = new javax.swing.JLabel();
+        buscarVuelo = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -48,6 +40,9 @@ public class PiaAPP extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        fondo.setBackground(new java.awt.Color(255, 255, 255));
+
+        historia.setBackground(new java.awt.Color(51, 0, 255));
         historia.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         historia.setText("Historia");
         historia.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -57,6 +52,7 @@ public class PiaAPP extends javax.swing.JFrame {
             }
         });
 
+        contactenos.setBackground(new java.awt.Color(51, 0, 255));
         contactenos.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         contactenos.setText("Contactenos");
         contactenos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -66,8 +62,9 @@ public class PiaAPP extends javax.swing.JFrame {
             }
         });
 
+        referente.setBackground(new java.awt.Color(51, 0, 255));
         referente.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
-        referente.setText("Refernte institucional");
+        referente.setText("Referente institucional");
         referente.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         referente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,19 +72,19 @@ public class PiaAPP extends javax.swing.JFrame {
             }
         });
 
+        buscarVuelo.setBackground(new java.awt.Color(51, 0, 255));
         buscarVuelo.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        buscarVuelo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/piasystemairline/Presentation/iconos/icons8-search.png"))); // NOI18N
         buscarVuelo.setText("Buscar Vuelo");
-        buscarVuelo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        buscarVuelo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarVueloActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout fondoLayout = new javax.swing.GroupLayout(fondo);
         fondo.setLayout(fondoLayout);
         fondoLayout.setHorizontalGroup(
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(buscarVuelo, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(118, 118, 118))
             .addGroup(fondoLayout.createSequentialGroup()
                 .addGap(274, 274, 274)
                 .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -95,19 +92,23 @@ public class PiaAPP extends javax.swing.JFrame {
                     .addComponent(historia, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(referente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE))
                 .addGap(283, 283, 283))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(buscarVuelo, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(95, 95, 95))
         );
         fondoLayout.setVerticalGroup(
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fondoLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(buscarVuelo)
-                .addGap(83, 83, 83)
+                .addGap(19, 19, 19)
+                .addComponent(buscarVuelo, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
                 .addComponent(referente, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(historia, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addGap(18, 18, 18)
                 .addComponent(contactenos, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addGap(28, 28, 28))
         );
 
         jMenu1.setText("NAME");
@@ -198,6 +199,10 @@ public class PiaAPP extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_salirActionPerformed
 
+    private void buscarVueloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarVueloActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buscarVueloActionPerformed
+
  private void QuitarTodo(){
          buscarVuelo.setVisible(false);
          contactenos.setVisible(false);
@@ -221,13 +226,20 @@ public void PonerTodo(){
  public void IsAdmin(){
  
  }
+ 
+ private void cargarFondo(){
+  fondo image=new fondo();
+  image.setImage("/piasystemairline/Presentation/iconos/a.jpg");
+  setContentPane(image);
+ }
  private void PantallaCompleta(){
+  fondo.setOpaque(false);
   this.setExtendedState(JFrame.MAXIMIZED_BOTH);
   this.fondo.setBounds(this.getX(),this.getY(),this.getWidth(),this.getHeight());
 }
  
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel buscarVuelo;
+    private javax.swing.JButton buscarVuelo;
     private javax.swing.JButton contactenos;
     public javax.swing.JPanel fondo;
     private javax.swing.JButton historia;
