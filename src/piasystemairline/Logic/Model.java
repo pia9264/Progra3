@@ -25,7 +25,10 @@ public class Model {
     public void agregarRuta(Ruta r) throws Exception{
        Datos.RutaAdd(r);
     }
-    
+    public Persona ConsultaUser(String user) throws Exception{
+        Persona result = Datos.PersonaGet(user);
+        return result;
+    }
     //  INSTANCE
     public static Model instance(){
        if (the_instance == null) {

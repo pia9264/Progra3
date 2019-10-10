@@ -1,5 +1,6 @@
 
 package piasystemairline.Presentation.App;
+import piasystemairline.Logic.Persona;
 import piasystemairline.PIASystemAirline;
 
 public class ControllerApp {
@@ -30,5 +31,25 @@ public class ControllerApp {
 
     public void ChangeNameAndIsAdmin(String name, char admin) {
     vista.UserActivate(name,admin);
+    }
+
+    Persona Existe(String user, String pass) throws Exception {
+      Persona p = piasystemairline.Logic.Model.instance().ConsultaUser(user);
+      if(pass.equals(p.getPass())){
+      return p;
+      }else{
+      return p = new Persona(); 
+      }
+    }
+
+    void appON() {
+     piasystemairline.PIASystemAirline.ControllerAPP.OnButtons();
+    }
+    
+    void SinginShow(){
+      Usersingin u = new Usersingin();
+      u.setController(this);
+      vista.fondo.add(u);
+      
     }
 }

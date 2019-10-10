@@ -6,7 +6,11 @@
 package piasystemairline.Presentation.App;
 
 
+import java.beans.PropertyVetoException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.event.InternalFrameEvent;
 
 /**
@@ -18,6 +22,7 @@ public class PiaAPP extends javax.swing.JFrame {
     public PiaAPP() {
         initComponents();
         PantallaCompleta();
+        salir.setVisible(false);
     }
 
     /**
@@ -37,8 +42,9 @@ public class PiaAPP extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        singup = new javax.swing.JMenuItem();
+        singin = new javax.swing.JMenuItem();
+        salir = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -113,21 +119,29 @@ public class PiaAPP extends javax.swing.JFrame {
         jMenu2.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jMenu2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
-        jMenuItem1.setText("Sign up");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        singup.setText("Sign up");
+        singup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                singupActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem1);
+        jMenu2.add(singup);
 
-        jMenuItem2.setText("Sign in");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        singin.setText("Sign in");
+        singin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                singinActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem2);
+        jMenu2.add(singin);
+
+        salir.setText("Log out");
+        salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salirActionPerformed(evt);
+            }
+        });
+        jMenu2.add(salir);
 
         jMenuBar1.add(jMenu2);
 
@@ -159,14 +173,30 @@ public class PiaAPP extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_referenteActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    private void singinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_singinActionPerformed
+          
+           QuitarTodo();
+        if ("Sign in".equals(singin.getText())) {
+           singup.setEnabled(false);
+           singin.setEnabled(false);
+           controlador.SinginShow();
+        }
+    }//GEN-LAST:event_singinActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void singupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_singupActionPerformed
       QuitarTodo();
-      controlador.EdcionPersonaShow();
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+        if ("Sign up".equals(singup.getText())) {
+            singup.setEnabled(false);
+            singin.setEnabled(false);
+            controlador.EdcionPersonaShow(); 
+        }else{
+        
+        }
+    }//GEN-LAST:event_singupActionPerformed
+
+    private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_salirActionPerformed
 
  private void QuitarTodo(){
          buscarVuelo.setVisible(false);
@@ -179,7 +209,9 @@ public void PonerTodo(){
          buscarVuelo.setVisible(true);
          contactenos.setVisible(true);
          historia.setVisible(true);
-         referente.setVisible(true);     
+         referente.setVisible(true);
+         singup.setEnabled(true);
+         singin.setEnabled(true);
  }
 
  void setControlador(ControllerApp c) {
@@ -202,17 +234,21 @@ public void PonerTodo(){
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JButton referente;
+    private javax.swing.JMenuItem salir;
+    private javax.swing.JMenuItem singin;
+    private javax.swing.JMenuItem singup;
     // End of variables declaration//GEN-END:variables
 
     void UserActivate(String name, char admin) {
-      this.jMenu1.setText(name);
+      this.jMenu2.setText(name);
         if (admin == '1') {
-            
-        }else{
-        
+        }else{    
+        singup.setText("My Infomation");
+        singin.setText("Previous Reservations");
+        singup.setEnabled(true);
+        singin.setEnabled(true);
+        salir.setVisible(true);
         }
     }
 }

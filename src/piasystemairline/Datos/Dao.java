@@ -173,7 +173,7 @@ public class Dao {
 //--------------------------GETS------------------------------------
    public Persona PersonaGet(String id) throws Exception{
         String sql="select * from "+
-                    "persona p inner join vuelo v on p.vuelo=v.id "+
+                    "persona p inner join vuelo v on v.id=v.id "+
                     "where p.user like '%%%s%%'";
         sql = String.format(sql,id);
         ResultSet rs =  db.executeQuery(sql);
@@ -207,7 +207,7 @@ public class Dao {
     private Persona persona(ResultSet rs){
         try {
             Persona p=new Persona();
-            p.setUser(rs.getString("id"));
+            p.setUser(rs.getString("user"));
             p.setPass(rs.getString("pass"));
             p.setName(rs.getString("name"));
             p.setLastName(rs.getString("lastName"));
