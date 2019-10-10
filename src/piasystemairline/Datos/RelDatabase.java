@@ -12,7 +12,7 @@ import java.sql.Statement;
 import java.util.Properties;
 
 public class RelDatabase {
-    public static final String PROPERTIES_FILE_NAME="/personas.properties";        
+    public static final String PROPERTIES_FILE_NAME="/SystemAirline.properties";        
     Connection cnx;
     public RelDatabase(){
         cnx=this.getConnection();            

@@ -22,9 +22,9 @@ public class Dao {
     
     public void PersonaAdd(Persona p) throws Exception{
         String sql="insert into persona (user,pass,name,lastname,email,"
-                + "dateBirth,address,workPhone,mobile,Vuelo_id,isAdmin)"+
-                   "values('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s')";
-        sql=String.format(sql,p.getUser(),p.getName(),p.getLastName(),
+                + "dateBirth,address,workPhone,mobile,Vuelo_id,isAdmin)"
+                + " values('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s')";
+        sql=String.format(sql,p.getUser(),p.getPass(),p.getName(),p.getLastName(),
                 p.getEmail(),p.getDatebirth(),p.getAddress(),p.getWorkphone(),
                 p.getMobile(),p.getVuelo().getId(),p.getIsAdmin());
         int count=db.executeUpdate(sql);

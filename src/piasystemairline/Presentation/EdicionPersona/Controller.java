@@ -24,6 +24,7 @@ public class Controller {
     }
 public void agregar(Persona p) throws Exception{
         piasystemairline.Logic.Model.instance().agregarPersona(p);
+        vista.setVisible(false);
     }
 
     public void Show() {
