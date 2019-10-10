@@ -20,7 +20,7 @@ public class Vuelo {
     }
 
     public Vuelo() {
-        this.id = "";
+        this.id = "0";
         this.origin = "";
         this.destiny = "";
         this.date = "";

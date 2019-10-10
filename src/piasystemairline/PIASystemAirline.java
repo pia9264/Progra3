@@ -14,10 +14,12 @@ public class PIASystemAirline {
        piasystemairline.Presentation.EdicionPersona.Model PersonaModel = 
                new piasystemairline.Presentation.EdicionPersona.Model();
        piasystemairline.Presentation.EdicionPersona.View PersonaVista = 
-               new piasystemairline.Presentation.EdicionPersona.View();
+               new piasystemairline.Presentation.EdicionPersona.View('0');
        piasystemairline.Presentation.EdicionPersona.Controller PersonaController = 
                new piasystemairline.Presentation.EdicionPersona.Controller(PersonaModel,PersonaVista);
     
+       Controler_Persona = PersonaController;
+       
 //    //-------------------------AVION---------------------------------
 //       piasystemairline.Presentation.EdicionAvion.Model AvionModel = 
 //               new piasystemairline.Presentation.EdicionAvion.Model();
@@ -25,6 +27,9 @@ public class PIASystemAirline {
 //               new piasystemairline.Presentation.EdicionAvion.View();
 //       piasystemairline.Presentation.EdicionAvion.Controller AvionController = 
 //               new piasystemairline.Presentation.EdicionAvion.Controller(AvionModel,AvionVista);
+        
+//      Controler_Avion = AvionController;
+      
 //    //------------------------RUTA-------------------
 //       piasystemairline.Presentation.EdicionRuta.Model RutaModel = 
 //               new piasystemairline.Presentation.EdicionRuta.Model();
@@ -32,6 +37,8 @@ public class PIASystemAirline {
 //               new piasystemairline.Presentation.EdicionRuta.View();
 //       piasystemairline.Presentation.EdicionRuta.Controller RutaController = 
 //               new piasystemairline.Presentation.EdicionRuta.Controller(RutaModel,RutaVista);
+
+//        Controler_Ruta = RutaController;
 //    //----------------------------APP--------------------------------
        piasystemairline.Presentation.App.ModelApp AppModel = 
                new piasystemairline.Presentation.App.ModelApp();

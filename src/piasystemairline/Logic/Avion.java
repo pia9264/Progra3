@@ -13,7 +13,7 @@ public class Avion {
     private Ruta ruta;
 
     public Avion() {
-        this.id = "";
+        this.id = "0";
         this.age = 0;
         this.model = "";
         this.trademark = "";

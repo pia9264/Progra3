@@ -23,7 +23,7 @@ public class Ruta {
     }
 
     public Ruta() {
-      this.id = "";
+      this.id = "0";
       this.name = "";
       this.duration ="";
       this.price = 0;

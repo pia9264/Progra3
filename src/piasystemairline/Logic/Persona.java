@@ -19,7 +19,7 @@ public class Persona {
    
     public Persona(String user, String pass, String name, String lastName, 
             String email, String datebirth, String address, String workphone, 
-            String mobile,char isAdmin) {
+            String mobile,char isAdmin,Vuelo vuelo) {
         this.user = user;
         this.pass = pass;
         this.name = name;
@@ -30,7 +30,7 @@ public class Persona {
         this.workphone = workphone;
         this.mobile = mobile;
         this.isAdmin = isAdmin;
-        
+        this.vuelo = vuelo;
     }
     public Persona() {
         this.user = "";

@@ -19,11 +19,15 @@ public class Controller {
       modelo = PersonaModel;
       vista = PersonaVista;
       vista.setControlador(this);
-      vista.setModelEdit(modelo);
-      vista.update(modelo,vista);
+      vista.setModelEdit(PersonaModel);
+      vista.update(PersonaModel,PersonaVista);
     }
 public void agregar(Persona p) throws Exception{
         piasystemairline.Logic.Model.instance().agregarPersona(p);
+    }
+
+    public void Show() {
+      vista.setVisible(true);
     }
 
    
