@@ -46,7 +46,7 @@ public class PIASystemAirline {
                new piasystemairline.Presentation.App.PiaAPP();
        piasystemairline.Presentation.App.ControllerApp AppController = 
                new piasystemairline.Presentation.App.ControllerApp(AppModel,AppVista);
-    
+      ControllerAPP=AppController;
        AppVista.setVisible(true);
        AppVista.fondo.add(PersonaVista);
 //       AppVista.fondo.add(AvionVista);
@@ -58,6 +58,6 @@ public class PIASystemAirline {
     public static piasystemairline.Presentation.EdicionAvion.Controller Controler_Avion;
     public static piasystemairline.Presentation.EdicionRuta.Controller Controler_Ruta;
     public static piasystemairline.Presentation.EdicionPersona.Controller Controler_Persona;
-
+    public static piasystemairline.Presentation.App.ControllerApp ControllerAPP;
 
 }

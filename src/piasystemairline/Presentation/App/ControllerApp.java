@@ -23,4 +23,12 @@ public class ControllerApp {
    }
    public void EdcionHorarioShow(){
    }
+
+    public void OnButtons() {
+    vista.PonerTodo();
+    }
+
+    public void ChangeNameAndIsAdmin(String name, char admin) {
+    vista.UserActivate(name,admin);
+    }
 }

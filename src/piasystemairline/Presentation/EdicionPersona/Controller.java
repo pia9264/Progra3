@@ -24,5 +24,13 @@ public void agregar(Persona p) throws Exception{
       vista.setVisible(true);
     }
 
+    void appON() {
+     piasystemairline.PIASystemAirline.ControllerAPP.OnButtons();
+    }
+
+    void setName(String name, char admin) {
+    piasystemairline.PIASystemAirline.ControllerAPP.ChangeNameAndIsAdmin(name,admin);
+    }
+
    
 }

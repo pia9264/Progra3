@@ -7,6 +7,7 @@ package piasystemairline.Presentation.App;
 
 
 import javax.swing.JFrame;
+import javax.swing.event.InternalFrameEvent;
 
 /**
  *
@@ -98,9 +99,9 @@ public class PiaAPP extends javax.swing.JFrame {
                 .addComponent(referente, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(historia, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
+                .addGap(26, 26, 26)
                 .addComponent(contactenos, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
         jMenu1.setText("NAME");
@@ -173,11 +174,21 @@ public class PiaAPP extends javax.swing.JFrame {
          historia.setVisible(false);
          referente.setVisible(false);     
  }
+ 
+public void PonerTodo(){
+         buscarVuelo.setVisible(true);
+         contactenos.setVisible(true);
+         historia.setVisible(true);
+         referente.setVisible(true);     
+ }
 
  void setControlador(ControllerApp c) {
      this.controlador = c;
  }
+
+ public void IsAdmin(){
  
+ }
  private void PantallaCompleta(){
   this.setExtendedState(JFrame.MAXIMIZED_BOTH);
   this.fondo.setBounds(this.getX(),this.getY(),this.getWidth(),this.getHeight());
@@ -195,4 +206,13 @@ public class PiaAPP extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JButton referente;
     // End of variables declaration//GEN-END:variables
+
+    void UserActivate(String name, char admin) {
+      this.jMenu1.setText(name);
+        if (admin == '1') {
+            
+        }else{
+        
+        }
+    }
 }
