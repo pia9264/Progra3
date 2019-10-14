@@ -43,6 +43,7 @@ public class Persona {
         this.workphone = "";
         this.mobile = "";
         this.isAdmin = 0;
+        this.vuelo = new Vuelo();
     
     }
     public char getIsAdmin() {

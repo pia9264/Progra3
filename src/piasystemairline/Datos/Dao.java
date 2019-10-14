@@ -21,7 +21,7 @@ public class Dao {
 // -------------------------------AGREGAR--------------------------------------
     
     public void PersonaAdd(Persona p) throws Exception{
-        String sql="insert into persona (user,pass,name,lastname,email,"
+        String sql="insert into Usuario (user,pass,name,lastname,email,"
                 + "dateBirth,address,workPhone,mobile,Vuelo_id,isAdmin)"
                 + " values('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s')";
         sql=String.format(sql,p.getUser(),p.getPass(),p.getName(),p.getLastName(),
@@ -74,7 +74,7 @@ public class Dao {
     
     
     public void PersonaUpdate(Persona p) throws Exception{
-        String sql="update persona set user='%s',pass='%s',name='%s',"
+        String sql="update Usuario set user='%s',pass='%s',name='%s',"
                 + "lastname='%s',email='%s',dateBirth='%s',address='%s',"
                 + "workphone='%s',mobile='%s',Vuelo_id='%s'";
         sql=String.format(sql,p.getUser(),p.getName(),p.getLastName(),
@@ -117,7 +117,7 @@ public class Dao {
         List<Persona> resultado = new ArrayList<Persona>();
         try {
             String sql="select * from "+
-                    "persona p inner join Vuelo v on p.Vuelo_id=v.id "+
+                    "Usuario p inner join Vuelo v on p.Vuelo_id=v.id "+
                     "where p.user like '%%%s%%'";
             sql=String.format(sql,nombre);
             ResultSet rs =  db.executeQuery(sql);
@@ -173,8 +173,7 @@ public class Dao {
 //--------------------------GETS------------------------------------
    public Persona PersonaGet(String id) throws Exception{
         String sql="select * from "+
-                    "persona p inner join vuelo v on v.id=v.id "+
-                    "where p.user like '%%%s%%'";
+                    "Usuario p where p.user like '%%%s%%'";
         sql = String.format(sql,id);
         ResultSet rs =  db.executeQuery(sql);
         if (rs.next()) {
@@ -191,7 +190,7 @@ public class Dao {
    
    
     public void PersonaDelete(Persona p) throws Exception{
-        String sql="delete from persona where id='%s'";
+        String sql="delete from Usuario where id='%s'";
         sql = String.format(sql,p.getUser());
         int count=db.executeUpdate(sql);
         if (count==0){
@@ -216,9 +215,10 @@ public class Dao {
             p.setWorkphone(rs.getString("workPhone"));
             p.setAddress(rs.getString("address"));
             p.setMobile(rs.getString("mobile"));
-            p.setVuelo(new Vuelo(rs.getString("id"),rs.getString("origin"),
-                    rs.getString("destiny"),rs.getString("date"),
-                    rs.getString("dateBack"),Integer.parseInt(rs.getString("quantity"))));
+            p.setVuelo(new Vuelo());
+//          p.setVuelo(new Vuelo(rs.getString("id"),rs.getString("origin"),
+//                    rs.getString("destiny"),rs.getString("date"),
+//                    rs.getString("dateBack"),Integer.parseInt(rs.getString("quantity"))));
             return p;
         } catch (SQLException ex) {
             return null;
