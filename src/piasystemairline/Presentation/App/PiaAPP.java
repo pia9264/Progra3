@@ -196,7 +196,10 @@ public class PiaAPP extends javax.swing.JFrame {
     }//GEN-LAST:event_singupActionPerformed
 
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
-        // TODO add your handling code here:
+     singup.setText("Sign up");
+     singin.setText("Sign in");
+     salir.setVisible(false);
+     jMenu2.setText("USER");
     }//GEN-LAST:event_salirActionPerformed
 
     private void buscarVueloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarVueloActionPerformed
