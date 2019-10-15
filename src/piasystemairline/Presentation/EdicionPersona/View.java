@@ -238,7 +238,7 @@ public class View extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_AnioActionPerformed
 
     private void AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddActionPerformed
-try {
+if("Add".equals(Add.getText())){try {
             controller.agregar(new Persona(Username.getText(),Password.getText(),
             Nombre.getText(),LastName.getText(),Email.getText(),getFecha(),
             Addres.getText(),WorkPhone.getText(),Mobile.getText(),isAdmin,new Vuelo()));
@@ -247,6 +247,10 @@ try {
         } catch (Exception ex) {
             Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }else{
+
+     }
+
     }//GEN-LAST:event_AddActionPerformed
 
     private void closeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeActionPerformed
@@ -269,13 +273,20 @@ try {
     
     private void CargarCombox(){
         for (int i = 1; i < 32; i++) {
-            this.Dia.addItem(Integer.toString(i));
-            
+            if(i<10){
+                this.Dia.addItem("0"+Integer.toString(i));
+            }else{
+             this.Dia.addItem(Integer.toString(i));
+            }
         }
         for (int i = 1; i <13; i++) {
+            if(i<10){
+            this.Mes.addItem("0"+Integer.toString(i));
+            }else{
             this.Mes.addItem(Integer.toString(i));
+            }
         }
-        for (int i = 1910; i < 2020; i++) {
+        for (int i = 2019; i > 1910; i--) {
             this.Anio.addItem(Integer.toString(i));
             
         }
@@ -318,6 +329,25 @@ try {
             +Mes.getItemAt(Mes.getSelectedIndex())+"-"+
             Dia.getItemAt(Dia.getSelectedIndex());
     return Fecha;
+    }
+
+    void Rellenar(Persona p) {
+      Add.setText("Modificar");
+      Addres.setText(p.getAddress());
+      
+      Email.setText(p.getEmail());
+      LastName.setText(p.getLastName());
+     
+      Mobile.setText(p.getMobile());
+      Nombre.setText(p.getName());
+      Password.setText(p.getPass());
+      Username.setText(p.getUser());
+      WorkPhone.setText(p.getWorkphone());
+      String date = p.getDatebirth();
+      String s = date.substring(0,4);
+      Mes.setSelectedIndex(Integer.parseInt(date.substring(5,7))-1);
+      Anio.setSelectedIndex(2019-(Integer.parseInt(date.substring(0,4))));
+      Dia.setSelectedIndex(Integer.parseInt(date.substring(8,10))-1);
     }
     
  

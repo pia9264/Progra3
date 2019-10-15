@@ -191,7 +191,10 @@ public class PiaAPP extends javax.swing.JFrame {
             singin.setEnabled(false);
             controlador.EdcionPersonaShow(); 
         }else{
-        
+            singup.setEnabled(false);
+            singin.setEnabled(false);
+            controlador.EdcionPersonaShow();
+            controlador.CargarDatosPersonas(jMenu2.getText());
         }
     }//GEN-LAST:event_singupActionPerformed
 

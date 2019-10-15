@@ -1,6 +1,8 @@
 
 package piasystemairline.Presentation.EdicionPersona;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import piasystemairline.Logic.Persona;
 
 
@@ -30,6 +32,16 @@ public void agregar(Persona p) throws Exception{
 
     void setName(String name, char admin) {
     piasystemairline.PIASystemAirline.ControllerAPP.ChangeNameAndIsAdmin(name,admin);
+    }
+
+    public void CargarPersona(String user){
+       Persona p = new Persona();
+        try {
+            p = piasystemairline.Logic.Model.instance().ConsultaUser(user);
+        } catch (Exception ex) {
+       
+        }
+       vista.Rellenar(p);
     }
 
    

@@ -52,4 +52,8 @@ public class ControllerApp {
       vista.fondo.add(u);
       
     }
+
+    void CargarDatosPersonas(String user) {
+    PIASystemAirline.Controler_Persona.CargarPersona(user);
+    }
 }
