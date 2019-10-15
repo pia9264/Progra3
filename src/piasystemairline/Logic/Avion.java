@@ -7,43 +7,32 @@ public class Avion {
     private int age;
     private String model;
     private String trademark;
-    private int numberPassengers;
+    private int capacity;
     private int numberRows;
     private int seatsPeRrow;
-    private Ruta ruta;
+    
 
     public Avion() {
         this.id = "0";
         this.age = 0;
         this.model = "";
         this.trademark = "";
-        this.numberPassengers = 0;
+        this.capacity = 0;
         this.numberRows = 0;
         this.seatsPeRrow =6;
-        this.ruta = new Ruta();
     }
 
-    public Avion(String id, int age, String model, String trademark, int numberPassengers, int numberRows, int seatsPeRrow) {
+    public Avion(String id, int age, String model, String trademark, int capacity, int numberRows, int seatsPeRrow) {
         this.id = id;
         this.age = age;
         this.model = model;
         this.trademark = trademark;
-        this.numberPassengers = numberPassengers;
+        this.capacity = capacity;
         this.numberRows = numberRows;
         this.seatsPeRrow = seatsPeRrow;
     }
 
-    
-    public Ruta getRuta() {
-        return ruta;
-    }
-
-    public void setRuta(Ruta ruta) {
-        this.ruta = ruta;
-    }
-    /**
-     * @return the id
-     */
+   
     public String getId() {
         return id;
     }
@@ -101,14 +90,14 @@ public class Avion {
      * @return the numberPassengers
      */
     public int getNumberPassengers() {
-        return numberPassengers;
+        return capacity;
     }
 
     /**
      * @param numberPassengers the numberPassengers to set
      */
-    public void setNumberPassengers(int numberPassengers) {
-        this.numberPassengers = numberPassengers;
+    public void setNumberPassengers(int capacity) {
+        this.capacity = capacity;
     }
 
     /**

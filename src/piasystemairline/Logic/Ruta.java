@@ -1,53 +1,61 @@
 
 package piasystemairline.Logic;
 
+import java.util.Objects;
+
 public class Ruta {
   private String id;
   private String name;
   private String duration;
-  private int price;
-  private String arrivalTime;
-  private int discount;
-  private String schedule;
+  private Ciudad origin;
+  private Ciudad destiny;
+  private Escalas scale;
 
-   
-    public Ruta(String id, String name,String duration, int price, String arrivalTime, int discount, String schedule) {
+    public Ruta(String id, String name, String duration, Ciudad origin, Ciudad destiny, Escalas scale) {
         this.id = id;
         this.name = name;
-
         this.duration = duration;
-        this.price = price;
-        this.arrivalTime = arrivalTime;
-        this.discount = discount;
-        this.schedule = schedule;
+        this.origin = origin;
+        this.destiny = destiny;
+        this.scale = scale;
     }
+   
+   
 
     public Ruta() {
       this.id = "0";
       this.name = "";
       this.duration ="";
-      this.price = 0;
-      this.arrivalTime = "";
-      this.schedule = "";
+      this.scale = new Escalas();
+      this.destiny = new Ciudad();
+      this.origin = new Ciudad();
     }
 
-    
-     public String getSchedule() {
-        return schedule;
+    public Ciudad getOrigin() {
+        return origin;
     }
 
-    public void setSchedule(String schedule) {
-        this.schedule = schedule;
+    public void setOrigin(Ciudad origin) {
+        this.origin = origin;
     }
 
-    
-    public int getDiscount() {
-        return discount;
+    public Ciudad getDestiny() {
+        return destiny;
     }
 
-    public void setDiscount(int discount) {
-        this.discount = discount;
+    public void setDestiny(Ciudad destiny) {
+        this.destiny = destiny;
     }
+
+    public Escalas getScale() {
+        return scale;
+    }
+
+    public void setScale(Escalas scale) {
+        this.scale = scale;
+    }
+
+
     public String getName() {
         return name;
     }
@@ -71,20 +79,35 @@ public class Ruta {
         this.duration = duration;
     }
 
-    public int getPrice() {
-        return price;
+    @Override
+    public String toString() {
+        return "Ruta{" + "name=" + name + '}';
     }
 
-    public void setPrice(int precio) {
-        this.price = precio;
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 79 * hash + Objects.hashCode(this.id);
+        return hash;
     }
 
-    public String getArrivalTime() {
-        return arrivalTime;
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Ruta other = (Ruta) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
     }
-
-    public void setArrivalTime(String arrivalTime) {
-        this.arrivalTime = arrivalTime;
-    }
-
+  
+    
 }

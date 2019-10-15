@@ -4,31 +4,33 @@ package piasystemairline.Logic;
 
 public class Vuelo {
   private String id;
-  private String origin;
-  private String destiny;
-  private String date;
-  private String dateBack;
-  private int quantity;
-  
-    public Vuelo(String id,String origin, String destiny, String date, String dateBack, int quantity) {
-        this.id = id;
-        this.origin = origin;
-        this.destiny = destiny;
-        this.date = date;
-        this.dateBack = dateBack;
-        this.quantity = quantity;
-    }
+  private String repartureDate;
+  private String returnDate;
+  private int price;
+  private String VdetalleID;
+  private Avion avion;
+  private Ruta ruta;
 
     public Vuelo() {
         this.id = "0";
-        this.origin = "";
-        this.destiny = "";
-        this.date = "";
-        this.dateBack = "";
-        this.quantity = 0;
+        this.repartureDate = "";
+        this.returnDate = "";
+        this.price = 0;
+        this.VdetalleID = "";
+        this.avion = new Avion();
+        this.ruta = new Ruta();
     }
-   
-    
+
+    public Vuelo(String id, String repartureDate, String returnDate, int price, String VdetalleID, Avion avion, Ruta ruta) {
+        this.id = id;
+        this.repartureDate = repartureDate;
+        this.returnDate = returnDate;
+        this.price = price;
+        this.VdetalleID = VdetalleID;
+        this.avion = avion;
+        this.ruta = ruta;
+    }
+
     public String getId() {
         return id;
     }
@@ -36,74 +38,55 @@ public class Vuelo {
     public void setId(String id) {
         this.id = id;
     }
-    /**
-     * @return the origin
-     */
-    public String getOrigin() {
-        return origin;
+
+    public String getRepartureDate() {
+        return repartureDate;
     }
 
-    /**
-     * @param origin the origin to set
-     */
-    public void setOrigin(String origin) {
-        this.origin = origin;
+    public void setRepartureDate(String repartureDate) {
+        this.repartureDate = repartureDate;
     }
 
-    /**
-     * @return the destiny
-     */
-    public String getDestiny() {
-        return destiny;
+    public String getReturnDate() {
+        return returnDate;
     }
 
-    /**
-     * @param destiny the destiny to set
-     */
-    public void setDestiny(String destiny) {
-        this.destiny = destiny;
+    public void setReturnDate(String returnDate) {
+        this.returnDate = returnDate;
     }
 
-    /**
-     * @return the date
-     */
-    public String getDate() {
-        return date;
+    public int getPrice() {
+        return price;
     }
 
-    /**
-     * @param date the date to set
-     */
-    public void setDate(String date) {
-        this.date = date;
+    public void setPrice(int price) {
+        this.price = price;
     }
 
-    /**
-     * @return the dateBack
-     */
-    public String getDateBack() {
-        return dateBack;
+    public String getVdetalleID() {
+        return VdetalleID;
     }
 
-    /**
-     * @param dateBack the dateBack to set
-     */
-    public void setDateBack(String dateBack) {
-        this.dateBack = dateBack;
+    public void setVdetalleID(String VdetalleID) {
+        this.VdetalleID = VdetalleID;
     }
 
-    /**
-     * @return the quantity
-     */
-    public int getQuantity() {
-        return quantity;
+    public Avion getAvion() {
+        return avion;
     }
 
-    /**
-     * @param quantity the quantity to set
-     */
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setAvion(Avion avion) {
+        this.avion = avion;
     }
- 
+
+    public Ruta getRuta() {
+        return ruta;
+    }
+
+    public void setRuta(Ruta ruta) {
+        this.ruta = ruta;
+    }
+
+    
+    
 }
