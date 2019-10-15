@@ -1,130 +1,68 @@
 
 package piasystemairline.Logic;
 
+import java.util.Objects;
+
 
 public class Avion {
     private String id;
-    private int age;
-    private String model;
-    private String trademark;
-    private int capacity;
-    private int numberRows;
-    private int seatsPeRrow;
+    private ModeloAvion M_Avion;
     
 
     public Avion() {
         this.id = "0";
-        this.age = 0;
-        this.model = "";
-        this.trademark = "";
-        this.capacity = 0;
-        this.numberRows = 0;
-        this.seatsPeRrow =6;
+        M_Avion = new ModeloAvion();
     }
 
-    public Avion(String id, int age, String model, String trademark, int capacity, int numberRows, int seatsPeRrow) {
+    public Avion(String id, ModeloAvion M_Avion) {
         this.id = id;
-        this.age = age;
-        this.model = model;
-        this.trademark = trademark;
-        this.capacity = capacity;
-        this.numberRows = numberRows;
-        this.seatsPeRrow = seatsPeRrow;
+        this.M_Avion = M_Avion;
     }
 
-   
+    @Override
+    public String toString() {
+        return "Avion{" + "id=" + id + '}';
+    }
+
     public String getId() {
         return id;
     }
 
-    /**
-     * @param id the id to set
-     */
     public void setId(String id) {
         this.id = id;
     }
 
-    /**
-     * @return the age
-     */
-    public int getAge() {
-        return age;
+    public ModeloAvion getM_Avion() {
+        return M_Avion;
     }
 
-    /**
-     * @param age the age to set
-     */
-    public void setAge(int age) {
-        this.age = age;
+    public void setM_Avion(ModeloAvion M_Avion) {
+        this.M_Avion = M_Avion;
     }
 
-    /**
-     * @return the model
-     */
-    public String getModel() {
-        return model;
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 97 * hash + Objects.hashCode(this.id);
+        return hash;
     }
 
-    /**
-     * @param model the model to set
-     */
-    public void setModel(String model) {
-        this.model = model;
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Avion other = (Avion) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
     }
 
-    /**
-     * @return the trademark
-     */
-    public String getTrademark() {
-        return trademark;
-    }
-
-    /**
-     * @param trademark the trademark to set
-     */
-    public void setTrademark(String trademark) {
-        this.trademark = trademark;
-    }
-
-    /**
-     * @return the numberPassengers
-     */
-    public int getNumberPassengers() {
-        return capacity;
-    }
-
-    /**
-     * @param numberPassengers the numberPassengers to set
-     */
-    public void setNumberPassengers(int capacity) {
-        this.capacity = capacity;
-    }
-
-    /**
-     * @return the numberRows
-     */
-    public int getNumberRows() {
-        return numberRows;
-    }
-
-    /**
-     * @param numberRows the numberRows to set
-     */
-    public void setNumberRows(int numberRows) {
-        this.numberRows = numberRows;
-    }
-
-    /**
-     * @return the seatsPeRrow
-     */
-    public int getSeatsPeRrow() {
-        return seatsPeRrow;
-    }
-
-    /**
-     * @param seatsPeRrow the seatsPeRrow to set
-     */
-    public void setSeatsPeRrow(int seatsPeRrow) {
-        this.seatsPeRrow = seatsPeRrow;
-    }
 }

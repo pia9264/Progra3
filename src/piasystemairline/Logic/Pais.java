@@ -4,8 +4,16 @@ package piasystemairline.Logic;
 import java.util.Objects;
 
 public class Pais {
+
   private String name;
 
+    public Pais(String name) {
+ 
+        this.name = name;
+    }
+
+  
+  
     public String getName() {
         return name;
     }
@@ -16,10 +24,7 @@ public class Pais {
 
     public Pais() {
         this.name = "";
-    }
-
-    public Pais(String name) {
-        this.name = name;
+    
     }
 
     @Override

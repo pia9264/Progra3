@@ -4,9 +4,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import piasystemairline.Logic.Avion;
+import piasystemairline.Logic.Ciudad;
+import piasystemairline.Logic.Escalas;
+import piasystemairline.Logic.ModeloAvion;
+import piasystemairline.Logic.Pais;
 import piasystemairline.Logic.Persona;
 import piasystemairline.Logic.Ruta;
 import piasystemairline.Logic.Vuelo;
@@ -34,10 +36,10 @@ public class Dao {
     }
     
      public void VueloAdd(Vuelo v) throws Exception {
-    String sql="insert into Vuelo (id,origin,detiny,date,dateBack,quantity)"+
-         "values('%s','%s','%s','%s','%s','%s')";
-        sql=String.format(sql,v.getId(),v.getOrigin(),v.getDestiny(),v.getDate(),
-                v.getDateBack(),Integer.toString(v.getQuantity()));
+    String sql="insert into Vuelo (id,Ruta_id,VDetalles_id,Avion_id,departureDate,price,returnDate)"+
+         "values('%s','%s','%s','%s','%s','%s','%s')";
+        sql=String.format(sql,v.getId(),v.getRuta().getId(),v.getVdetalleID(),v.getAvion().getId(),
+                v.getRepartureDate(),Integer.toString(v.getPrice()),v.getReturnDate());
         int count=db.executeUpdate(sql);
         if (count==0){
             throw new Exception("Vuelo ya existe");
@@ -45,13 +47,20 @@ public class Dao {
     }
     
     public void AvionAdd(Avion a)throws Exception {
-     String sql="insert into Avion (id,age,model,trademark,numberPassengers,"
-             + "numberRows,seatsRows,Ruta_id)"+
-         "values('%s','%s','%s','%s','%s','%s','%s','%s')";
-        sql=String.format(sql,a.getId(),Integer.toString(a.getAge()),a.getModel(),
-                a.getTrademark(),Integer.toString(a.getNumberPassengers()),
-                Integer.toString(a.getNumberRows()),Integer.toString(a.getSeatsPeRrow())
-                ,a.getRuta().getId());
+     String sql="insert into Avion (id,ModeloAvion_id) values('%s','%s')";
+        sql=String.format(sql,a.getId(),a.getM_Avion().getId());
+        int count=db.executeUpdate(sql);
+        if (count==0){
+            throw new Exception("Avion ya existe");
+        }
+    }
+   
+    public void ModeloAvionAdd(ModeloAvion a)throws Exception {
+     String sql="insert into Avion (id,age,capacity,numbreRows,seatsPeRrow,"
+             + "trademark) values('%s','%s','%s','%s','%s')";
+        sql=String.format(sql,a.getId(),Integer.toString(a.getAge()),
+                Integer.toString(a.getCapacity()),Integer.toString(a.getNumberRows()),
+                Integer.toString(a.getSeatsPeRrow()),a.getTrademark());
         int count=db.executeUpdate(sql);
         if (count==0){
             throw new Exception("Avion ya existe");
@@ -59,12 +68,43 @@ public class Dao {
     }
 
     public void RutaAdd(Ruta r) throws Exception {
-    String sql="insert into Ruta (id,routeName,duration,price,arrivalTime,discount,schedule)"+
-         "values('%s','%s','%s','%s','%s','%s','%s')";
-        sql=String.format(sql,r.getId(),r.getName(),r.getDuration(),r.getPrice(),r.getArrivalTime(),r.getDiscount(),r.getSchedule());
+    String sql="insert into Ruta (id,name,duration,origin_name,destiny_name,Escalas_name)"+
+         "values('%s','%s','%s','%s','%s','%s')";
+        sql=String.format(sql,r.getId(),r.getName(),r.getDuration(),
+                r.getOrigin().getName(),r.getDestiny().getName(),r.getScale().getId());
         int count=db.executeUpdate(sql);
         if (count==0){
             throw new Exception("Ruta ya existe");
+        }
+    }
+    
+    public void EscalaAdd(Escalas e) throws Exception {
+    String sql="insert into Ruta (id,Detalle,Ciudad_name)"+
+         "values('%s','%s','%s')";
+        sql=String.format(sql,e.getId(),e.getDetail(),e.getCity().getName());
+        int count=db.executeUpdate(sql);
+        if (count==0){
+            throw new Exception("Ruta ya existe");
+        }
+    }
+    
+    public void CiudadAdd(Ciudad c) throws Exception {
+    String sql="insert into Ruta (name,Pais_name)"+
+         "values('%s','%s')";
+        sql=String.format(sql,c.getName(),c.getPais().getName());
+        int count=db.executeUpdate(sql);
+        if (count==0){
+            throw new Exception("Ciudad ya existe");
+        }
+    }
+    
+    public void PaisAdd(Pais p) throws Exception {
+    String sql="insert into Ruta (name)"+
+         "values('%s')";
+        sql=String.format(sql,p.getName());
+        int count=db.executeUpdate(sql);
+        if (count==0){
+            throw new Exception("Pais ya existe");
         }
     }
     

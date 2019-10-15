@@ -12,10 +12,11 @@ public class Ciudad {
         this.pais = new Pais();
     }
 
-    public Ciudad(String name, Pais pais) {
+    public Ciudad(String name, Pais pais, String id) {
         this.name = name;
         this.pais = pais;
     }
+
 
     public String getName() {
         return name;
