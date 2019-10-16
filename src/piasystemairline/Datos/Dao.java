@@ -36,9 +36,9 @@ public class Dao {
     }
     
      public void VueloAdd(Vuelo v) throws Exception {
-    String sql="insert into Vuelo (id,Ruta_id,VDetalles_id,Avion_id,departureDate,price,returnDate)"+
+    String sql="insert into Vuelo (id,Ruta_id,Reservacion_id,Avion_id,departureDate,price,returnDate)"+
          "values('%s','%s','%s','%s','%s','%s','%s')";
-        sql=String.format(sql,v.getId(),v.getRuta().getId(),v.getVdetalleID(),v.getAvion().getId(),
+        sql=String.format(sql,v.getId(),v.getRuta().getId(),,v.getAvion().getId(),
                 v.getRepartureDate(),Integer.toString(v.getPrice()),v.getReturnDate());
         int count=db.executeUpdate(sql);
         if (count==0){
@@ -56,7 +56,7 @@ public class Dao {
     }
    
     public void ModeloAvionAdd(ModeloAvion a)throws Exception {
-     String sql="insert into Avion (id,age,capacity,numbreRows,seatsPeRrow,"
+     String sql="insert into ModeloAvion (id,age,capacity,numbreRows,seatsPeRrow,"
              + "trademark) values('%s','%s','%s','%s','%s')";
         sql=String.format(sql,a.getId(),Integer.toString(a.getAge()),
                 Integer.toString(a.getCapacity()),Integer.toString(a.getNumberRows()),
@@ -79,7 +79,7 @@ public class Dao {
     }
     
     public void EscalaAdd(Escalas e) throws Exception {
-    String sql="insert into Ruta (id,Detalle,Ciudad_name)"+
+    String sql="insert into Escalas (id,Detalle,Ciudad_name)"+
          "values('%s','%s','%s')";
         sql=String.format(sql,e.getId(),e.getDetail(),e.getCity().getName());
         int count=db.executeUpdate(sql);
@@ -89,7 +89,7 @@ public class Dao {
     }
     
     public void CiudadAdd(Ciudad c) throws Exception {
-    String sql="insert into Ruta (name,Pais_name)"+
+    String sql="insert into Ciudad (name,Pais_name)"+
          "values('%s','%s')";
         sql=String.format(sql,c.getName(),c.getPais().getName());
         int count=db.executeUpdate(sql);
@@ -99,12 +99,31 @@ public class Dao {
     }
     
     public void PaisAdd(Pais p) throws Exception {
-    String sql="insert into Ruta (name)"+
+    String sql="insert into Pais (name)"+
          "values('%s')";
         sql=String.format(sql,p.getName());
         int count=db.executeUpdate(sql);
         if (count==0){
             throw new Exception("Pais ya existe");
+        }
+    }
+    
+    public void RegistroAdd(Vuelo v) throws Exception {
+    String sql="insert into Registro (Vuelo_id) values('%s')";
+        sql=String.format(sql,v.getId());
+        int count=db.executeUpdate(sql);
+        if (count==0){
+            throw new Exception("Error");
+        }
+    }
+    
+    
+    public void VDetalleAdd(Vuelo v) throws Exception {
+    String sql="insert into Registro (Vuelo_id) values('%s')";
+        sql=String.format(sql,v.getId());
+        int count=db.executeUpdate(sql);
+        if (count==0){
+            throw new Exception("Error");
         }
     }
     

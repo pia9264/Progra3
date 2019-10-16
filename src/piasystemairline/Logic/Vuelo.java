@@ -7,7 +7,7 @@ public class Vuelo {
   private String repartureDate;
   private String returnDate;
   private int price;
-  private String VdetalleID;
+
   private Avion avion;
   private Ruta ruta;
 
@@ -16,17 +16,15 @@ public class Vuelo {
         this.repartureDate = "";
         this.returnDate = "";
         this.price = 0;
-        this.VdetalleID = "";
         this.avion = new Avion();
         this.ruta = new Ruta();
     }
 
-    public Vuelo(String id, String repartureDate, String returnDate, int price, String VdetalleID, Avion avion, Ruta ruta) {
+    public Vuelo(String id, String repartureDate, String returnDate, int price, Avion avion, Ruta ruta) {
         this.id = id;
         this.repartureDate = repartureDate;
         this.returnDate = returnDate;
         this.price = price;
-        this.VdetalleID = VdetalleID;
         this.avion = avion;
         this.ruta = ruta;
     }
@@ -63,13 +61,6 @@ public class Vuelo {
         this.price = price;
     }
 
-    public String getVdetalleID() {
-        return VdetalleID;
-    }
-
-    public void setVdetalleID(String VdetalleID) {
-        this.VdetalleID = VdetalleID;
-    }
 
     public Avion getAvion() {
         return avion;
