@@ -7,8 +7,8 @@ public class Reservacion {
   private Tiquete tiquet;
 
     public Reservacion() {
-        this.id = "";
-        this.date = "";
+        this.id = "0";
+        this.date = "1900-01-01 01:00:00";
         this.tiquet = new Tiquete();
     }
 

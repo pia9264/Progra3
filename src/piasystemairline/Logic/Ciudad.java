@@ -8,7 +8,7 @@ public class Ciudad {
   private Pais pais;
 
     public Ciudad() {
-        this.name = "";
+        this.name = "null";
         this.pais = new Pais();
     }
 

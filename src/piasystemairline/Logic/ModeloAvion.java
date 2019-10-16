@@ -13,6 +13,12 @@ public class ModeloAvion {
     private int seatsPeRrow;
 
     public ModeloAvion() {
+        this.id = "0";
+        this.age= 0;
+        this.capacity = 0;
+        this.numberRows = 0;
+        this.trademark = "";
+        this.seatsPeRrow = 0;  
     }
 
     public ModeloAvion(String id, int age, String trademark, int capacity, int numberRows, int seatsPeRrow) {
@@ -23,6 +29,8 @@ public class ModeloAvion {
         this.numberRows = numberRows;
         this.seatsPeRrow = seatsPeRrow;
     }
+    
+    
 
     public String getId() {
         return id;

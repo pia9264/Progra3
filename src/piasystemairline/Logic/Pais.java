@@ -23,8 +23,7 @@ public class Pais {
     }
 
     public Pais() {
-        this.name = "";
-    
+        this.name = "null";
     }
 
     @Override

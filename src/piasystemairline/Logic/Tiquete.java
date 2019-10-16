@@ -11,7 +11,7 @@ public class Tiquete {
     }
 
     public Tiquete() {
-        this.id = "";
+        this.id = "0";
         this.FPago = new FormaPago();
     }
 

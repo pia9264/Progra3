@@ -9,7 +9,7 @@ public class Escalas {
  private Ciudad city;
 
     public Escalas() {
-        this.id = "";
+        this.id = "0";
         this.detail = "";
         this.city = new Ciudad();
     }

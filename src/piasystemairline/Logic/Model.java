@@ -22,9 +22,48 @@ public class Model {
        Datos.AvionAdd(a);
     }
     
+    public void agregarModeloAvion(ModeloAvion a) throws Exception{
+       Datos.ModeloAvionAdd(a);
+    }
+    
     public void agregarRuta(Ruta r) throws Exception{
        Datos.RutaAdd(r);
     }
+    
+    public void agregarRegistro(Registro r) throws Exception{
+       Datos.RegistroAdd(r);
+    }
+    
+    public void agregarVuelo(Vuelo v) throws Exception{
+       Datos.VueloAdd(v);
+    }
+    
+    public void AgregarEscala(Escalas e) throws Exception{
+      Datos.EscalaAdd(e);
+    }
+    
+    
+    public void AgregarCuidad(Ciudad c) throws Exception{
+      Datos.CiudadAdd(c);
+    }
+    
+    public void AgregarPais(Pais p) throws Exception{
+      Datos.PaisAdd(p);
+    }
+    
+    public void AgregarReservacion(Reservacion r) throws Exception{
+      Datos.ReservacionAdd(r);
+    }
+    
+    public void AgregarTiquete(Tiquete t) throws Exception{
+      Datos.TiqueteAdd(t);
+    }
+    
+    public void AgregarFormaPago(FormaPago p) throws Exception{
+      Datos.FormaPagoAdd(p);
+    }
+    
+    
     public Persona ConsultaUser(String user) throws Exception{
         Persona result = Datos.PersonaGet(user);
         return result;
@@ -56,10 +95,10 @@ public class Model {
     }
     
     public void ModificarAvion(Avion a) throws Exception {
-     Datos.AvionUpdate(a);
+     //Datos.AvionUpdate(a);
     }
     public void ModificarRuta(Ruta r) throws Exception {
-     Datos.RutaUpdate(r);
+    // Datos.RutaUpdate(r);
     }
     
     

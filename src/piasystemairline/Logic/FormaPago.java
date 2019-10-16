@@ -12,7 +12,7 @@ public class FormaPago {
 
     public FormaPago() {
         this.Data = "";
-        this.id = "";
+        this.id = "0";
     }
 
     public String getId() {
