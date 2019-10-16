@@ -2,6 +2,8 @@
 package piasystemairline.Logic;
 
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import piasystemairline.Datos.Dao;
 
 public class Model {
@@ -63,10 +65,16 @@ public class Model {
       Datos.FormaPagoAdd(p);
     }
     
+    // GetObjetos
     
     public Persona ConsultaUser(String user) throws Exception{
         Persona result = Datos.PersonaGet(user);
         return result;
+    }
+    
+     public ModeloAvion ConsultarModeloAvion(String id) throws Exception {
+            ModeloAvion result = Datos.ModeloAvionGet(id);
+            return result;
     }
     //  INSTANCE
     public static Model instance(){
@@ -82,10 +90,18 @@ public class Model {
      return Datos.PersonaSearch("");
     }
     public List<Avion> ObtenerListAviones(){
-     return Datos.AvionSearch("");
+        try {
+            return Datos.AvionSearch("");
+        } catch (Exception ex) {
+          return null;
+        }
     }
     public List<Ruta> ObtenerListRutas(){
-     return Datos.RutaSearch("");
+        try {
+            return Datos.RutaSearch("");
+        } catch (Exception ex) {
+        return null;
+        }
     }
     
     // MODIFICAR
@@ -93,13 +109,54 @@ public class Model {
     public void ModificarPersona(Persona p) throws Exception {
      Datos.PersonaUpdate(p);
     }
-    
+    public void ModificarVuelo(Vuelo v) throws Exception {
+     Datos.VueloUpdate(v);
+    }
     public void ModificarAvion(Avion a) throws Exception {
-     //Datos.AvionUpdate(a);
+     Datos.AvionUpdate(a);
+    }
+    public void ModificarModeloAvion(ModeloAvion m) throws Exception {
+    Datos.ModeloAvionUpdate(m);
     }
     public void ModificarRuta(Ruta r) throws Exception {
-    // Datos.RutaUpdate(r);
+    Datos.RutaUpdate(r);
     }
+    public void ModificarEscala(Escalas e) throws Exception {
+    Datos.EscalaUpdate(e);
+    }
+    
+    public void ModificarCiudad(Ciudad c) throws Exception {
+    Datos.CiudadUpdate(c);
+    }
+    
+    public void ModificarPais(Pais p) throws Exception {
+    Datos.PaisUpdate(p);
+    }
+ 
+    public void ModificarRegistro(Registro r) throws Exception {
+    Datos.RegistroUpdate(r);
+    }
+    public void ModificarReservacion(Reservacion r) throws Exception {
+    Datos.ReservacionUpdate(r);
+    }
+    public void ModificarTiquete(Tiquete t) throws Exception {
+    Datos.TiqueteUpdate(t);
+    }
+    public void ModificarFormaPago(FormaPago f) throws Exception {
+    Datos.FormaPagoUpdate(f);
+    }
+    
+    
+    
+
+   // DELATES--------------------------------------------------
+   
+   
+    public void EliminarModeloAvion(String id) throws Exception {
+      Datos.EliminarModeloAvion(id);
+    }
+
+    
     
     
     
