@@ -241,7 +241,7 @@ public class View extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_AnioActionPerformed
 
     private void AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddActionPerformed
-if("Add".equals(Add.getText())){try {
+    if("Add".equals(Add.getText())){try {
             controller.agregar(new Persona(Username.getText(),Password.getText(),
             Nombre.getText(),LastName.getText(),Email.getText(),getFecha(),
             Addres.getText(),WorkPhone.getText(),Mobile.getText(),isAdmin,new Registro()));

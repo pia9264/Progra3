@@ -37,6 +37,13 @@ public class PiaAPP extends javax.swing.JFrame {
         singup = new javax.swing.JMenuItem();
         singin = new javax.swing.JMenuItem();
         salir = new javax.swing.JMenuItem();
+        Aministra = new javax.swing.JMenu();
+        Aircraft = new javax.swing.JMenuItem();
+        Cities = new javax.swing.JMenuItem();
+        Countries = new javax.swing.JMenuItem();
+        Routes = new javax.swing.JMenuItem();
+        Payment = new javax.swing.JMenuItem();
+        Reports = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -146,6 +153,28 @@ public class PiaAPP extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
+        Aministra.setText(" Administration");
+
+        Aircraft.setText(" Aircraft");
+        Aministra.add(Aircraft);
+
+        Cities.setText("Cities");
+        Aministra.add(Cities);
+
+        Countries.setText("Countries");
+        Aministra.add(Countries);
+
+        Routes.setText("Routes");
+        Aministra.add(Routes);
+
+        Payment.setText("Payment Methods");
+        Aministra.add(Payment);
+
+        Reports.setText("Reports");
+        Aministra.add(Reports);
+
+        jMenuBar1.add(Aministra);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -245,6 +274,13 @@ public void PonerTodo(){
 }
  
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem Aircraft;
+    private javax.swing.JMenu Aministra;
+    private javax.swing.JMenuItem Cities;
+    private javax.swing.JMenuItem Countries;
+    private javax.swing.JMenuItem Payment;
+    private javax.swing.JMenuItem Reports;
+    private javax.swing.JMenuItem Routes;
     private javax.swing.JButton buscarVuelo;
     private javax.swing.JButton contactenos;
     public javax.swing.JPanel fondo;
@@ -261,6 +297,9 @@ public void PonerTodo(){
     void UserActivate(String name, char admin) {
       this.jMenu2.setText(name);
         if (admin == '1') {
+            
+            
+            
         }else{    
         singup.setText("My Infomation");
         singin.setText("Previous Reservations");

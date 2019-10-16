@@ -44,6 +44,43 @@
             </MenuItem>
           </SubComponents>
         </Menu>
+        <Menu class="javax.swing.JMenu" name="Aministra">
+          <Properties>
+            <Property name="text" type="java.lang.String" value=" Administration"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="Aircraft">
+              <Properties>
+                <Property name="text" type="java.lang.String" value=" Aircraft"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="Cities">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Cities"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="Countries">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Countries"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="Routes">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Routes"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="Payment">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Payment Methods"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="Reports">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Reports"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
       </SubComponents>
     </Menu>
   </NonVisualComponents>
