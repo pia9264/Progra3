@@ -24,12 +24,13 @@ public class ControllerApp {
        
           this.model = model;
           this.vista = vista;
-           vista.setControlador(this);
-        try {InicializarBase();} catch (Exception ex) {}
+          vista.setControlador(this);
+          try {InicializarBase();} catch (Exception ex) {}
+          VerificarExisteAdmin();
     }
     
    public void EdcionPersonaShow(){
-   PIASystemAirline.Controler_Persona.Show();
+   PIASystemAirline.Controler_Persona.Show('0');
    }
    public void EdcionAvionShow(){
    PIASystemAirline.Controler_Avion.Show();
@@ -85,4 +86,12 @@ public class ControllerApp {
       piasystemairline.Logic.Model.instance().agregarVuelo(new Vuelo());
       piasystemairline.Logic.Model.instance().agregarRegistro(new Registro());
    }
+
+    private void VerificarExisteAdmin() {
+       if(piasystemairline.Logic.Model.instance().ObtenerListPersonas().isEmpty()){
+            vista.setVisible(true);
+            vista.QuitarTodo();
+            piasystemairline.PIASystemAirline.Controler_Persona.Show('1');
+       }
+    }
 }

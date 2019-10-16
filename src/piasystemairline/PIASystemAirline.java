@@ -14,7 +14,7 @@ public class PIASystemAirline {
        piasystemairline.Presentation.EdicionPersona.Model PersonaModel = 
                new piasystemairline.Presentation.EdicionPersona.Model();
        piasystemairline.Presentation.EdicionPersona.View PersonaVista = 
-               new piasystemairline.Presentation.EdicionPersona.View('0');
+               new piasystemairline.Presentation.EdicionPersona.View();
        piasystemairline.Presentation.EdicionPersona.Controller PersonaController = 
                new piasystemairline.Presentation.EdicionPersona.Controller(PersonaModel,PersonaVista);
     
@@ -44,11 +44,12 @@ public class PIASystemAirline {
                new piasystemairline.Presentation.App.ModelApp();
        piasystemairline.Presentation.App.PiaAPP AppVista = 
                new piasystemairline.Presentation.App.PiaAPP();
+       AppVista.fondo.add(PersonaVista);
        piasystemairline.Presentation.App.ControllerApp AppController = 
                new piasystemairline.Presentation.App.ControllerApp(AppModel,AppVista);
-      ControllerAPP=AppController;
-       AppVista.setVisible(true);
-       AppVista.fondo.add(PersonaVista);
+        ControllerAPP=AppController;
+        AppVista.setVisible(true);
+        
 //       AppVista.fondo.add(AvionVista);
 //       AppVista.fondo.add(RutaVista);
        

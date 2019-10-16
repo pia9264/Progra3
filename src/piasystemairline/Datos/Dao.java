@@ -177,7 +177,7 @@ public class Dao {
         List<Persona> resultado = new ArrayList<Persona>();
         try {
             String sql="select * from "+
-                    "Usuario p inner join Vuelo v on p.Vuelo_id=v.id "+
+                    "Usuario p inner join Registro r on p.Registro_id=r.id "+
                     "where p.user like '%%%s%%'";
             sql=String.format(sql,nombre);
             ResultSet rs =  db.executeQuery(sql);

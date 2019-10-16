@@ -187,12 +187,8 @@ public class PiaAPP extends javax.swing.JFrame {
     private void singupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_singupActionPerformed
       QuitarTodo();
         if ("Sign up".equals(singup.getText())) {
-            singup.setEnabled(false);
-            singin.setEnabled(false);
             controlador.EdcionPersonaShow(); 
         }else{
-            singup.setEnabled(false);
-            singin.setEnabled(false);
             controlador.EdcionPersonaShow();
             controlador.CargarDatosPersonas(jMenu2.getText());
         }
@@ -209,7 +205,9 @@ public class PiaAPP extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_buscarVueloActionPerformed
 
- private void QuitarTodo(){
+ public void QuitarTodo(){
+         singup.setEnabled(false);
+         singin.setEnabled(false);
          buscarVuelo.setVisible(false);
          contactenos.setVisible(false);
          historia.setVisible(false);
@@ -224,6 +222,8 @@ public void PonerTodo(){
          singup.setEnabled(true);
          singin.setEnabled(true);
  }
+
+
 
  void setControlador(ControllerApp c) {
      this.controlador = c;

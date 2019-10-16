@@ -1,8 +1,6 @@
 
 package piasystemairline.Presentation.EdicionPersona;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import piasystemairline.Logic.Persona;
 
 
@@ -22,10 +20,12 @@ public void agregar(Persona p) throws Exception{
         vista.setVisible(false);
     }
 
-    public void Show() {
+    public void Show(char n) {
+      vista.isAdmin = n;
+      vista.welcome(n);
       vista.setVisible(true);
     }
-
+    
     void appON() {
      piasystemairline.PIASystemAirline.ControllerAPP.OnButtons();
     }
