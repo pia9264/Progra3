@@ -6,6 +6,8 @@
 package piasystemairline.Presentation.EdicionPersona;
 
 import java.awt.Dimension;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -16,7 +18,7 @@ import piasystemairline.Logic.Registro;
  *
  * @author anibalchavesbadilla
  */
-public class View extends javax.swing.JInternalFrame {
+public class View extends javax.swing.JInternalFrame implements Observer{
     
     Model modelo;
     Controller controller;
@@ -267,13 +269,7 @@ public class View extends javax.swing.JInternalFrame {
 
     void setModelEdit(Model m) {
      this.modelo = m;
-    }
-
-    void update(Model modelo, View vista) {
-  
-    }
-
-    
+    }  
     private void CargarCombox(){
         for (int i = 1; i < 32; i++) {
             if(i<10){
@@ -357,6 +353,11 @@ public class View extends javax.swing.JInternalFrame {
     void welcome(char n) {
      if(n=='1'){welcome.setVisible(true);}
      else{welcome.setVisible(false);}
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+    
     }
  
 }

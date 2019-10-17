@@ -51,8 +51,11 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="Aircraft">
               <Properties>
-                <Property name="text" type="java.lang.String" value=" Aircraft"/>
+                <Property name="text" type="java.lang.String" value="Aircraft"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AircraftActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="Cities">
               <Properties>

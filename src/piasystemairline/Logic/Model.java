@@ -4,6 +4,7 @@ package piasystemairline.Logic;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import piasystemairline.Datos.Dao;
 
 public class Model {
@@ -87,11 +88,22 @@ public class Model {
     // OBTENER LISTAS
     
     public List<Persona> ObtenerListPersonas(){
-     return Datos.PersonaSearch("");
+        try {
+            return Datos.PersonaSearch("");
+        } catch (Exception ex) {
+        return null;
+        }
     }
     public List<Avion> ObtenerListAviones(){
         try {
             return Datos.AvionSearch("");
+        } catch (Exception ex) {
+          return null;
+        }
+    }
+    public List<ModeloAvion> ObtenerListModeloAvion(){
+        try {
+            return Datos.ModeloAvionSearch("");
         } catch (Exception ex) {
           return null;
         }
@@ -154,6 +166,10 @@ public class Model {
    
     public void EliminarModeloAvion(String id) throws Exception {
       Datos.EliminarModeloAvion(id);
+    }
+
+    public void EliminarAvion(String text) throws Exception {
+      Datos.EliminarAvion(text);
     }
 
     

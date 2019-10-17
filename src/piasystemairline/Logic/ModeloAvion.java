@@ -82,7 +82,7 @@ public class ModeloAvion {
 
     @Override
     public String toString() {
-        return "ModeloAvion{" + "id=" + id + '}';
+        return ""+trademark+" "+ id + " Capacity: "+capacity+" Age:"+age;
     }
 
     @Override

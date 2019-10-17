@@ -54,4 +54,16 @@ public class Controller {
         } catch (Exception ex) {
         }
    }
+
+    void MenuAvionShow() {
+      piasystemairline.PIASystemAirline.Controler_Avion.Show();
+    }
+
+    public ModeloAvion getModeloAvion(String id) {
+        try {
+            return piasystemairline.Logic.Model.instance().ConsultarModeloAvion(id);
+        } catch (Exception ex) {
+            return null;
+        }
+    }
 }

@@ -169,12 +169,12 @@ public class Dao {
     
     
     public void PersonaUpdate(Persona p) throws Exception{
-        String sql="update Usuario set user='%s',pass='%s',name='%s',"
+        String sql="update Usuario set pass='%s',name='%s',"
                 + "lastname='%s',email='%s',dateBirth='%s',address='%s',"
-                + "workphone='%s',mobile='%s',Vuelo_id='%s'";
-        sql=String.format(sql,p.getUser(),p.getName(),p.getLastName(),
+                + "workphone='%s',mobile='%s',Vuelo_id='%s' where user='%s' ";
+        sql=String.format(sql,p.getName(),p.getLastName(),
                 p.getEmail(),p.getDatebirth(),p.getAddress(),p.getWorkphone(),
-                p.getMobile(),p.getRegistro().getId());
+                p.getMobile(),p.getRegistro().getId(),p.getUser());
         
         int count=db.executeUpdate(sql);
         if (count==0){
@@ -182,22 +182,23 @@ public class Dao {
         }
     }
     public void ModeloAvionUpdate(ModeloAvion m) throws Exception {
-       String sql="update ModeloAvion set id='%s',age='%s',capacity='%s',"
-               + "numberRows='%s',seatsPeRrow='%s',trademark='%s'";
-        sql=String.format(sql,m.getId(),Integer.toString(m.getAge()),
+       String sql="update ModeloAvion set age='%s',capacity='%s',"
+               + "numberRows='%s',seatsPeRrow='%s',trademark='%s'"
+               + " where id='%s'";
+        sql=String.format(sql,Integer.toString(m.getAge()),
                 Integer.toString(m.getCapacity()),Integer.toString(m.getNumberRows()),
-                Integer.toString(m.getSeatsPeRrow()),m.getTrademark());
+                Integer.toString(m.getSeatsPeRrow()),m.getTrademark(),m.getId());
         int count=db.executeUpdate(sql);
         if (count==0){
             throw new Exception("ModeloAvion no existe");
         }
     }
      public void VueloUpdate(Vuelo v) throws Exception {
-      String sql="update Vuelo set id='%s',Ruta_id='%s',Reservacion_id='%s'"
-              + ",Avion_id='%s',departureDate='%s',price='%s',returnDate='%s'";
-        sql=String.format(sql,v.getId(),v.getRuta().getId(),v.getReserva().getId(),
+      String sql="update Vuelo set Ruta_id='%s',Reservacion_id='%s'"
+              + ",Avion_id='%s',departureDate='%s',price='%s',returnDate='%s' where id='%s'";
+        sql=String.format(sql,v.getRuta().getId(),v.getReserva().getId(),
                 v.getAvion().getId(),v.getRepartureDate(),
-                Integer.toString(v.getPrice()),v.getReturnDate());
+                Integer.toString(v.getPrice()),v.getReturnDate(),v.getId());
         int count=db.executeUpdate(sql);
         if (count==0){
             throw new Exception("Vuelo no existe");
@@ -205,8 +206,8 @@ public class Dao {
      }
 
     public void AvionUpdate(Avion a) throws Exception {
-    String sql="update Avion set id='%s',ModeloAvion_id='%s'";
-        sql=String.format(sql,a.getId(),a.getM_Avion().getId());
+    String sql="update Avion set ModeloAvion_id='%s' where id='%s' ";
+        sql=String.format(sql,a.getM_Avion().getId(),a.getId());
         int count=db.executeUpdate(sql);
         if (count==0){
             throw new Exception("Avion no existe");
@@ -214,10 +215,11 @@ public class Dao {
     }
 
     public void RutaUpdate(Ruta r) throws Exception {
-    String sql="update Ruta set id='%s',name='%s',duration='%s',origin_name='%s',"
-            + "destiny_name='%s',Escalas_id='%s'";
-        sql=String.format(sql,r.getId(),r.getName(),r.getDuration(),
-                r.getOrigin().getName(),r.getDestiny().getName(),r.getScale().getId());
+    String sql="update Ruta set name='%s',duration='%s',origin_name='%s',"
+            + "destiny_name='%s',Escalas_id='%s' where id='%s'";
+        sql=String.format(sql,r.getName(),r.getDuration(),
+                r.getOrigin().getName(),r.getDestiny().getName(),
+                r.getScale().getId(),r.getId());
         int count=db.executeUpdate(sql);
         if (count==0){
             throw new Exception("Ruta no existe");
@@ -225,8 +227,8 @@ public class Dao {
     }
 
     public void EscalaUpdate(Escalas e) throws Exception {
-     String sql="update Escalas set id='%s',Detalle='%s',Ciudad_name='%s'";
-        sql=String.format(sql,e.getId(),e.getDetail(),e.getCity().getName());
+     String sql="update Escalas set Detalle='%s',Ciudad_name='%s' where id='%s'";
+        sql=String.format(sql,e.getDetail(),e.getCity().getName(),e.getId());
         int count=db.executeUpdate(sql);
         if (count==0){
             throw new Exception("Ruta no existe");
@@ -234,8 +236,8 @@ public class Dao {
     }
 
     public void CiudadUpdate(Ciudad c) throws Exception {
-    String sql="update Ciudad set name='%s',Pais_name='%s'";
-        sql=String.format(sql,c.getName(),c.getPais().getName());
+    String sql="update Ciudad set Pais_name='%s' where name='%s' ";
+        sql=String.format(sql,c.getPais().getName(),c.getName());
         int count=db.executeUpdate(sql);
         if (count==0){
             throw new Exception("Ciudad no existe");
@@ -252,8 +254,8 @@ public class Dao {
     }
 
     public void RegistroUpdate(Registro r) throws Exception {
-    String sql="update Registro set id='%s',Vuelo_id='%s'";
-        sql=String.format(sql,r.getId(),r.getVuelo().getId());
+    String sql="update Registro set Vuelo_id='%s' where id='%s' ";
+        sql=String.format(sql,r.getVuelo().getId(),r.getId());
         int count=db.executeUpdate(sql);
         if (count==0){
             throw new Exception("Registro no existe");
@@ -261,8 +263,8 @@ public class Dao {
     }
 
     public void ReservacionUpdate(Reservacion r) throws Exception {
-    String sql="update Reservacion set id='%s',Tiquete_id='%s',Date='%s'";
-        sql=String.format(sql,r.getId(),r.getTiquet().getId(),r.getDate());
+    String sql="update Reservacion set Tiquete_id='%s',Date='%s' where id='%s'";
+        sql=String.format(sql,r.getTiquet().getId(),r.getDate(),r.getId());
         int count=db.executeUpdate(sql);
         if (count==0){
             throw new Exception("Reservacion no existe");
@@ -270,8 +272,8 @@ public class Dao {
     }
 
     public void TiqueteUpdate(Tiquete t) throws Exception {
-    String sql="update Tiquete set id='%s',FormaPago_id='%s' ";
-        sql=String.format(sql,t.getId(),t.getFPago().getId());
+    String sql="update Tiquete set FormaPago_id='%s' where id='%s' ";
+        sql=String.format(sql,t.getFPago().getId(),t.getId());
         int count=db.executeUpdate(sql);
         if (count==0){
             throw new Exception("Tiquete no existe");
@@ -279,8 +281,8 @@ public class Dao {
     }
 
     public void FormaPagoUpdate(FormaPago f) throws Exception {
-    String sql="update FormaPago set id='%s',data='%s'";
-        sql=String.format(sql,f.getId(),f.getData());
+    String sql="update FormaPago set data='%s' where id='%s' ";
+        sql=String.format(sql,f.getData(),f.getId());
         int count=db.executeUpdate(sql);
         if (count==0){
             throw new Exception("FormaPago no existe");
@@ -298,7 +300,7 @@ public class Dao {
     
     
    
-    public List<Persona>PersonaSearch(String nombre){
+    public List<Persona>PersonaSearch(String nombre) throws Exception{
         List<Persona> resultado = new ArrayList<Persona>();
         try {
             String sql="select * from "+
@@ -316,7 +318,7 @@ public class Dao {
         List<ModeloAvion> resultado = new ArrayList<ModeloAvion>();
         try {
             String sql="select * from "+
-                    "ModeloAvion m inner where m.id like '%%%s%%'";
+                    "ModeloAvion m where m.id like '%%%s%%'";
             sql=String.format(sql,id);
             ResultSet rs =  db.executeQuery(sql);
             while (rs.next()) {
@@ -475,7 +477,7 @@ public class Dao {
    public Persona PersonaGet(String id) throws Exception{
         String sql="select * from "+
                     "Usuario p inner join Registro r on p.Registro_id=r.id "+
-                    "where p.name like '%%%s%%'";
+                    "where p.User like '%%%s%%' ";
         sql = String.format(sql,id);
         ResultSet rs =  db.executeQuery(sql);
         if (rs.next()) {
@@ -513,7 +515,7 @@ public class Dao {
     }    
      public Pais PaisGet(String id) throws Exception {
        String sql="select * from "+
-                    "Pais p where a.name like '%%%s%%'";
+                    "Pais p where p.name like '%%%s%%'";
         sql = String.format(sql,id);
         ResultSet rs =  db.executeQuery(sql);
         if (rs.next()) {
@@ -525,7 +527,7 @@ public class Dao {
     }
    public Ciudad CiudadGet(String id) throws Exception {
        String sql="select * from "+
-                    "Ciudad c where c.id like '%%%s%%'";
+                    "Ciudad c where c.name like '%%%s%%'";
         sql = String.format(sql,id);
         ResultSet rs =  db.executeQuery(sql);
         if (rs.next()) {
@@ -732,7 +734,7 @@ public class Dao {
     }
 //-------------------OTHERS--------------------------------------------
     
-    private Persona persona(ResultSet rs){
+    private Persona persona(ResultSet rs) throws Exception{
         try {
             Persona p=new Persona();
             p.setUser(rs.getString("user"));
@@ -744,7 +746,8 @@ public class Dao {
             p.setWorkphone(rs.getString("workPhone"));
             p.setAddress(rs.getString("address"));
             p.setMobile(rs.getString("mobile"));
-           // p.setRegistro(new Registro(rs.getString("id"),rs.getString("Vuelo_id")));
+            p.setIsAdmin(rs.getString("isAdmin").charAt(0));
+            p.setRegistro(RegistroGet(rs.getString("Registro_id")));
             return p;
         } catch (SQLException ex) {
             return null;
