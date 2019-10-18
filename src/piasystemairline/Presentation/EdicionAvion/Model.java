@@ -43,6 +43,8 @@ public class Model extends Observable {
 
     public void setModelos(List<ModeloAvion> modelos) {
         this.modelos = modelos;
+        this.setChanged();
+        this.notifyObservers();
     }
 
 }

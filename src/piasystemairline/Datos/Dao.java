@@ -318,8 +318,8 @@ public class Dao {
     public List<Pais> PaisSearch(String id) {
      List<Pais> resultado = new ArrayList<Pais>();
         try {
-            String sql="select * from "+
-                    "Pais p inner where p.id like '%%%s%%'";
+             String sql="select * from "+
+                    "Pais p where p.id like '%%%s%%'";
             sql=String.format(sql,id);
             ResultSet rs =  db.executeQuery(sql);
             while (rs.next()) {
@@ -745,7 +745,8 @@ public class Dao {
     private Pais pais(ResultSet rs) {
     Pais p = new Pais();
      try {
-         p.setName(rs.getString("id"));
+         p.setId(rs.getString("id"));
+         p.setName(rs.getString("name"));
          return p;
      } catch (SQLException ex) {
          return null;
@@ -755,7 +756,8 @@ public class Dao {
     private Ciudad ciudad(ResultSet rs) throws Exception {
       Ciudad c = new Ciudad();
      try {
-         c.setName(rs.getString("id"));
+         c.setId(rs.getString("id"));
+         c.setName(rs.getString("name"));
          c.setPais(PaisGet(rs.getString("Pais_id")));
          return c;
      } catch (SQLException ex) {

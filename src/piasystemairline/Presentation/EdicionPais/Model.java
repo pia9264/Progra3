@@ -16,14 +16,18 @@ public class Model extends Observable{
     }
     
     
-    public Pais getModelAvion() {
+    public Pais getModelPais() {
          return model;
     }
 
-    public void setModelAvion(Pais model) {
+    public void setModelPais(Pais model) {
         this.model = model;
         this.setChanged();
         this.notifyObservers();
+    }
+    public void update(){
+       this.setChanged();
+       this.notifyObservers();
     }
    
 }

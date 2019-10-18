@@ -82,7 +82,11 @@ public class ModeloAvion {
 
     @Override
     public String toString() {
-        return ""+trademark+" "+ id + " Capacity: "+capacity+" Age:"+age;
+       if(!id.equalsIgnoreCase("0")){
+         return ""+trademark+" "+ id + " Capacity: "+capacity+" Age:"+age;
+       }else{
+           return "";
+       }
     }
 
     @Override

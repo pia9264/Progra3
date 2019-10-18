@@ -21,7 +21,12 @@ public class Avion {
 
     @Override
     public String toString() {
-        return "Avion{" + "id=" + id + '}';
+        if(!id.equalsIgnoreCase("0")){
+          return "Avion{" + "id=" + id + '}';
+       }else{
+           return "";
+       }
+        
     }
 
     public String getId() {

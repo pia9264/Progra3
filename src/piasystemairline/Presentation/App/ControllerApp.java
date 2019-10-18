@@ -37,7 +37,7 @@ public class ControllerApp {
    }
    
     void EdicionCiudadesPaises() {
-        
+    PIASystemAirline.Controler_Ciudad.Show();
     }
     public void OnButtons() {
     vista.PonerTodo();

@@ -37,7 +37,24 @@ public class PIASystemAirline {
                new piasystemairline.Presentation.EdicionAvion.Controller(AvionModel,AvionVista);
         
       Controler_Avion = AvionController;
+   //---------------------------Ciudades y Paises-------------------------------
+       piasystemairline.Presentation.EdicionCiudad.Model CiudadModel = 
+               new piasystemairline.Presentation.EdicionCiudad.Model();
+       piasystemairline.Presentation.EdicionCiudad.View CiudadVista = 
+               new piasystemairline.Presentation.EdicionCiudad.View();
+       piasystemairline.Presentation.EdicionCiudad.Controller CiudadController = 
+               new piasystemairline.Presentation.EdicionCiudad.Controller(CiudadModel,CiudadVista);
+        
+      Controler_Ciudad = CiudadController;
       
+       piasystemairline.Presentation.EdicionPais.Model PaisModel = 
+               new piasystemairline.Presentation.EdicionPais.Model();
+       piasystemairline.Presentation.EdicionPais.View PaisVista = 
+               new piasystemairline.Presentation.EdicionPais.View();
+       piasystemairline.Presentation.EdicionPais.Controller PaisController = 
+               new piasystemairline.Presentation.EdicionPais.Controller(PaisModel,PaisVista);
+        
+      Controler_Pais = PaisController;
 //    //------------------------RUTA-------------------
 //       piasystemairline.Presentation.EdicionRuta.Model RutaModel = 
 //               new piasystemairline.Presentation.EdicionRuta.Model();
@@ -61,11 +78,12 @@ public class PIASystemAirline {
         AppVista.setVisible(true);
         AppVista.fondo.add(AvionVista);
         AppVista.fondo.add(AvionModeloVista);
-//       AppVista.fondo.add(RutaVista);
-       
+        AppVista.fondo.add(PaisVista);
+        AppVista.fondo.add(CiudadVista);
        
     }
-    
+    public static piasystemairline.Presentation.EdicionCiudad.Controller Controler_Ciudad;
+    public static piasystemairline.Presentation.EdicionPais.Controller Controler_Pais;
     public static piasystemairline.Presentation.EdicionAvion.Controller Controler_Avion;
     public static piasystemairline.Presentation.EdicionModelAvion.Controller Controler_AvionModelo;
     public static piasystemairline.Presentation.EdicionRuta.Controller Controler_Ruta;

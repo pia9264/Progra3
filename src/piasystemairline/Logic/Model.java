@@ -149,12 +149,18 @@ public class Model {
    // DELATES--------------------------------------------------
    
    
-    public void EliminarModeloAvion(String id) throws Exception {
-      Datos.EliminarModeloAvion(id);
+    public void EliminarModeloAvion(String id) {
+        try {
+            Datos.EliminarModeloAvion(id);
+        } catch (Exception ex) {
+        }
     }
 
-    public void EliminarAvion(String text) throws Exception {
-      Datos.EliminarAvion(text);
+    public void EliminarAvion(String text) {
+        try {
+            Datos.EliminarAvion(text);
+        } catch (Exception ex) {
+        }
     }
 
     public void EliminarPais(String text) {
@@ -171,6 +177,26 @@ public class Model {
         } catch (Exception ex) {
         return null;
         }
+    }
+
+    public void EliminarCiudad(String text) {
+        try {
+            Datos.EliminarCiudad(text);
+        } catch (Exception ex) {
+        
+        }
+    }
+
+    public Ciudad ConsultarCiudad(String id) {
+        try {
+            return Datos.CiudadGet(id);
+        } catch (Exception ex) {
+        return null;
+        }
+    }
+
+    public List<Pais> ObtenerListPaises() {
+       return Datos.PaisSearch("");
     }
 
 }

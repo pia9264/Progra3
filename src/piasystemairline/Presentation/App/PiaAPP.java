@@ -244,7 +244,8 @@ public class PiaAPP extends javax.swing.JFrame implements Observer{
     }//GEN-LAST:event_AircraftActionPerformed
 
     private void CitiesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CitiesActionPerformed
-       controlador.EdicionCiudadesPaises();
+        QuitarTodo();
+        controlador.EdicionCiudadesPaises();
     }//GEN-LAST:event_CitiesActionPerformed
 
  public void QuitarTodo(){

@@ -46,7 +46,12 @@ public class Ciudad {
 
     @Override
     public String toString() {
-        return "Ciudad{" + "name=" + name + '}';
+         if(!id.equalsIgnoreCase("0")){
+           return id+" - "+name+"";
+       }else{
+           return "";
+       }
+       
     }
 
     @Override

@@ -34,13 +34,18 @@ public class Pais {
     
     @Override
     public String toString() {
-        return "Pais{" + "name=" + name + '}';
+       if(!id.equalsIgnoreCase("0")){
+           return id+" - "+name ;
+       }else{
+           return "";
+       }
+       
     }
 
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 89 * hash + Objects.hashCode(this.name);
+        hash = 89 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -56,7 +61,7 @@ public class Pais {
             return false;
         }
         final Pais other = (Pais) obj;
-        if (!Objects.equals(this.name, other.name)) {
+        if (!Objects.equals(this.id, other.id)) {
             return false;
         }
         return true;
