@@ -13,13 +13,13 @@ public class Persona {
    private String address;
    private String workphone;
    private String mobile;
-   private Registro registro;
+   private Viaje viaje;
    private char isAdmin;
    
    
     public Persona(String user, String pass, String name, String lastName, 
             String email, String datebirth, String address, String workphone, 
-            String mobile,char isAdmin,Registro registro) {
+            String mobile,char isAdmin,Viaje viaje) {
         this.user = user;
         this.pass = pass;
         this.name = name;
@@ -30,7 +30,7 @@ public class Persona {
         this.workphone = workphone;
         this.mobile = mobile;
         this.isAdmin = isAdmin;
-        this.registro = registro;
+        this.viaje = viaje;
     }
     public Persona() {
         this.user = "";
@@ -43,7 +43,7 @@ public class Persona {
         this.workphone = "";
         this.mobile = "";
         this.isAdmin = 0;
-        this.registro = new Registro();
+        this.viaje = new Viaje();
     }
     public char getIsAdmin() {
         return isAdmin;
@@ -53,12 +53,12 @@ public class Persona {
         this.isAdmin = isAdmin;
     }
 
-    public Registro getRegistro() {
-        return registro;
+    public Viaje getViaje() {
+        return viaje;
     }
 
-    public void setRegistro(Registro registro) {
-        this.registro = registro;
+    public void setViaje(Viaje viaje) {
+        this.viaje = viaje;
     }
 
 

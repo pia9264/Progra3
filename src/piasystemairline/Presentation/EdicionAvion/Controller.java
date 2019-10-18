@@ -1,8 +1,6 @@
 
 package piasystemairline.Presentation.EdicionAvion;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import piasystemairline.Logic.Avion;
 import piasystemairline.PIASystemAirline;
 
@@ -44,6 +42,7 @@ public class Controller {
     void modificar(Avion ToAvion) {
         try {
             piasystemairline.Logic.Model.instance().ModificarAvion(ToAvion);
+            modelo.addObserver(Vista);
         } catch (Exception ex) {
         }
     }
@@ -53,5 +52,9 @@ public class Controller {
             piasystemairline.Logic.Model.instance().EliminarAvion(text);
         } catch (Exception ex) {
         }
+    }
+    
+    public void update(){
+    Vista.update(modelo,Vista);
     }
 }

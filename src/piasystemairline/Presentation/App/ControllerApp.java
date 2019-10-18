@@ -1,18 +1,15 @@
 
 package piasystemairline.Presentation.App;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import piasystemairline.Logic.Avion;
 import piasystemairline.Logic.Ciudad;
-import piasystemairline.Logic.Escalas;
 import piasystemairline.Logic.FormaPago;
 import piasystemairline.Logic.ModeloAvion;
 import piasystemairline.Logic.Pais;
 import piasystemairline.Logic.Persona;
-import piasystemairline.Logic.Registro;
 import piasystemairline.Logic.Reservacion;
 import piasystemairline.Logic.Ruta;
 import piasystemairline.Logic.Tiquete;
+import piasystemairline.Logic.Viaje;
 import piasystemairline.Logic.Vuelo;
 import piasystemairline.PIASystemAirline;
 
@@ -38,9 +35,10 @@ public class ControllerApp {
    public void EdcionRutaShow(){
    PIASystemAirline.Controler_Ruta.Show();
    }
-   public void EdcionHorarioShow(){
-   }
-
+   
+    void EdicionCiudadesPaises() {
+        
+    }
     public void OnButtons() {
     vista.PonerTodo();
     }
@@ -76,15 +74,14 @@ public class ControllerApp {
     private void InicializarBase() throws Exception{
       piasystemairline.Logic.Model.instance().AgregarPais(new Pais());
       piasystemairline.Logic.Model.instance().AgregarCuidad(new Ciudad());
-      piasystemairline.Logic.Model.instance().AgregarEscala(new Escalas());
       piasystemairline.Logic.Model.instance().agregarRuta(new Ruta());
-      piasystemairline.Logic.Model.instance().AgregarFormaPago(new FormaPago());
-      piasystemairline.Logic.Model.instance().AgregarTiquete(new Tiquete());
-      piasystemairline.Logic.Model.instance().AgregarReservacion(new Reservacion());
       piasystemairline.Logic.Model.instance().agregarModeloAvion(new ModeloAvion());
       piasystemairline.Logic.Model.instance().agregarAvion(new Avion());
       piasystemairline.Logic.Model.instance().agregarVuelo(new Vuelo());
-      piasystemairline.Logic.Model.instance().agregarRegistro(new Registro());
+      piasystemairline.Logic.Model.instance().AgregarFormaPago(new FormaPago());
+      piasystemairline.Logic.Model.instance().AgregarTiquete(new Tiquete());
+      piasystemairline.Logic.Model.instance().AgregarReservacion(new Reservacion());
+      piasystemairline.Logic.Model.instance().agregarViaje(new Viaje());
    }
 
     private void VerificarExisteAdmin() {
@@ -94,4 +91,5 @@ public class ControllerApp {
             piasystemairline.PIASystemAirline.Controler_Persona.Show('1');
        }
     }
+
 }

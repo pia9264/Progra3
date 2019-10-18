@@ -12,7 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import piasystemairline.Logic.Persona;
-import piasystemairline.Logic.Registro;
+import piasystemairline.Logic.Viaje;
 
 /**
  *
@@ -246,7 +246,7 @@ public class View extends javax.swing.JInternalFrame implements Observer{
     if("Add".equals(Add.getText())){try {
             controller.agregar(new Persona(Username.getText(),Password.getText(),
             Nombre.getText(),LastName.getText(),Email.getText(),getFecha(),
-            Addres.getText(),WorkPhone.getText(),Mobile.getText(),isAdmin,new Registro()));
+            Addres.getText(),WorkPhone.getText(),Mobile.getText(),isAdmin,new Viaje()));
             controller.appON();
             controller.setName(Username.getText(),isAdmin);
         } catch (Exception ex) {

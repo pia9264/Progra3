@@ -27,6 +27,7 @@ public class Model extends Observable {
         this.setChanged();
         this.notifyObservers();
     }
+    
      @Override
     public void addObserver(Observer o){
      super.addObserver(o);

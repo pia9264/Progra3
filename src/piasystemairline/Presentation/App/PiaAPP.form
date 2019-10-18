@@ -59,17 +59,15 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="Cities">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Cities"/>
+                <Property name="text" type="java.lang.String" value="Cities and Countries"/>
               </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="Countries">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Countries"/>
-              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CitiesActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="Routes">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Routes"/>
+                <Property name="text" type="java.lang.String" value="Flights"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="Payment">

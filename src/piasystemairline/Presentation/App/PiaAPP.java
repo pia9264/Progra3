@@ -5,9 +5,11 @@
  */
 package piasystemairline.Presentation.App;
 
+import java.util.Observable;
+import java.util.Observer;
 import javax.swing.JFrame;
 
-public class PiaAPP extends javax.swing.JFrame {
+public class PiaAPP extends javax.swing.JFrame implements Observer{
    ControllerApp controlador;
     public PiaAPP() {
         cargarFondo();
@@ -36,7 +38,6 @@ public class PiaAPP extends javax.swing.JFrame {
         Aministra = new javax.swing.JMenu();
         Aircraft = new javax.swing.JMenuItem();
         Cities = new javax.swing.JMenuItem();
-        Countries = new javax.swing.JMenuItem();
         Routes = new javax.swing.JMenuItem();
         Payment = new javax.swing.JMenuItem();
         Reports = new javax.swing.JMenuItem();
@@ -159,13 +160,15 @@ public class PiaAPP extends javax.swing.JFrame {
         });
         Aministra.add(Aircraft);
 
-        Cities.setText("Cities");
+        Cities.setText("Cities and Countries");
+        Cities.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CitiesActionPerformed(evt);
+            }
+        });
         Aministra.add(Cities);
 
-        Countries.setText("Countries");
-        Aministra.add(Countries);
-
-        Routes.setText("Routes");
+        Routes.setText("Flights");
         Aministra.add(Routes);
 
         Payment.setText("Payment Methods");
@@ -240,6 +243,10 @@ public class PiaAPP extends javax.swing.JFrame {
         controlador.EdcionAvionShow();
     }//GEN-LAST:event_AircraftActionPerformed
 
+    private void CitiesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CitiesActionPerformed
+       controlador.EdicionCiudadesPaises();
+    }//GEN-LAST:event_CitiesActionPerformed
+
  public void QuitarTodo(){
          singup.setEnabled(false);
          singin.setEnabled(false);
@@ -283,7 +290,6 @@ public void PonerTodo(){
     private javax.swing.JMenuItem Aircraft;
     private javax.swing.JMenu Aministra;
     private javax.swing.JMenuItem Cities;
-    private javax.swing.JMenuItem Countries;
     private javax.swing.JMenuItem Payment;
     private javax.swing.JMenuItem Reports;
     private javax.swing.JMenuItem Routes;
@@ -316,5 +322,10 @@ public void PonerTodo(){
         singin.setEnabled(true);
         salir.setVisible(true);
         }
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+   
     }
 }

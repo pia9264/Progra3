@@ -3,16 +3,16 @@ package piasystemairline.Logic;
  
 public class Tiquete {
     private String id;
-    private FormaPago FPago;
+    private String Detalle;
 
-    public Tiquete(String id, FormaPago FPago) {
+    public Tiquete(String id,String Detalle) {
         this.id = id;
-        this.FPago = FPago;
+        this.Detalle = Detalle;
     }
 
     public Tiquete() {
         this.id = "0";
-        this.FPago = new FormaPago();
+        this.Detalle = "";
     }
 
     public String getId() {
@@ -23,13 +23,15 @@ public class Tiquete {
         this.id = id;
     }
 
-    public FormaPago getFPago() {
-        return FPago;
+    public String getDetalle() {
+        return Detalle;
     }
 
-    public void setFPago(FormaPago FPago) {
-        this.FPago = FPago;
+    public void setDetalle(String Detalle) {
+        this.Detalle = Detalle;
     }
+
+
     
     
 }

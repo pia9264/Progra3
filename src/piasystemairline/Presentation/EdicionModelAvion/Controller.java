@@ -5,8 +5,6 @@
  */
 package piasystemairline.Presentation.EdicionModelAvion;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import piasystemairline.Logic.ModeloAvion;
 
 /**
@@ -21,7 +19,7 @@ public class Controller {
       Vista = vista;
       vista.setControlador(this);
       vista.setModelEdit(model);
-      vista.update(model,vista);
+      vista.update(model, this);
     }
 
     public void Show() {
@@ -30,7 +28,8 @@ public class Controller {
 
     void Add(ModeloAvion m) throws Exception {
       piasystemairline.Logic.Model.instance().agregarModeloAvion(m);
-      Vista.setVisible(false);
+      Vista.LimpiarTodo();
+      piasystemairline.PIASystemAirline.Controler_Avion.update();
     }
     
     public void Cargar(String id){
@@ -64,6 +63,15 @@ public class Controller {
             return piasystemairline.Logic.Model.instance().ConsultarModeloAvion(id);
         } catch (Exception ex) {
             return null;
+        }
+    }
+
+    void Delate(String id) {
+        try {
+            piasystemairline.Logic.Model.instance().EliminarModeloAvion(id);
+            piasystemairline.PIASystemAirline.Controler_Avion.update();
+            Vista.LimpiarTodo();
+        } catch (Exception ex) {
         }
     }
 }

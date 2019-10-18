@@ -5,17 +5,28 @@ public class Reservacion {
   private String id;
   private String date;
   private Tiquete tiquet;
+  private FormaPago Fpago;
 
     public Reservacion() {
         this.id = "0";
         this.date = "1900-01-01 01:00:00";
         this.tiquet = new Tiquete();
+        this.Fpago = new FormaPago();
     }
 
-    public Reservacion(String id, String date, Tiquete tiquet) {
+    public Reservacion(String id, String date, Tiquete tiquet, FormaPago Fpago) {
         this.id = id;
         this.date = date;
         this.tiquet = tiquet;
+        this.Fpago = Fpago;
+    }
+
+    public FormaPago getFpago() {
+        return Fpago;
+    }
+
+    public void setFpago(FormaPago Fpago) {
+        this.Fpago = Fpago;
     }
 
     public String getId() {

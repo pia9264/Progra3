@@ -9,9 +9,9 @@ public class Ruta {
   private String duration;
   private Ciudad origin;
   private Ciudad destiny;
-  private Escalas scale;
+  private Ciudad scale;
 
-    public Ruta(String id, String name, String duration, Ciudad origin, Ciudad destiny, Escalas scale) {
+    public Ruta(String id, String name, String duration, Ciudad origin, Ciudad destiny, Ciudad scale) {
         this.id = id;
         this.name = name;
         this.duration = duration;
@@ -26,7 +26,7 @@ public class Ruta {
       this.id = "0";
       this.name = "";
       this.duration ="";
-      this.scale = new Escalas();
+      this.scale = new Ciudad();
       this.destiny = new Ciudad();
       this.origin = new Ciudad();
     }
@@ -47,11 +47,11 @@ public class Ruta {
         this.destiny = destiny;
     }
 
-    public Escalas getScale() {
+    public Ciudad getScale() {
         return scale;
     }
 
-    public void setScale(Escalas scale) {
+    public void setScale(Ciudad scale) {
         this.scale = scale;
     }
 

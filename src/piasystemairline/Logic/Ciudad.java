@@ -4,19 +4,29 @@ package piasystemairline.Logic;
 import java.util.Objects;
 
 public class Ciudad {
+  private String id;
   private String name;
   private Pais pais;
 
     public Ciudad() {
+        this.id = "0";
         this.name = "null";
         this.pais = new Pais();
     }
 
-    public Ciudad(String name, Pais pais, String id) {
+    public Ciudad(String id, String name, Pais pais) {
+        this.id = id;
         this.name = name;
         this.pais = pais;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;

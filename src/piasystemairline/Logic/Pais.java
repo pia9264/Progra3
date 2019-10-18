@@ -4,16 +4,26 @@ package piasystemairline.Logic;
 import java.util.Objects;
 
 public class Pais {
+    private String id;
+    private String name;
 
-  private String name;
+    public Pais() {
+        this.id = "0";
+        this.name = "";
+    }
 
-    public Pais(String name) {
- 
+    public Pais(String id, String name) {
+        this.id = id;
         this.name = name;
     }
 
-  
-  
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
     public String getName() {
         return name;
     }
@@ -21,11 +31,7 @@ public class Pais {
     public void setName(String name) {
         this.name = name;
     }
-
-    public Pais() {
-        this.name = "null";
-    }
-
+    
     @Override
     public String toString() {
         return "Pais{" + "name=" + name + '}';

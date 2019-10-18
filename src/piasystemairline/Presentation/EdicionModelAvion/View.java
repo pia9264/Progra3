@@ -6,11 +6,12 @@
 package piasystemairline.Presentation.EdicionModelAvion;
 
 import java.awt.Dimension;
+import java.util.Observable;
+import java.util.Observer;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import piasystemairline.Logic.ModeloAvion;
 
-public class View extends javax.swing.JInternalFrame {
+public class View extends javax.swing.JInternalFrame implements Observer {
 
     public View() {
         initComponents();
@@ -41,6 +42,7 @@ public class View extends javax.swing.JInternalFrame {
         jButton2 = new javax.swing.JButton();
         add = new javax.swing.JButton();
         edit = new javax.swing.JButton();
+        delate = new javax.swing.JButton();
 
         jLabel1.setText("TradeMark");
 
@@ -100,6 +102,13 @@ public class View extends javax.swing.JInternalFrame {
             }
         });
 
+        delate.setText("Delate");
+        delate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delateActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -111,8 +120,10 @@ public class View extends javax.swing.JInternalFrame {
                     .addComponent(jLabel3)
                     .addComponent(jLabel1)
                     .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6))
+                    .addComponent(jLabel6)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jButton2)
+                        .addComponent(jLabel5)))
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -124,22 +135,22 @@ public class View extends javax.swing.JInternalFrame {
                     .addComponent(capacity, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(numberRows, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(CB_SeatRows, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(89, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addComponent(jButton2)
-                .addGap(51, 51, 51)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(add)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                .addGap(35, 35, 35)
                 .addComponent(edit)
-                .addGap(29, 29, 29))
+                .addGap(18, 18, 18)
+                .addComponent(delate)
+                .addGap(11, 11, 11))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(10, Short.MAX_VALUE)
+                        .addContainerGap(17, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(shared, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -168,11 +179,11 @@ public class View extends javax.swing.JInternalFrame {
                         .addGap(29, 29, 29)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(add)
+                    .addComponent(edit)
                     .addComponent(jButton2)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(add)
-                        .addComponent(edit)))
+                    .addComponent(delate))
                 .addContainerGap())
         );
 
@@ -190,8 +201,7 @@ public class View extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
-        
-            ModeloAvion m = new ModeloAvion(id.getText(),Integer. parseInt(age.getText()),
+         ModeloAvion m = new ModeloAvion(id.getText(),Integer. parseInt(age.getText()),
                     trademark.getText(),Integer. parseInt(capacity.getText()),
                     Integer. parseInt(numberRows.getText()),CB_SeatRows.getSelectedIndex()+6);
         try {
@@ -222,10 +232,12 @@ public class View extends javax.swing.JInternalFrame {
         add.setEnabled(false);
         edit.setEnabled(false);
         shared.setEnabled(false);
+        delate.setEnabled(false);
       }else{
         add.setEnabled(true);
         edit.setEnabled(true);
         shared.setEnabled(true);
+        delate.setEnabled(true);
       }
     }//GEN-LAST:event_idKeyReleased
 
@@ -239,6 +251,10 @@ public class View extends javax.swing.JInternalFrame {
         CB_SeatRows.setSelectedIndex(m.getSeatsPeRrow()-6);
     }//GEN-LAST:event_sharedActionPerformed
 
+    private void delateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delateActionPerformed
+       controller.Delate(id.getText());
+    }//GEN-LAST:event_delateActionPerformed
+
     
     Model modelo;
     Controller controller;
@@ -251,10 +267,6 @@ public class View extends javax.swing.JInternalFrame {
      this.modelo = m;
     }
 
-    void update(Model modelo, View vista) {
-  
-    }
-    
    public void LimpiarTodo(){
     age.setText("");
     capacity.setText("");
@@ -279,6 +291,7 @@ public class View extends javax.swing.JInternalFrame {
     private javax.swing.JButton add;
     private javax.swing.JTextField age;
     private javax.swing.JTextField capacity;
+    private javax.swing.JButton delate;
     private javax.swing.JButton edit;
     private javax.swing.JTextField id;
     private javax.swing.JButton jButton2;
@@ -292,4 +305,9 @@ public class View extends javax.swing.JInternalFrame {
     private javax.swing.JButton shared;
     private javax.swing.JTextField trademark;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void update(Observable o, Object arg) {
+   
+    }
 }

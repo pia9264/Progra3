@@ -4,7 +4,6 @@ package piasystemairline.Logic;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import piasystemairline.Datos.Dao;
 
 public class Model {
@@ -33,19 +32,10 @@ public class Model {
        Datos.RutaAdd(r);
     }
     
-    public void agregarRegistro(Registro r) throws Exception{
-       Datos.RegistroAdd(r);
-    }
-    
     public void agregarVuelo(Vuelo v) throws Exception{
        Datos.VueloAdd(v);
     }
-    
-    public void AgregarEscala(Escalas e) throws Exception{
-      Datos.EscalaAdd(e);
-    }
-    
-    
+
     public void AgregarCuidad(Ciudad c) throws Exception{
       Datos.CiudadAdd(c);
     }
@@ -66,6 +56,9 @@ public class Model {
       Datos.FormaPagoAdd(p);
     }
     
+     public void agregarViaje(Viaje viaje) throws Exception {
+       Datos.ViajeAdd(viaje);
+     }
     // GetObjetos
     
     public Persona ConsultaUser(String user) throws Exception{
@@ -133,20 +126,12 @@ public class Model {
     public void ModificarRuta(Ruta r) throws Exception {
     Datos.RutaUpdate(r);
     }
-    public void ModificarEscala(Escalas e) throws Exception {
-    Datos.EscalaUpdate(e);
-    }
-    
     public void ModificarCiudad(Ciudad c) throws Exception {
     Datos.CiudadUpdate(c);
     }
     
     public void ModificarPais(Pais p) throws Exception {
     Datos.PaisUpdate(p);
-    }
- 
-    public void ModificarRegistro(Registro r) throws Exception {
-    Datos.RegistroUpdate(r);
     }
     public void ModificarReservacion(Reservacion r) throws Exception {
     Datos.ReservacionUpdate(r);
@@ -172,8 +157,20 @@ public class Model {
       Datos.EliminarAvion(text);
     }
 
-    
-    
-    
-    
+    public void EliminarPais(String text) {
+        try {
+            Datos.EliminarPais(text);
+        } catch (Exception ex) {
+        
+        }
+    }
+
+    public Pais ConsultarPais(String text) {
+        try {
+            return Datos.PaisGet(text);
+        } catch (Exception ex) {
+        return null;
+        }
+    }
+
 }
