@@ -4,6 +4,8 @@ package piasystemairline.Presentation.EdicionPais;
 import java.awt.Dimension;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import piasystemairline.Logic.Pais;
 
@@ -15,7 +17,14 @@ public class View extends javax.swing.JInternalFrame implements Observer{
         initComponents();
         Centrar();
     }
+    
+    void setModelEdit(Model model) {
+        this.modelo = model;
+    }
 
+    void setControlador(Controller aThis) {
+         this.controller = aThis;
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -139,19 +148,31 @@ public class View extends javax.swing.JInternalFrame implements Observer{
     }//GEN-LAST:event_idKeyReleased
 
     private void delateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delateActionPerformed
-         controller.delate(id.getText());
-         Limpiar();
+        try {
+            controller.delate(id.getText());
+            Limpiar();
+        } catch (Exception ex) {
+            id.setText("NO EXISTE!!");
+        }
     }//GEN-LAST:event_delateActionPerformed
 
     private void sharedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sharedActionPerformed
-        Pais p = controller.Get(id.getText());
-        id.setText(p.getId());
-        name.setText(p.getName());
+        try {
+            Pais p = controller.Get(id.getText());
+            id.setText(p.getId());
+            name.setText(p.getName());
+        } catch (Exception ex) {
+            id.setText("NO EXISTE!!");
+        }
     }//GEN-LAST:event_sharedActionPerformed
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
-         controller.add(new Pais(id.getText(),name.getText()));
-         Limpiar();
+        try {
+            controller.add(new Pais(id.getText(),name.getText()));
+            Limpiar();
+        } catch (Exception ex) {
+            id.setText("YA EXISTE!!");
+        }
     }//GEN-LAST:event_addActionPerformed
 
     @Override
@@ -159,13 +180,6 @@ public class View extends javax.swing.JInternalFrame implements Observer{
     
     }
 
-    void setModelEdit(Model model) {
-        this.modelo = model;
-    }
-
-    void setControlador(Controller aThis) {
-         this.controller = aThis;
-    }
     private void Centrar() {
     Dimension desktopSize = this.getSize();
     this.setLocation((desktopSize.width),

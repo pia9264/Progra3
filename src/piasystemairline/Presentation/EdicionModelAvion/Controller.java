@@ -27,51 +27,24 @@ public class Controller {
     }
 
     void Add(ModeloAvion m) throws Exception {
-      piasystemairline.Logic.Model.instance().agregarModeloAvion(m);
-      Vista.LimpiarTodo();
-      piasystemairline.PIASystemAirline.Controler_Avion.update();
+        piasystemairline.Logic.Model.instance().AgregarModeloAvion(m);
+        Vista.LimpiarTodo();
+        piasystemairline.PIASystemAirline.Controler_Avion.update();
     }
-    
-    public void Cargar(String id){
-     ModeloAvion m = new ModeloAvion();
-        try {
-            m = piasystemairline.Logic.Model.instance().ConsultarModeloAvion(id);
-        } catch (Exception ex) {
-        }
+    public void Eliminar(String id) throws Exception {
+        piasystemairline.Logic.Model.instance().EliminarModeloAvion(id);
     }
-    
-    public void Eliminar(String id) {
-        try {
-            piasystemairline.Logic.Model.instance().EliminarModeloAvion(id);
-        } catch (Exception ex) {
-        }
+    public void Modificar(ModeloAvion m) throws Exception{
+        piasystemairline.Logic.Model.instance().ModificarModeloAvion(m);
     }
-    
-   public void Modificar(ModeloAvion m){
-        try {
-            piasystemairline.Logic.Model.instance().ModificarModeloAvion(m);
-        } catch (Exception ex) {
-        }
-   }
-
     void MenuAvionShow() {
-      piasystemairline.PIASystemAirline.Controler_Avion.Show();
+        piasystemairline.PIASystemAirline.Controler_Avion.Show();
     }
-
-    public ModeloAvion getModeloAvion(String id) {
-        try {
-            return piasystemairline.Logic.Model.instance().ConsultarModeloAvion(id);
-        } catch (Exception ex) {
-            return null;
-        }
+    public ModeloAvion getModeloAvion(String id) throws Exception {
+        return piasystemairline.Logic.Model.instance().ConsultarModeloAvion(id);
     }
-
-    void Delate(String id) {
-        try {
-            piasystemairline.Logic.Model.instance().EliminarModeloAvion(id);
-            piasystemairline.PIASystemAirline.Controler_Avion.update();
-            Vista.LimpiarTodo();
-        } catch (Exception ex) {
-        }
+    void Delate(String id) throws Exception {
+        piasystemairline.Logic.Model.instance().EliminarModeloAvion(id);
+        piasystemairline.PIASystemAirline.Controler_Avion.update();
     }
 }

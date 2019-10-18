@@ -1,22 +1,58 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package piasystemairline.Presentation.EdicionRuta;
 
-/**
- *
- * @author anibalchavesbadilla
- */
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import piasystemairline.Logic.Ruta;
+import piasystemairline.PIASystemAirline;
+
+
 public class Controller {
 
-    public Controller(Model RutaModel, View RutaVista) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+
+    View vista;
+    Model modelo;
+    public Controller(Model model, View Vista) {
+      modelo = model;
+      vista = Vista;
+      vista.setControlador(this);
+      vista.setModelEdit(model);
+      ObtenerlistCiudades();
+      vista.update(model,vista);
+    }
+    public void Show() {
+    vista.setVisible(true);
     }
 
-    public void Show() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    void AppShow() {
+     PIASystemAirline.ControllerAPP.OnButtons();
     }
+
+    void Add(Ruta ToRuta) throws Exception {
+        piasystemairline.Logic.Model.instance().AgregarRuta(ToRuta);   
+    }
+
+    void Edit(Ruta ToRuta) throws Exception {
+        piasystemairline.Logic.Model.instance().ModificarRuta(ToRuta);
+    }
+
+    void Delate(String id) throws Exception {
+            piasystemairline.Logic.Model.instance().EliminarRuta(id);
+    }
+    static Ruta Get(String id) throws Exception {
+           return piasystemairline.Logic.Model.instance().ConsultaRuta(id);
+    }
+    public void ObtenerlistCiudades(){
+        try {
+            modelo.setCiudades(piasystemairline.Logic.Model.instance().ObtenerListCiudades());
+                vista.update(modelo, this);
+        } catch (Exception ex) {
+          
+        }
+   
+    }
+    
+    
     
 }

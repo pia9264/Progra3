@@ -15,24 +15,35 @@ public class Model {
         Datos = new Dao();
     }
     
-    // LOS AGREGAR 
-    public void agregarPersona(Persona p) throws Exception{
+      //  INSTANCE
+    public static Model instance(){
+       if (the_instance == null) {
+           the_instance = new Model();
+       }
+       return the_instance;
+   }
+    
+    
+    
+    
+    //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LOS AGREGAR 
+    public void AgregarPersona(Persona p) throws Exception{
        Datos.PersonaAdd(p);
     }
     
-    public void agregarAvion(Avion a) throws Exception{
+    public void AgregarAvion(Avion a) throws Exception{
        Datos.AvionAdd(a);
     }
     
-    public void agregarModeloAvion(ModeloAvion a) throws Exception{
+    public void AgregarModeloAvion(ModeloAvion a) throws Exception{
        Datos.ModeloAvionAdd(a);
     }
     
-    public void agregarRuta(Ruta r) throws Exception{
-       Datos.RutaAdd(r);
+    public void AgregarRuta(Ruta r) throws Exception {
+      Datos.RutaAdd(r);
     }
     
-    public void agregarVuelo(Vuelo v) throws Exception{
+    public void AgregarVuelo(Vuelo v) throws Exception{
        Datos.VueloAdd(v);
     }
 
@@ -56,60 +67,78 @@ public class Model {
       Datos.FormaPagoAdd(p);
     }
     
-     public void agregarViaje(Viaje viaje) throws Exception {
+     public void AgregarViaje(Viaje viaje) throws Exception {
        Datos.ViajeAdd(viaje);
      }
-    // GetObjetos
+     
+     
+     
+     
+     
+    //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%GetObjetos
     
     public Persona ConsultaUser(String user) throws Exception{
-        Persona result = Datos.PersonaGet(user);
-        return result;
+        return Datos.PersonaGet(user);
+    }
+    public ModeloAvion ConsultarModeloAvion(String id) throws Exception {
+        return Datos.ModeloAvionGet(id);
+    }
+    public Ruta ConsultaRuta(String id) throws Exception {
+        return Datos.RutaGet(id);
+    }
+    public Ciudad ConsultarCiudad(String id) throws Exception {
+         return Datos.CiudadGet(id);
+    }
+    public Pais ConsultarPais(String text) throws Exception {
+            return Datos.PaisGet(text);
     }
     
-     public ModeloAvion ConsultarModeloAvion(String id) throws Exception {
-            ModeloAvion result = Datos.ModeloAvionGet(id);
-            return result;
-    }
-    //  INSTANCE
-    public static Model instance(){
-       if (the_instance == null) {
-           the_instance = new Model();
-       }
-       return the_instance;
-   }
     
-    // OBTENER LISTAS
+    
+    //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%OBTENER LISTAS
     
     public List<Persona> ObtenerListPersonas(){
-        try {
+        try {        
             return Datos.PersonaSearch("");
         } catch (Exception ex) {
-        return null;
+           return null;
         }
     }
     public List<Avion> ObtenerListAviones(){
         try {
             return Datos.AvionSearch("");
         } catch (Exception ex) {
-          return null;
+            return null;
         }
     }
     public List<ModeloAvion> ObtenerListModeloAvion(){
-        try {
             return Datos.ModeloAvionSearch("");
-        } catch (Exception ex) {
-          return null;
-        }
     }
     public List<Ruta> ObtenerListRutas(){
         try {
             return Datos.RutaSearch("");
         } catch (Exception ex) {
-        return null;
+           return null;
+        }
+    }
+    public List<Ciudad> ObtenerListCiudades(){
+        try {
+            return Datos.CiudadSearch("");
+        } catch (Exception ex) {
+            return null;
+        }
+    }
+    public List<Pais> ObtenerListPaises() {
+        try {
+            return Datos.PaisSearch("");
+        } catch (Exception ex) {
+            return null;
         }
     }
     
-    // MODIFICAR
+    
+    
+    //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%MODIFICAR
     
     public void ModificarPersona(Persona p) throws Exception {
      Datos.PersonaUpdate(p);
@@ -124,12 +153,11 @@ public class Model {
     Datos.ModeloAvionUpdate(m);
     }
     public void ModificarRuta(Ruta r) throws Exception {
-    Datos.RutaUpdate(r);
+            Datos.RutaUpdate(r);
     }
     public void ModificarCiudad(Ciudad c) throws Exception {
     Datos.CiudadUpdate(c);
     }
-    
     public void ModificarPais(Pais p) throws Exception {
     Datos.PaisUpdate(p);
     }
@@ -145,58 +173,27 @@ public class Model {
     
     
     
+    
+    
+    
 
-   // DELATES--------------------------------------------------
+   // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%DELATES
    
    
-    public void EliminarModeloAvion(String id) {
-        try {
+    public void EliminarModeloAvion(String id) throws Exception {
             Datos.EliminarModeloAvion(id);
-        } catch (Exception ex) {
-        }
     }
-
-    public void EliminarAvion(String text) {
-        try {
+    public void EliminarAvion(String text)throws Exception {
             Datos.EliminarAvion(text);
-        } catch (Exception ex) {
-        }
     }
-
-    public void EliminarPais(String text) {
-        try {
+    public void EliminarPais(String text) throws Exception {
             Datos.EliminarPais(text);
-        } catch (Exception ex) {
-        
-        }
     }
-
-    public Pais ConsultarPais(String text) {
-        try {
-            return Datos.PaisGet(text);
-        } catch (Exception ex) {
-        return null;
-        }
-    }
-
-    public void EliminarCiudad(String text) {
-        try {
+    public void EliminarCiudad(String text) throws Exception {
             Datos.EliminarCiudad(text);
-        } catch (Exception ex) {
-        
-        }
     }
-
-    public Ciudad ConsultarCiudad(String id) {
-        try {
-            return Datos.CiudadGet(id);
-        } catch (Exception ex) {
-        return null;
-        }
-    }
-
-    public List<Pais> ObtenerListPaises() {
-       return Datos.PaisSearch("");
+    public void EliminarRuta(String id) throws Exception {
+       Datos.EliminarRuta(id);
     }
 
 }

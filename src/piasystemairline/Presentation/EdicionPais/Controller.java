@@ -20,21 +20,17 @@ public class Controller {
     public void Show() {
      Vista.setVisible(true);
     }
-    void add(Pais pais) {
-        try {
+    void add(Pais pais) throws Exception {
             piasystemairline.Logic.Model.instance().AgregarPais(pais);
             PIASystemAirline.Controler_Ciudad.ObtenerlistPaises();
-        } catch (Exception ex) {
-        }
     }
 
-    void delate(String text) {
+    void delate(String text) throws Exception {
      piasystemairline.Logic.Model.instance().EliminarPais(text);
      PIASystemAirline.Controler_Ciudad.ObtenerlistPaises();
-     
     }
 
-    Pais Get(String text) {
+    Pais Get(String text) throws Exception {
          return piasystemairline.Logic.Model.instance().ConsultarPais(text);
     }
 

@@ -38,6 +38,7 @@ public class PiaAPP extends javax.swing.JFrame implements Observer{
         Aministra = new javax.swing.JMenu();
         Aircraft = new javax.swing.JMenuItem();
         Cities = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         Routes = new javax.swing.JMenuItem();
         Payment = new javax.swing.JMenuItem();
         Reports = new javax.swing.JMenuItem();
@@ -168,6 +169,14 @@ public class PiaAPP extends javax.swing.JFrame implements Observer{
         });
         Aministra.add(Cities);
 
+        jMenuItem1.setText("Routes");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        Aministra.add(jMenuItem1);
+
         Routes.setText("Flights");
         Aministra.add(Routes);
 
@@ -231,6 +240,7 @@ public class PiaAPP extends javax.swing.JFrame implements Observer{
      singup.setText("Sign up");
      singin.setText("Sign in");
      salir.setVisible(false);
+     Aministra.setVisible(false);
      jMenu2.setText("USER");
     }//GEN-LAST:event_salirActionPerformed
 
@@ -247,6 +257,11 @@ public class PiaAPP extends javax.swing.JFrame implements Observer{
         QuitarTodo();
         controlador.EdicionCiudadesPaises();
     }//GEN-LAST:event_CitiesActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        QuitarTodo();
+        controlador.EdcionRutaShow();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
  public void QuitarTodo(){
          singup.setEnabled(false);
@@ -301,6 +316,7 @@ public void PonerTodo(){
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JButton referente;
     private javax.swing.JMenuItem salir;
     private javax.swing.JMenuItem singin;

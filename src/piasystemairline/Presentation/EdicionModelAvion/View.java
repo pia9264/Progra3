@@ -8,6 +8,8 @@ package piasystemairline.Presentation.EdicionModelAvion;
 import java.awt.Dimension;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import piasystemairline.Logic.ModeloAvion;
 
@@ -15,13 +17,20 @@ public class View extends javax.swing.JInternalFrame implements Observer {
 
     public View() {
         initComponents();
-        rellenerCombo();
-        Centrar();
-        add.setEnabled(false);
-        edit.setEnabled(false);
-        shared.setEnabled(false);
     }
 
+    Model modelo;
+    Controller controller;
+    
+    void setControlador(Controller c) {
+      this.controller = c;
+    }
+
+    void setModelEdit(Model m) {
+     this.modelo = m;
+    }
+    
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -75,6 +84,7 @@ public class View extends javax.swing.JInternalFrame implements Observer {
         });
 
         shared.setIcon(new javax.swing.ImageIcon(getClass().getResource("/piasystemairline/Presentation/iconos/icons8-google_web_search.png"))); // NOI18N
+        shared.setEnabled(false);
         shared.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sharedActionPerformed(evt);
@@ -89,6 +99,7 @@ public class View extends javax.swing.JInternalFrame implements Observer {
         });
 
         add.setText("Add");
+        add.setEnabled(false);
         add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addActionPerformed(evt);
@@ -96,6 +107,7 @@ public class View extends javax.swing.JInternalFrame implements Observer {
         });
 
         edit.setText("Edit");
+        edit.setEnabled(false);
         edit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editActionPerformed(evt);
@@ -103,6 +115,7 @@ public class View extends javax.swing.JInternalFrame implements Observer {
         });
 
         delate.setText("Delate");
+        delate.setEnabled(false);
         delate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 delateActionPerformed(evt);
@@ -207,6 +220,7 @@ public class View extends javax.swing.JInternalFrame implements Observer {
         try {
             controller.Add(m);
         } catch (Exception ex) {
+            id.setText("Avion YA EXISTE!!");
         }
     }//GEN-LAST:event_addActionPerformed
 
@@ -242,30 +256,31 @@ public class View extends javax.swing.JInternalFrame implements Observer {
     }//GEN-LAST:event_idKeyReleased
 
     private void sharedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sharedActionPerformed
-        ModeloAvion m = new ModeloAvion();
-        m = controller.getModeloAvion(id.getText());
+        try {    
+            RenderModeloAvion(controller.getModeloAvion(id.getText()));
+        } catch (Exception ex) {
+            id.setText("NO EXISTE!!");
+        }
+    }//GEN-LAST:event_sharedActionPerformed
+
+    private void delateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delateActionPerformed
+        try {
+            controller.Delate(id.getText());
+            LimpiarTodo();
+        } catch (Exception ex) {
+            
+        }
+    }//GEN-LAST:event_delateActionPerformed
+   
+   private void RenderModeloAvion(ModeloAvion m){
         age.setText(Integer.toString(m.getAge()));
         capacity.setText(Integer.toString(m.getCapacity()));
         numberRows.setText(Integer.toString(m.getNumberRows()));
         trademark.setText(m.getTrademark());
         CB_SeatRows.setSelectedIndex(m.getSeatsPeRrow()-6);
-    }//GEN-LAST:event_sharedActionPerformed
-
-    private void delateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delateActionPerformed
-       controller.Delate(id.getText());
-    }//GEN-LAST:event_delateActionPerformed
-
+   }
     
-    Model modelo;
-    Controller controller;
-    
-    void setControlador(Controller c) {
-      this.controller = c;
-    }
-
-    void setModelEdit(Model m) {
-     this.modelo = m;
-    }
+  
 
    public void LimpiarTodo(){
     age.setText("");
@@ -308,6 +323,7 @@ public class View extends javax.swing.JInternalFrame implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-   
+        rellenerCombo();
+        Centrar();
     }
 }

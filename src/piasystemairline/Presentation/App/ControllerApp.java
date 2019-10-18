@@ -67,24 +67,24 @@ public class ControllerApp {
       
     }
 
-    void CargarDatosPersonas(String user) {
-    PIASystemAirline.Controler_Persona.CargarPersona(user);
+    void CargarDatosPersonas(String user) throws Exception {
+    PIASystemAirline.Controler_Persona.Get(user);
     }
     
     private void InicializarBase() throws Exception{
       piasystemairline.Logic.Model.instance().AgregarPais(new Pais());
       piasystemairline.Logic.Model.instance().AgregarCuidad(new Ciudad());
-      piasystemairline.Logic.Model.instance().agregarRuta(new Ruta());
-      piasystemairline.Logic.Model.instance().agregarModeloAvion(new ModeloAvion());
-      piasystemairline.Logic.Model.instance().agregarAvion(new Avion());
-      piasystemairline.Logic.Model.instance().agregarVuelo(new Vuelo());
+      piasystemairline.Logic.Model.instance().AgregarRuta(new Ruta());
+      piasystemairline.Logic.Model.instance().AgregarModeloAvion(new ModeloAvion());
+      piasystemairline.Logic.Model.instance().AgregarAvion(new Avion());
+      piasystemairline.Logic.Model.instance().AgregarVuelo(new Vuelo());
       piasystemairline.Logic.Model.instance().AgregarFormaPago(new FormaPago());
       piasystemairline.Logic.Model.instance().AgregarTiquete(new Tiquete());
       piasystemairline.Logic.Model.instance().AgregarReservacion(new Reservacion());
-      piasystemairline.Logic.Model.instance().agregarViaje(new Viaje());
+      piasystemairline.Logic.Model.instance().AgregarViaje(new Viaje());
    }
 
-    private void VerificarExisteAdmin() {
+    private void VerificarExisteAdmin(){
        if(piasystemairline.Logic.Model.instance().ObtenerListPersonas().isEmpty()){
             vista.setVisible(true);
             vista.QuitarTodo();

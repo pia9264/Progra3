@@ -3,6 +3,7 @@ package piasystemairline.Presentation.EdicionCiudad;
 
 import java.util.List;
 import java.util.Observable;
+import java.util.Observer;
 import piasystemairline.Logic.Ciudad;
 import piasystemairline.Logic.Pais;
 
@@ -46,4 +47,10 @@ public class Model extends Observable{
         this.setChanged();
         this.notifyObservers();
     }
+         @Override
+    public void addObserver(Observer o){
+     super.addObserver(o);
+     this.setChanged();
+     this.notifyObservers();
+    } 
 }

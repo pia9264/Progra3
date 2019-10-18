@@ -1,11 +1,14 @@
 
 package piasystemairline.Presentation.EdicionPais;
 
+
+
 import java.util.Observable;
+import java.util.Observer;
 import piasystemairline.Logic.Pais;
 
 public class Model extends Observable{
-    private Pais model;
+    private Pais model ;
     
     public Model(Pais model) {
         this.model = model;
@@ -22,12 +25,13 @@ public class Model extends Observable{
 
     public void setModelPais(Pais model) {
         this.model = model;
-        this.setChanged();
-        this.notifyObservers();
+
     }
-    public void update(){
-       this.setChanged();
-       this.notifyObservers();
-    }
-   
+
+    @Override
+    public void addObserver(Observer o){
+     super.addObserver(o);
+     this.setChanged();
+     this.notifyObservers();
+    }  
 }

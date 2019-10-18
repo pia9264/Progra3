@@ -55,16 +55,16 @@ public class PIASystemAirline {
                new piasystemairline.Presentation.EdicionPais.Controller(PaisModel,PaisVista);
         
       Controler_Pais = PaisController;
-//    //------------------------RUTA-------------------
-//       piasystemairline.Presentation.EdicionRuta.Model RutaModel = 
-//               new piasystemairline.Presentation.EdicionRuta.Model();
-//       piasystemairline.Presentation.EdicionRuta.View RutaVista = 
-//               new piasystemairline.Presentation.EdicionRuta.View();
-//       piasystemairline.Presentation.EdicionRuta.Controller RutaController = 
-//               new piasystemairline.Presentation.EdicionRuta.Controller(RutaModel,RutaVista);
+    //------------------------RUTA-------------------
+       piasystemairline.Presentation.EdicionRuta.Model RutaModel = 
+               new piasystemairline.Presentation.EdicionRuta.Model();
+       piasystemairline.Presentation.EdicionRuta.View RutaVista = 
+               new piasystemairline.Presentation.EdicionRuta.View();
+       piasystemairline.Presentation.EdicionRuta.Controller RutaController = 
+               new piasystemairline.Presentation.EdicionRuta.Controller(RutaModel,RutaVista);
 
-//        Controler_Ruta = RutaController;
-//    //----------------------------APP--------------------------------
+        Controler_Ruta = RutaController;
+    //----------------------------APP--------------------------------
        piasystemairline.Presentation.App.ModelApp AppModel = 
                new piasystemairline.Presentation.App.ModelApp();
        piasystemairline.Presentation.App.PiaAPP AppVista = 
@@ -80,6 +80,8 @@ public class PIASystemAirline {
         AppVista.fondo.add(AvionModeloVista);
         AppVista.fondo.add(PaisVista);
         AppVista.fondo.add(CiudadVista);
+        AppVista.fondo.add(RutaVista);
+        
        
     }
     public static piasystemairline.Presentation.EdicionCiudad.Controller Controler_Ciudad;

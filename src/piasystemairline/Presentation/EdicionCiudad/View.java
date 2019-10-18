@@ -8,6 +8,8 @@ package piasystemairline.Presentation.EdicionCiudad;
 import java.awt.Dimension;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
 import piasystemairline.Logic.Ciudad;
@@ -175,17 +177,25 @@ public class View extends javax.swing.JInternalFrame implements Observer {
     }//GEN-LAST:event_addContriesActionPerformed
 
     private void delateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delateActionPerformed
-        controller.Delate(id.getText());
-        limpiar();
+         try {
+             controller.Delate(id.getText());
+             limpiar();
+         } catch (Exception ex) {
+             id.setText("NO EXISTE!!");
+         }
     }//GEN-LAST:event_delateActionPerformed
 
     private void editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editActionPerformed
-        Ciudad c = new Ciudad();
-        c.setId(id.getText());
-        c.setName(name.getText());
-        c.setPais(pais.getItemAt(pais.getSelectedIndex()));
-        controller.Edit(c);
-        limpiar();
+         try {
+             Ciudad c = new Ciudad();
+             c.setId(id.getText());
+             c.setName(name.getText());
+             c.setPais(pais.getItemAt(pais.getSelectedIndex()));
+             controller.Edit(c);
+             limpiar();
+         } catch (Exception ex) {
+            id.setText("NO EXISTE!!");
+         }
     }//GEN-LAST:event_editActionPerformed
 
     private void closeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeActionPerformed
@@ -195,19 +205,27 @@ public class View extends javax.swing.JInternalFrame implements Observer {
     }//GEN-LAST:event_closeActionPerformed
 
     private void sharedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sharedActionPerformed
-     Ciudad c = controller.Shared(id.getText());
-     id.setText(c.getId());
-     name.setText(c.getName());
-     pais.setSelectedItem(c.getPais());
+         try {
+             Ciudad c = controller.Shared(id.getText());
+             id.setText(c.getId());
+             name.setText(c.getName());
+             pais.setSelectedItem(c.getPais());
+         } catch (Exception ex) {
+             id.setText("NO EXISTE!!");
+         }
     }//GEN-LAST:event_sharedActionPerformed
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
-       Ciudad c = new Ciudad();
-       c.setId(id.getText());
-       c.setName(name.getText());
-       c.setPais(pais.getItemAt(pais.getSelectedIndex()));
-       controller.Add(c);
-       limpiar();
+         try {
+             Ciudad c = new Ciudad();
+             c.setId(id.getText());
+             c.setName(name.getText());
+             c.setPais(pais.getItemAt(pais.getSelectedIndex()));
+             controller.Add(c);
+             limpiar();
+         } catch (Exception ex) {
+             id.setText("YA EXISTE!!");
+         }
     }//GEN-LAST:event_addActionPerformed
 
     private void idKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idKeyReleased

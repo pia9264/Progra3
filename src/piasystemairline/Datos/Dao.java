@@ -315,7 +315,7 @@ public class Dao {
         } catch (SQLException ex) { }
         return resultado;
     }
-    public List<Pais> PaisSearch(String id) {
+    public List<Pais> PaisSearch(String id) throws Exception {
      List<Pais> resultado = new ArrayList<Pais>();
         try {
              String sql="select * from "+
@@ -332,7 +332,7 @@ public class Dao {
       List<Ciudad> resultado = new ArrayList<Ciudad>();
         try {
             String sql="select * from "+
-                    "Ciudad c inner join Pais p on p.Pais_id=p.id "+
+                    "Ciudad c inner join Pais p on c.Pais_id=p.id "+
                     "where c.id like '%%%s%%'";
             sql=String.format(sql,id);
             ResultSet rs =  db.executeQuery(sql);
@@ -501,9 +501,9 @@ public class Dao {
     }
 
      public Ruta RutaGet(String id) throws Exception {
-        String sql="select * from Ruta r inner join Ciudad c on"
-                + " r.origin_id=c.id and r.destiny_id=c.id and "
-                + "r.escale_id=c.id where r.id like '%%%s%%'";
+        String sql="select * from Ruta r inner join Ciudad c on r.origin_id=c.id"
+                + " join Ciudad c2 on r.destiny_id=c2.id join Ciudad c3 on "
+                + "r.escale_id=c3.id where r.id like '%%%s%%'";
         sql = String.format(sql,id);
         ResultSet rs =  db.executeQuery(sql);
         if (rs.next()) {

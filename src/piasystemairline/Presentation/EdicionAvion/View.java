@@ -3,6 +3,7 @@ package piasystemairline.Presentation.EdicionAvion;
 
 import java.awt.Dimension;
 import java.util.Observable;
+
 import java.util.Observer;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
@@ -16,6 +17,16 @@ public class View extends javax.swing.JInternalFrame implements Observer {
         Centrar();
     }
 
+    Model modelo;
+    Controller controller;
+    
+    void setControlador(Controller c) {
+      this.controller = c;
+    }
+
+    void setModelEdit(Model m) {
+     this.modelo = m;
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -93,38 +104,32 @@ public class View extends javax.swing.JInternalFrame implements Observer {
                         .addComponent(jLabel2))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(add)
-                            .addComponent(jLabel3))))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(99, 99, 99)
-                        .addComponent(delate)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap())
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(Modelos, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton2)
-                                .addGap(29, 29, 29))))))
-            .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(edit)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(164, 164, 164)
-                            .addComponent(jLabel1))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(58, 58, 58)
-                            .addComponent(closed, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(Modelos, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton2)
+                        .addGap(29, 29, 29))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(13, 13, 13)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(closed, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
+                        .addComponent(add)
+                        .addGap(48, 48, 48)
+                        .addComponent(edit)
+                        .addGap(59, 59, 59)
+                        .addComponent(delate)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,10 +150,9 @@ public class View extends javax.swing.JInternalFrame implements Observer {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(add)
                     .addComponent(delate)
-                    .addComponent(edit))
-                .addGap(18, 18, 18)
-                .addComponent(closed)
-                .addContainerGap(16, Short.MAX_VALUE))
+                    .addComponent(edit)
+                    .addComponent(closed))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -173,19 +177,23 @@ public class View extends javax.swing.JInternalFrame implements Observer {
 
     private void closedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closedActionPerformed
        this.setVisible(false);
+       Limpiar();
        controller.appON();
     }//GEN-LAST:event_closedActionPerformed
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
         controller.Add(ToAvion());
+        Limpiar();
     }//GEN-LAST:event_addActionPerformed
 
     private void editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editActionPerformed
       controller.modificar(ToAvion());
+      Limpiar();
     }//GEN-LAST:event_editActionPerformed
 
     private void delateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delateActionPerformed
        controller.Delate(id.getText());
+       Limpiar();
     }//GEN-LAST:event_delateActionPerformed
 
     private Avion ToAvion(){
@@ -207,16 +215,6 @@ public class View extends javax.swing.JInternalFrame implements Observer {
     private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 
-    Model modelo;
-    Controller controller;
-    
-    void setControlador(Controller c) {
-      this.controller = c;
-    }
-
-    void setModelEdit(Model m) {
-     this.modelo = m;
-    }
 
     private void Centrar() {
     Dimension desktopSize = this.getSize();
@@ -228,6 +226,10 @@ public class View extends javax.swing.JInternalFrame implements Observer {
          this.Modelos.setModel(new DefaultComboBoxModel<ModeloAvion>(modelo.getModelos().toArray(new ModeloAvion[0])));  
      }
 
+    private void Limpiar(){
+    id.setText("");
+    Modelos.setSelectedItem(new ModeloAvion());
+    }
     @Override
     public void update(Observable o, Object arg) {
      controller.Obtenerlist();

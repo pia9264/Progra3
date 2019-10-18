@@ -15,8 +15,8 @@ public class Controller {
       vista.setModelEdit(PersonaModel);
       vista.update(PersonaModel,PersonaVista);
     }
-public void agregar(Persona p) throws Exception{
-        piasystemairline.Logic.Model.instance().agregarPersona(p);
+public void Add(Persona p) throws Exception{
+        piasystemairline.Logic.Model.instance().AgregarPersona(p);
         vista.setVisible(false);
     }
 
@@ -34,14 +34,10 @@ public void agregar(Persona p) throws Exception{
     piasystemairline.PIASystemAirline.ControllerAPP.ChangeNameAndIsAdmin(name,admin);
     }
 
-    public void CargarPersona(String user){
+    public void Get(String user) throws Exception{
        Persona p = new Persona();
-        try {
-            p = piasystemairline.Logic.Model.instance().ConsultaUser(user);
-        } catch (Exception ex) {
-       
-        }
-       vista.Rellenar(p);
+       p = piasystemairline.Logic.Model.instance().ConsultaUser(user);
+       vista.RenderPersona(p);
     }
 
    

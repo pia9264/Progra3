@@ -33,7 +33,7 @@ public class Controller {
 
     void Add(Avion a) {
         try {
-            piasystemairline.Logic.Model.instance().agregarAvion(a);
+            piasystemairline.Logic.Model.instance().AgregarAvion(a);
           
         } catch (Exception ex) {
         }

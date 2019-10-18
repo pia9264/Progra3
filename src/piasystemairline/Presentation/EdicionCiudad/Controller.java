@@ -27,19 +27,16 @@ public class Controller {
      PIASystemAirline.Controler_Pais.Show();
     }
 
-    void Delate(String text) {
-     piasystemairline.Logic.Model.instance().EliminarCiudad(text);
+    void Delate(String text) throws Exception {
+        piasystemairline.Logic.Model.instance().EliminarCiudad(text);
     }
 
-    void Edit(Ciudad c) {
-        try {
-            piasystemairline.Logic.Model.instance().ModificarCiudad(c);
-        } catch (Exception ex) {
-        }
+    void Edit(Ciudad c) throws Exception {
+        piasystemairline.Logic.Model.instance().ModificarCiudad(c);
     }
 
-    Ciudad Shared(String text) {
-    return piasystemairline.Logic.Model.instance().ConsultarCiudad(text);
+    Ciudad Shared(String text) throws Exception {
+        return piasystemairline.Logic.Model.instance().ConsultarCiudad(text);
     }
 
     void AppShow() {
@@ -51,10 +48,7 @@ public class Controller {
     Vista.update(modelo, this);
     }
 
-    void Add(Ciudad c) {
-        try {
+    void Add(Ciudad c) throws Exception {
             piasystemairline.Logic.Model.instance().AgregarCuidad(c);
-        } catch (Exception ex) {
-        }
     }
 }
