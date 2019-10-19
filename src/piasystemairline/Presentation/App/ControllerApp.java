@@ -39,6 +39,10 @@ public class ControllerApp {
     void EdicionCiudadesPaises() {
     PIASystemAirline.Controler_Ciudad.Show();
     }
+    
+    void EdicionVueloShow() {
+    PIASystemAirline.Controler_Vuelo.Show();
+    }
     public void OnButtons() {
     vista.PonerTodo();
     }
@@ -91,5 +95,7 @@ public class ControllerApp {
             piasystemairline.PIASystemAirline.Controler_Persona.Show('1');
        }
     }
+
+    
 
 }

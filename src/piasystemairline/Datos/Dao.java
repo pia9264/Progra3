@@ -39,10 +39,10 @@ public class Dao {
     }
     
      public void VueloAdd(Vuelo v) throws Exception {
-    String sql="insert into Vuelo (id,Ruta_id,Avion_id,DateTime)"+
-         "values('%s','%s','%s','%s')";
+    String sql="insert into Vuelo (id,Ruta_id,Avion_id,Time,Day)"+
+         "values('%s','%s','%s','%s','%s')";
         sql=String.format(sql,v.getId(),v.getRuta().getId(),v.getAvion().getId(),
-                v.getDateTime());
+                v.getTime(),v.getDay());
         int count=db.executeUpdate(sql);
         if (count==0){
             throw new Exception("Vuelo ya existe");
@@ -204,9 +204,9 @@ public class Dao {
         }
     }
      public void VueloUpdate(Vuelo v) throws Exception {
-      String sql="update Vuelo set Ruta_id='%s',Avion_id='%s',DateTime='%s' where id='%s' ";
+      String sql="update Vuelo set Ruta_id='%s',Avion_id='%s',Time='%s',Day='%s' where id='%s' ";
          sql=String.format(sql,v.getRuta().getId(),v.getAvion().getId(),
-                v.getDateTime(),v.getId());
+                v.getTime(),v.getDay(),v.getId());
         int count=db.executeUpdate(sql);
         if (count==0){
             throw new Exception("Vuelo no existe");
@@ -345,10 +345,9 @@ public class Dao {
     public List<Ruta> RutaSearch(String id) throws Exception {
      List<Ruta> resultado = new ArrayList<Ruta>();
         try {
-            String sql="select * from "+
-                    "Ruta r inner join Ciudad c on r.origin_id=c.id "+
-                    "r.destiny_id=c.id r.escale_id=c.id "+
-                    "where r.id like '%%%s%%'";
+           String sql="select * from Ruta r inner join Ciudad c on r.origin_id=c.id"
+                + " join Ciudad c2 on r.destiny_id=c2.id join Ciudad c3 on "
+                + "r.escale_id=c3.id where r.id like '%%%s%%'";
             sql=String.format(sql,id);
             ResultSet rs =  db.executeQuery(sql);
             while (rs.next()) {
@@ -821,7 +820,8 @@ public class Dao {
          v.setId(rs.getString("id"));
          v.setAvion(AvionGet(rs.getString("Avion_id")));
          v.setRuta(RutaGet(rs.getString("Ruta_id")));
-         v.setDateTime(rs.getString("DateTime"));
+         v.setTime(rs.getString("Time"));
+         v.setDay(rs.getString("Day"));
          return v;
      } catch (SQLException ex) {
          return null;

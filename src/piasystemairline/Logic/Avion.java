@@ -22,7 +22,7 @@ public class Avion {
     @Override
     public String toString() {
         if(!id.equalsIgnoreCase("0")){
-          return "Avion{" + "id=" + id + '}';
+          return id+" "+M_Avion.getTrademark()+" "+M_Avion.getId();
        }else{
            return "";
        }

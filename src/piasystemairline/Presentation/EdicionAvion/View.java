@@ -5,6 +5,8 @@ import java.awt.Dimension;
 import java.util.Observable;
 
 import java.util.Observer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
 import piasystemairline.Logic.Avion;
@@ -182,18 +184,30 @@ public class View extends javax.swing.JInternalFrame implements Observer {
     }//GEN-LAST:event_closedActionPerformed
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
-        controller.Add(ToAvion());
-        Limpiar();
+        try {
+            controller.Add(ToAvion());
+            Limpiar();
+        } catch (Exception ex) {
+        id.setText("YA EXISTE!!");
+        }
     }//GEN-LAST:event_addActionPerformed
 
     private void editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editActionPerformed
-      controller.modificar(ToAvion());
-      Limpiar();
+        try {
+            controller.modificar(ToAvion());
+            Limpiar();
+        } catch (Exception ex) {
+        id.setText("NO EXISTE!!");
+        }
     }//GEN-LAST:event_editActionPerformed
 
     private void delateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delateActionPerformed
-       controller.Delate(id.getText());
-       Limpiar();
+        try {
+            controller.Delate(id.getText());
+            Limpiar();
+        } catch (Exception ex) {
+          id.setText("NO EXISTE!!");
+        }
     }//GEN-LAST:event_delateActionPerformed
 
     private Avion ToAvion(){

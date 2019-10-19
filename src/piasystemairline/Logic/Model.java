@@ -93,7 +93,9 @@ public class Model {
             return Datos.PaisGet(text);
     }
     
-    
+    public Vuelo ConsultarVuelo(String id) throws Exception {
+        return Datos.VueloGet(id);
+    }
     
     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%OBTENER LISTAS
     
@@ -195,5 +197,11 @@ public class Model {
     public void EliminarRuta(String id) throws Exception {
        Datos.EliminarRuta(id);
     }
+
+    public void EliminarVuelo(String id) throws Exception {
+       Datos.EliminarVuelo(id);
+    }
+
+   
 
 }

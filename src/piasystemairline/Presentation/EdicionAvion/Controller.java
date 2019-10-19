@@ -31,27 +31,20 @@ public class Controller {
      piasystemairline.PIASystemAirline.ControllerAPP.OnButtons();
     }
 
-    void Add(Avion a) {
-        try {
+    void Add(Avion a) throws Exception {
             piasystemairline.Logic.Model.instance().AgregarAvion(a);
-          
-        } catch (Exception ex) {
-        }
+            PIASystemAirline.Controler_Vuelo.update();
     }
 
-    void modificar(Avion ToAvion) {
-        try {
+    void modificar(Avion ToAvion) throws Exception {
             piasystemairline.Logic.Model.instance().ModificarAvion(ToAvion);
             modelo.addObserver(Vista);
-        } catch (Exception ex) {
-        }
+            PIASystemAirline.Controler_Vuelo.update();
     }
 
-    void Delate(String text) {
-        try {
+    void Delate(String text) throws Exception {
             piasystemairline.Logic.Model.instance().EliminarAvion(text);
-        } catch (Exception ex) {
-        }
+            PIASystemAirline.Controler_Vuelo.update();
     }
     
     public void update(){

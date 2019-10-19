@@ -30,15 +30,18 @@ public class Controller {
     }
 
     void Add(Ruta ToRuta) throws Exception {
-        piasystemairline.Logic.Model.instance().AgregarRuta(ToRuta);   
+        piasystemairline.Logic.Model.instance().AgregarRuta(ToRuta);
+        PIASystemAirline.Controler_Vuelo.update();
     }
 
     void Edit(Ruta ToRuta) throws Exception {
         piasystemairline.Logic.Model.instance().ModificarRuta(ToRuta);
+        PIASystemAirline.Controler_Vuelo.update();
     }
 
     void Delate(String id) throws Exception {
             piasystemairline.Logic.Model.instance().EliminarRuta(id);
+            PIASystemAirline.Controler_Vuelo.update();
     }
     static Ruta Get(String id) throws Exception {
            return piasystemairline.Logic.Model.instance().ConsultaRuta(id);
@@ -51,6 +54,10 @@ public class Controller {
           
         }
    
+    }
+    
+    public void Update(){
+     vista.update(modelo, this);
     }
     
     

@@ -7,6 +7,8 @@ package piasystemairline.Presentation.App;
 
 import java.util.Observable;
 import java.util.Observer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 public class PiaAPP extends javax.swing.JFrame implements Observer{
@@ -178,6 +180,11 @@ public class PiaAPP extends javax.swing.JFrame implements Observer{
         Aministra.add(jMenuItem1);
 
         Routes.setText("Flights");
+        Routes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RoutesActionPerformed(evt);
+            }
+        });
         Aministra.add(Routes);
 
         Payment.setText("Payment Methods");
@@ -231,8 +238,11 @@ public class PiaAPP extends javax.swing.JFrame implements Observer{
         if ("Sign up".equals(singup.getText())) {
             controlador.EdcionPersonaShow(); 
         }else{
-            controlador.EdcionPersonaShow();
-            controlador.CargarDatosPersonas(jMenu2.getText());
+            try {
+                controlador.EdcionPersonaShow();
+                controlador.CargarDatosPersonas(jMenu2.getText());
+            } catch (Exception ex) {
+            }
         }
     }//GEN-LAST:event_singupActionPerformed
 
@@ -262,6 +272,11 @@ public class PiaAPP extends javax.swing.JFrame implements Observer{
         QuitarTodo();
         controlador.EdcionRutaShow();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void RoutesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RoutesActionPerformed
+        QuitarTodo();
+        controlador.EdicionVueloShow();
+    }//GEN-LAST:event_RoutesActionPerformed
 
  public void QuitarTodo(){
          singup.setEnabled(false);

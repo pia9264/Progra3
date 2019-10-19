@@ -29,10 +29,12 @@ public class Controller {
 
     void Delate(String text) throws Exception {
         piasystemairline.Logic.Model.instance().EliminarCiudad(text);
+        PIASystemAirline.Controler_Ruta.Update();
     }
 
     void Edit(Ciudad c) throws Exception {
         piasystemairline.Logic.Model.instance().ModificarCiudad(c);
+        PIASystemAirline.Controler_Ruta.Update();
     }
 
     Ciudad Shared(String text) throws Exception {
@@ -50,5 +52,6 @@ public class Controller {
 
     void Add(Ciudad c) throws Exception {
             piasystemairline.Logic.Model.instance().AgregarCuidad(c);
+            PIASystemAirline.Controler_Ruta.Update();
     }
 }

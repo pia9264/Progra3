@@ -4,23 +4,35 @@ package piasystemairline.Logic;
 
 public class Vuelo {
   private String id;
-  private String DateTime;
+  private String Time;
+  private String Day;
   private Avion avion;
   private Ruta ruta;
 
     public Vuelo() {
         this.id = "0";
-        this.DateTime = "1900-01-01 01:00:00";
+        this.Time = "01:00:00";
+        this.Day = "";
         this.avion = new Avion();
         this.ruta = new Ruta();
     }
 
-    public Vuelo(String id, String DateTime,Avion avion, Ruta ruta) {
+    public Vuelo(String id, String Time, String Day, Avion avion, Ruta ruta) {
         this.id = id;
-        this.DateTime = DateTime;
+        this.Time = Time;
+        this.Day = Day;
         this.avion = avion;
         this.ruta = ruta;
     }
+
+    public String getDay() {
+        return Day;
+    }
+
+    public void setDay(String Day) {
+        this.Day = Day;
+    }
+
 
     public String getId() {
         return id;
@@ -30,12 +42,12 @@ public class Vuelo {
         this.id = id;
     }
 
-    public String getDateTime() {
-        return DateTime;
+    public String getTime() {
+        return Time;
     }
 
-    public void setDateTime(String DateTime) {
-        this.DateTime = DateTime;
+    public void setTime(String DateTime) {
+        this.Time = DateTime;
     }
 
     public Avion getAvion() {

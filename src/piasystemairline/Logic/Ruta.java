@@ -81,7 +81,7 @@ public class Ruta {
 
     @Override
     public String toString() {
-        return "Ruta{" + "name=" + name + '}';
+        return name +" "+duration;
     }
 
     @Override
