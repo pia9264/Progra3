@@ -97,6 +97,10 @@ public class Model {
         return Datos.VueloGet(id);
     }
     
+    public FormaPago ConsultarFormaPago(String id) throws Exception {
+        return Datos.FormaPagoGet(id);
+    }
+    
     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%OBTENER LISTAS
     
     public List<Persona> ObtenerListPersonas(){
@@ -202,6 +206,7 @@ public class Model {
        Datos.EliminarVuelo(id);
     }
 
-   
-
+    public void EliminarFormaPago(String id) throws Exception {
+       Datos.EliminarFormaPago(id);
+    }
 }

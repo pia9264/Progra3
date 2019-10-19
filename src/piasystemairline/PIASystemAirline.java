@@ -74,7 +74,15 @@ public class PIASystemAirline {
                new piasystemairline.Presentation.EdicionVuelo.Controller(VueloModel,VueloVista);
 
         Controler_Vuelo = VueloController;
-        
+      //-------------------------------FORMA DE PAGO-------------------------
+        piasystemairline.Presentation.EdicionPagos.Model FormaPagoModel = 
+               new piasystemairline.Presentation.EdicionPagos.Model();
+       piasystemairline.Presentation.EdicionPagos.View FormaPagoVista = 
+               new piasystemairline.Presentation.EdicionPagos.View();
+       piasystemairline.Presentation.EdicionPagos.Controller FormaPagoController = 
+               new piasystemairline.Presentation.EdicionPagos.Controller(FormaPagoModel,FormaPagoVista);
+     
+      Controler_FPago = FormaPagoController;
         
     //----------------------------APP--------------------------------
        piasystemairline.Presentation.App.ModelApp AppModel = 
@@ -94,6 +102,7 @@ public class PIASystemAirline {
         AppVista.fondo.add(CiudadVista);
         AppVista.fondo.add(RutaVista);
         AppVista.fondo.add(VueloVista);
+         AppVista.fondo.add(FormaPagoVista);
        
     }
     public static piasystemairline.Presentation.EdicionCiudad.Controller Controler_Ciudad;
@@ -103,6 +112,7 @@ public class PIASystemAirline {
     public static piasystemairline.Presentation.EdicionRuta.Controller Controler_Ruta;
     public static piasystemairline.Presentation.EdicionVuelo.Controller Controler_Vuelo;
     public static piasystemairline.Presentation.EdicionPersona.Controller Controler_Persona;
+    public static piasystemairline.Presentation.EdicionPagos.Controller Controler_FPago;
     public static piasystemairline.Presentation.App.ControllerApp ControllerAPP;
   
 }

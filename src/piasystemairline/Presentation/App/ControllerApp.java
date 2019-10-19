@@ -43,6 +43,10 @@ public class ControllerApp {
     void EdicionVueloShow() {
     PIASystemAirline.Controler_Vuelo.Show();
     }
+    
+    void EdicionFormaPago() {
+    PIASystemAirline.Controler_FPago.Show();
+    }
     public void OnButtons() {
     vista.PonerTodo();
     }
@@ -95,6 +99,8 @@ public class ControllerApp {
             piasystemairline.PIASystemAirline.Controler_Persona.Show('1');
        }
     }
+
+
 
     
 

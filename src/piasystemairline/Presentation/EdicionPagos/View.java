@@ -1,21 +1,18 @@
 
-package piasystemairline.Presentation.EdicionPais;
+package piasystemairline.Presentation.EdicionPagos;
 
 import java.awt.Dimension;
 import java.util.Observable;
 import java.util.Observer;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
-import piasystemairline.Logic.Pais;
+import piasystemairline.Logic.FormaPago;
+public class View extends javax.swing.JInternalFrame implements Observer {
 
-public class View extends javax.swing.JInternalFrame implements Observer{
-
-    Model modelo;
-    Controller controller;
     public View() {
         initComponents();
     }
+    Model modelo;
+    Controller controller;
     
     void setModelEdit(Model model) {
         this.modelo = model;
@@ -31,15 +28,15 @@ public class View extends javax.swing.JInternalFrame implements Observer{
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         id = new javax.swing.JTextField();
-        name = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        data = new javax.swing.JTextField();
+        close = new javax.swing.JButton();
+        add = new javax.swing.JButton();
         delate = new javax.swing.JButton();
         shared = new javax.swing.JButton();
-        add = new javax.swing.JButton();
 
         jLabel1.setText("ID");
 
-        jLabel2.setText("Name");
+        jLabel2.setText("Data");
 
         id.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -47,10 +44,18 @@ public class View extends javax.swing.JInternalFrame implements Observer{
             }
         });
 
-        jButton1.setText("Closed");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        close.setText("Close");
+        close.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                closeActionPerformed(evt);
+            }
+        });
+
+        add.setText("Add");
+        add.setEnabled(false);
+        add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addActionPerformed(evt);
             }
         });
 
@@ -70,72 +75,94 @@ public class View extends javax.swing.JInternalFrame implements Observer{
             }
         });
 
-        add.setText("Add");
-        add.setEnabled(false);
-        add.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
-                        .addGap(31, 31, 31)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(name, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
-                            .addComponent(id))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(32, 32, 32)
+                                .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(18, 18, 18)
+                                .addComponent(data)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(shared, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(shared, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(close)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                         .addComponent(add)
-                        .addGap(2, 2, 2)
-                        .addComponent(delate)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(29, 29, 29)
+                        .addComponent(delate)
+                        .addGap(33, 33, 33))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(11, 11, 11)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(shared, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel1)
-                        .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(shared, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(delate)
-                    .addComponent(add))
-                .addContainerGap(24, Short.MAX_VALUE))
+                    .addComponent(jLabel2)
+                    .addComponent(data, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(close)
+                    .addComponent(add)
+                    .addComponent(delate)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       this.setVisible(false);
+    private void closeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeActionPerformed
        Limpiar();
-       controller.CiudadShow();
-    }//GEN-LAST:event_jButton1ActionPerformed
+       this.setVisible(false);
+       controller.AppShow();
+    }//GEN-LAST:event_closeActionPerformed
+
+    private void sharedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sharedActionPerformed
+        try {
+            FormaPago p = controller.Get(id.getText());
+            id.setText(p.getId());
+            data.setText(p.getData());
+           
+        } catch (Exception ex) {
+            id.setText("NO EXISTE!!");
+        }
+    }//GEN-LAST:event_sharedActionPerformed
+
+    private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
+         try {
+            controller.add(new FormaPago(id.getText(),data.getText()));
+            Limpiar();
+        } catch (Exception ex) {
+            id.setText("YA EXISTE!!");
+        }
+    }//GEN-LAST:event_addActionPerformed
+
+    private void delateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delateActionPerformed
+       try {
+            controller.delate(id.getText());
+            Limpiar();
+        } catch (Exception ex) {
+            id.setText("NO EXISTE!!");
+        }
+    }//GEN-LAST:event_delateActionPerformed
 
     private void idKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idKeyReleased
-     if(id.getText().isEmpty()){
+        if(id.getText().isEmpty()){
         delate.setEnabled(false);
         add.setEnabled(false);
         shared.setEnabled(false);
@@ -146,58 +173,29 @@ public class View extends javax.swing.JInternalFrame implements Observer{
       }
     }//GEN-LAST:event_idKeyReleased
 
-    private void delateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delateActionPerformed
-        try {
-            controller.delate(id.getText());
-            Limpiar();
-        } catch (Exception ex) {
-            id.setText("NO EXISTE!!");
-        }
-    }//GEN-LAST:event_delateActionPerformed
-
-    private void sharedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sharedActionPerformed
-        try {
-            Pais p = controller.Get(id.getText());
-            id.setText(p.getId());
-            name.setText(p.getName());
-        } catch (Exception ex) {
-            id.setText("NO EXISTE!!");
-        }
-    }//GEN-LAST:event_sharedActionPerformed
-
-    private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
-        try {
-            controller.add(new Pais(id.getText(),name.getText()));
-            Limpiar();
-        } catch (Exception ex) {
-            id.setText("YA EXISTE!!");
-        }
-    }//GEN-LAST:event_addActionPerformed
-
     @Override
     public void update(Observable o, Object arg) {
     Centrar();
     }
 
+    
     private void Centrar() {
     Dimension desktopSize = this.getSize();
     this.setLocation((desktopSize.width),
     (desktopSize.height/2 - JFrame.HEIGHT));
     }
-
+   private void Limpiar() {
+      id.setText("");
+      data.setText("");
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton add;
+    private javax.swing.JButton close;
+    private javax.swing.JTextField data;
     private javax.swing.JButton delate;
     private javax.swing.JTextField id;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField name;
     private javax.swing.JButton shared;
     // End of variables declaration//GEN-END:variables
-
-    private void Limpiar() {
-      id.setText("");
-      name.setText("");
-    }
 }

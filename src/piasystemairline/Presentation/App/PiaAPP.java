@@ -188,6 +188,11 @@ public class PiaAPP extends javax.swing.JFrame implements Observer{
         Aministra.add(Routes);
 
         Payment.setText("Payment Methods");
+        Payment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PaymentActionPerformed(evt);
+            }
+        });
         Aministra.add(Payment);
 
         Reports.setText("Reports");
@@ -277,6 +282,11 @@ public class PiaAPP extends javax.swing.JFrame implements Observer{
         QuitarTodo();
         controlador.EdicionVueloShow();
     }//GEN-LAST:event_RoutesActionPerformed
+
+    private void PaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PaymentActionPerformed
+        QuitarTodo();
+        controlador.EdicionFormaPago();
+    }//GEN-LAST:event_PaymentActionPerformed
 
  public void QuitarTodo(){
          singup.setEnabled(false);

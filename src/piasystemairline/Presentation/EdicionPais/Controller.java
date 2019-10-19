@@ -12,9 +12,9 @@ public class Controller {
     public Controller(Model model, View vista) {
       modelo = model;
       Vista = vista;
-      vista.setControlador(this);
-      vista.setModelEdit(modelo);
-      vista.update(modelo, this);
+      Vista.setControlador(this);
+      Vista.setModelEdit(modelo);
+      Vista.update(modelo, this);
     }
 
     public void Show() {
