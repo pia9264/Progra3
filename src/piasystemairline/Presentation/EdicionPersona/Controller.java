@@ -18,11 +18,13 @@ public class Controller {
 public void Add(Persona p) throws Exception{
         piasystemairline.Logic.Model.instance().AgregarPersona(p);
         vista.setVisible(false);
+        vista.limpiar();
     }
 
     public void Show(char n) {
       vista.isAdmin = n;
       vista.welcome(n);
+      
       vista.setVisible(true);
     }
     

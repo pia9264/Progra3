@@ -16,7 +16,6 @@ import piasystemairline.PIASystemAirline;
 public class ControllerApp {
     ModelApp model;
     PiaAPP vista;
-
     public ControllerApp(ModelApp model, PiaAPP vista) {
        
           this.model = model;
@@ -26,8 +25,8 @@ public class ControllerApp {
           VerificarExisteAdmin();
     }
     
-   public void EdcionPersonaShow(){
-   PIASystemAirline.Controler_Persona.Show('0');
+   public void EdcionPersonaShow(char n){
+   PIASystemAirline.Controler_Persona.Show(n);
    }
    public void EdcionAvionShow(){
    PIASystemAirline.Controler_Avion.Show();
@@ -49,6 +48,9 @@ public class ControllerApp {
     }
     public void OnButtons() {
     vista.PonerTodo();
+    }
+    void ViewMainShow() {
+        PIASystemAirline.Controler_Viaje.Show();
     }
 
     public void ChangeNameAndIsAdmin(String name, char admin) {
@@ -99,6 +101,8 @@ public class ControllerApp {
             piasystemairline.PIASystemAirline.Controler_Persona.Show('1');
        }
     }
+
+
 
 
 

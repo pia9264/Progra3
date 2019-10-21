@@ -1,6 +1,7 @@
 
 package piasystemairline.Presentation.EdicionPais;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
@@ -14,6 +15,7 @@ public class Model extends Observable{
     }
 
     public Model() {
+       Paises = new ArrayList<>();
        model = new Pais();
     }
     
@@ -22,25 +24,24 @@ public class Model extends Observable{
          return model;
     }
 
-    public void setModelPais(Pais model) {
-        this.model = model;
-
-    }
-
     public Pais getModel() {
         return model;
     }
 
     public void setModel(Pais model) {
         this.model = model;
+        this.setChanged();
+        this.notifyObservers();  
     }
 
     public List<Pais> getPaises() {
-        return Paises;
+        return Paises; 
     }
 
     public void setPaises(List<Pais> Paises) {
         this.Paises = Paises;
+        this.setChanged();
+        this.notifyObservers();  
     }
 
     @Override

@@ -44,6 +44,7 @@ public class PiaAPP extends javax.swing.JFrame implements Observer{
         Routes = new javax.swing.JMenuItem();
         Payment = new javax.swing.JMenuItem();
         Reports = new javax.swing.JMenuItem();
+        other = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -198,6 +199,14 @@ public class PiaAPP extends javax.swing.JFrame implements Observer{
         Reports.setText("Reports");
         Aministra.add(Reports);
 
+        other.setText("Add Other Admin");
+        other.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                otherActionPerformed(evt);
+            }
+        });
+        Aministra.add(other);
+
         jMenuBar1.add(Aministra);
 
         setJMenuBar(jMenuBar1);
@@ -241,10 +250,10 @@ public class PiaAPP extends javax.swing.JFrame implements Observer{
     private void singupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_singupActionPerformed
         QuitarTodo();
         if ("Sign up".equals(singup.getText())) {
-            controlador.EdcionPersonaShow(); 
+            controlador.EdcionPersonaShow('0'); 
         }else{
             try {
-                controlador.EdcionPersonaShow();
+                controlador.EdcionPersonaShow('0');
                 controlador.CargarDatosPersonas(jMenu2.getText());
             } catch (Exception ex) {
             }
@@ -260,7 +269,8 @@ public class PiaAPP extends javax.swing.JFrame implements Observer{
     }//GEN-LAST:event_salirActionPerformed
 
     private void buscarVueloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarVueloActionPerformed
-        // TODO add your handling code here:
+        QuitarTodo();
+        controlador.ViewMainShow();
     }//GEN-LAST:event_buscarVueloActionPerformed
 
     private void AircraftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AircraftActionPerformed
@@ -287,6 +297,11 @@ public class PiaAPP extends javax.swing.JFrame implements Observer{
         QuitarTodo();
         controlador.EdicionFormaPago();
     }//GEN-LAST:event_PaymentActionPerformed
+
+    private void otherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_otherActionPerformed
+         QuitarTodo();
+        controlador.EdcionPersonaShow('1');
+    }//GEN-LAST:event_otherActionPerformed
 
  public void QuitarTodo(){
          singup.setEnabled(false);
@@ -342,6 +357,7 @@ public void PonerTodo(){
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem other;
     private javax.swing.JButton referente;
     private javax.swing.JMenuItem salir;
     private javax.swing.JMenuItem singin;

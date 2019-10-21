@@ -260,6 +260,7 @@ public class View extends javax.swing.JInternalFrame implements Observer{
     private void closeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeActionPerformed
      this.setVisible(false);
      controller.appON();
+      limpiar();
     }//GEN-LAST:event_closeActionPerformed
 
     private Persona ToPersona(){
@@ -358,6 +359,20 @@ public class View extends javax.swing.JInternalFrame implements Observer{
         CargarCombox();
         Centrar();
         welcome.setVisible(false);
+    }
+    
+    public void limpiar(){
+      Addres.setText("");
+      Email.setText("");
+      LastName.setText("");
+      Mobile.setText("");
+      Nombre.setText("");
+      Password.setText("");
+      Username.setText("");
+      WorkPhone.setText("");
+      Mes.setSelectedItem(01);
+      Anio.setSelectedItem(2000);
+      Dia.setSelectedItem(01);
     }
  
 }

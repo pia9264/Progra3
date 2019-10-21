@@ -15,6 +15,7 @@ public class View extends javax.swing.JInternalFrame implements Observer{
     Controller controller;
     public View() {
         initComponents();
+        
     }
     
     void setModelEdit(Model model) {
@@ -199,8 +200,8 @@ public class View extends javax.swing.JInternalFrame implements Observer{
 
     @Override
     public void update(Observable o, Object arg) {
-    Centrar();
-    CargarJtable();
+      Centrar();
+      CargarJtable();
     }
 
     private void Centrar() {

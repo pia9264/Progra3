@@ -94,6 +94,14 @@
                 <Property name="text" type="java.lang.String" value="Reports"/>
               </Properties>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="other">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Add Other Admin"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="otherActionPerformed"/>
+              </Events>
+            </MenuItem>
           </SubComponents>
         </Menu>
       </SubComponents>
