@@ -1,0 +1,15 @@
+Boeing 737 189
+Boeing 747 660
+Boeing 767 375
+Boeing 777 396
+Boeing 787 330
+Airbus A320 240
+Airbus A330 335
+Airbus A350 300
+Airbus A380 853
+Bombardier Q400 80
+Bombardier CRJ700 75
+Bombardier CRJ900 78
+Bombardier CRJ1000 100
+Bombardier CS100 110
+Bombardier CS300 145

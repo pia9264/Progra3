@@ -1,0 +1,32 @@
+AG/Saint John’s
+AR/Buenos Aires
+BT/Nasáu
+BB/Bridgetown
+BZ/Belmopán
+BO/Sucre
+BR/Brasilia
+CA/Ottawa
+CL/Santiago de Chile
+CO/Bogotá
+CR/San José
+CU/La Habana
+DM/Roseau
+EC/Quito
+US/Washington D. C.
+GT/Ciudad de Guatemala
+GY/Georgetown
+HT/Puerto Príncipe
+HN/Tegucigalpa
+JM/Kingston
+MX/Ciudad de México
+NI/Managua
+PA/Panamá
+PY/Asunción
+PE/Lima
+DO/Santo Domingo
+VC/Kingstown
+LC/Castries
+SR/Paramaribo
+TT/Puerto España
+UY/Montevideo
+VE/Caracas
