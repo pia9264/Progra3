@@ -10,27 +10,50 @@ public class Ruta {
   private Ciudad origin;
   private Ciudad destiny;
   private Ciudad scale;
+  private int price;
+  private int discount;
 
-    public Ruta(String id, String name, String duration, Ciudad origin, Ciudad destiny, Ciudad scale) {
+    public Ruta(String id, String name, String duration, Ciudad origin, Ciudad destiny, Ciudad scale, int price, int discount) {
         this.id = id;
         this.name = name;
         this.duration = duration;
         this.origin = origin;
         this.destiny = destiny;
         this.scale = scale;
+        this.price = price;
+        this.discount = discount;
     }
-   
-   
+
+ 
 
     public Ruta() {
-      this.id = "0";
+      this.id = "00";
       this.name = "";
       this.duration ="";
+      this.price = 0;
+      this.discount =0;
       this.scale = new Ciudad();
       this.destiny = new Ciudad();
       this.origin = new Ciudad();
     }
 
+    public int getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(int discount) {
+        this.discount = discount;
+    }
+
+    
+    
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
     public Ciudad getOrigin() {
         return origin;
     }

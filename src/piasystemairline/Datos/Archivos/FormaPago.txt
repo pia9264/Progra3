@@ -1,0 +1,4 @@
+Cash/Detalle
+Debit card/Card Number
+Credit card/Card Number
+Check/Check Number

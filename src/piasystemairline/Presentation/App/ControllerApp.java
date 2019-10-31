@@ -9,76 +9,85 @@ import piasystemairline.Logic.Persona;
 import piasystemairline.Logic.Reservacion;
 import piasystemairline.Logic.Ruta;
 import piasystemairline.Logic.Tiquete;
-import piasystemairline.Logic.Viaje;
 import piasystemairline.Logic.Vuelo;
 import piasystemairline.PIASystemAirline;
 
 public class ControllerApp {
     ModelApp model;
     PiaAPP vista;
+    public boolean bandera = true;
     public ControllerApp(ModelApp model, PiaAPP vista) {
        
           this.model = model;
           this.vista = vista;
           vista.setControlador(this);
+          vista.setModel(model);
           try {InicializarBase();} catch (Exception ex) {}
           VerificarExisteAdmin();
+          vista.update(model, this);
+   }
+   
+   public void Obtenerlist(){
+    model.setRutas(piasystemairline.Logic.Model.instance().ObtenerListRutasDescuento());
     }
-    
-   public void EdcionPersonaShow(char n){
-   PIASystemAirline.Controler_Persona.Show(n);
+   public void EdcionPersonaShow(){
+   PIASystemAirline.Controler_Tiquete.update();
+   PIASystemAirline.Controler_Persona.Show();
    }
    public void EdcionAvionShow(){
    PIASystemAirline.Controler_Avion.Show();
+   bandera = false;
    }
    public void EdcionRutaShow(){
    PIASystemAirline.Controler_Ruta.Show();
+   bandera = false;
    }
    
+    void RegistroShow() {
+    PIASystemAirline.Controler_Reserva.Show();
+   bandera = false;
+    }
     void EdicionCiudadesPaises() {
     PIASystemAirline.Controler_Ciudad.Show();
+    bandera = false;
     }
     
-    void EdicionVueloShow() {
-    PIASystemAirline.Controler_Vuelo.Show();
+    void EdicionVueloShowV1() {
+    PIASystemAirline.Controler_Vuelo.ShowV1();
+    bandera = false;
+    }
+    
+    
+    void EdicionVueloShowV2() {
+     PIASystemAirline.Controler_Vuelo.ShowV2();
+     bandera = false;
     }
     
     void EdicionFormaPago() {
     PIASystemAirline.Controler_FPago.Show();
+    bandera = false;
     }
     public void OnButtons() {
-    vista.PonerTodo();
+     if(bandera){vista.PonerTodo();}
+      vista.ponersing();
+    
     }
-    void ViewMainShow() {
-        PIASystemAirline.Controler_Viaje.Show();
+    void EdicionViaje() {
+        PIASystemAirline.Controler_Tiquete.Show();
+        bandera = false;
     }
 
     public void ChangeNameAndIsAdmin(String name, char admin) {
     vista.UserActivate(name,admin);
     }
 
-    Persona Existe(String user, String pass) throws Exception {
-      Persona p = piasystemairline.Logic.Model.instance().ConsultaUser(user);
-      if(pass.equals(p.getPass())){
-      return p;
-      }else{
-      return p = new Persona(); 
-      }
-    }
-
-    void appON() {
-     piasystemairline.PIASystemAirline.ControllerAPP.OnButtons();
-    }
-    
     void SinginShow(){
-      Usersingin u = new Usersingin();
-      u.setController(this);
-      vista.fondo.add(u);
-      
+    PIASystemAirline.Controler_Persona.singShow();
     }
 
-    void CargarDatosPersonas(String user) throws Exception {
-    PIASystemAirline.Controler_Persona.Get(user);
+    void CargarDatosPersonas() throws Exception {
+     PIASystemAirline.Controler_Persona.Show();
+     PIASystemAirline.Controler_Persona.RenderP();
     }
     
     private void InicializarBase() throws Exception{
@@ -89,21 +98,42 @@ public class ControllerApp {
       piasystemairline.Logic.Model.instance().AgregarAvion(new Avion());
       piasystemairline.Logic.Model.instance().AgregarVuelo(new Vuelo());
       piasystemairline.Logic.Model.instance().AgregarFormaPago(new FormaPago());
-      piasystemairline.Logic.Model.instance().AgregarTiquete(new Tiquete());
       piasystemairline.Logic.Model.instance().AgregarReservacion(new Reservacion());
-      piasystemairline.Logic.Model.instance().AgregarViaje(new Viaje());
+      piasystemairline.Logic.Model.instance().AgregarTiquete(new Tiquete());
    }
 
     private void VerificarExisteAdmin(){
        if(piasystemairline.Logic.Model.instance().ObtenerListPersonas().isEmpty()){
             vista.setVisible(true);
             vista.QuitarTodo();
-            piasystemairline.PIASystemAirline.Controler_Persona.Show('1');
+            piasystemairline.PIASystemAirline.Controler_Persona.setIsAdmin();
+            piasystemairline.PIASystemAirline.Controler_Persona.Show();
        }
+    }
+
+    void SalirUser() {
+    PIASystemAirline.Controler_Persona.Set(new Persona());
+    PIASystemAirline.Controler_Tiquete.update();
     }
 
 
 
+    public void update(){
+    vista.update(model, this);
+    }
+
+    void EnviarVueloClick(int fila) {
+     Ruta r = model.getRutas().get(fila);
+     vista.QuitarTodo();
+     EdicionVueloShowV2();
+     piasystemairline.PIASystemAirline.Controler_Vuelo.BuscarVuelo(r.getOrigin(),r.getDestiny(),"%%","");
+    }
+
+    void Edcionasientos() {
+     piasystemairline.PIASystemAirline.Controler_Asientos.ViewShow();
+    }
+
+   
 
 
     

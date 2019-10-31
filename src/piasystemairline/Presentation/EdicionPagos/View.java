@@ -33,6 +33,9 @@ public class View extends javax.swing.JInternalFrame implements Observer {
         add = new javax.swing.JButton();
         delate = new javax.swing.JButton();
         shared = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(98, 240, 238));
 
         jLabel1.setText("ID");
 
@@ -44,6 +47,7 @@ public class View extends javax.swing.JInternalFrame implements Observer {
             }
         });
 
+        close.setIcon(new javax.swing.ImageIcon(getClass().getResource("/piasystemairline/Presentation/iconos/icons8-circled_left_2.png"))); // NOI18N
         close.setText("Close");
         close.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -51,6 +55,7 @@ public class View extends javax.swing.JInternalFrame implements Observer {
             }
         });
 
+        add.setIcon(new javax.swing.ImageIcon(getClass().getResource("/piasystemairline/Presentation/iconos/icons8-add.png"))); // NOI18N
         add.setText("Add");
         add.setEnabled(false);
         add.addActionListener(new java.awt.event.ActionListener() {
@@ -59,6 +64,7 @@ public class View extends javax.swing.JInternalFrame implements Observer {
             }
         });
 
+        delate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/piasystemairline/Presentation/iconos/icons8-trash.png"))); // NOI18N
         delate.setText("Delate");
         delate.setEnabled(false);
         delate.addActionListener(new java.awt.event.ActionListener() {
@@ -74,6 +80,9 @@ public class View extends javax.swing.JInternalFrame implements Observer {
                 sharedActionPerformed(evt);
             }
         });
+
+        jLabel3.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        jLabel3.setText(" Payment Method Management");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -95,18 +104,25 @@ public class View extends javax.swing.JInternalFrame implements Observer {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(shared, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(close)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                        .addComponent(add)
-                        .addGap(29, 29, 29)
-                        .addComponent(delate)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jLabel3))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(close)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                                .addComponent(add)
+                                .addGap(29, 29, 29)
+                                .addComponent(delate)))
                         .addGap(33, 33, 33))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addContainerGap()
+                .addComponent(jLabel3)
+                .addGap(1, 1, 1)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel1)
@@ -116,7 +132,7 @@ public class View extends javax.swing.JInternalFrame implements Observer {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(data, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(close)
                     .addComponent(add)
@@ -196,6 +212,7 @@ public class View extends javax.swing.JInternalFrame implements Observer {
     private javax.swing.JTextField id;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JButton shared;
     // End of variables declaration//GEN-END:variables
 }

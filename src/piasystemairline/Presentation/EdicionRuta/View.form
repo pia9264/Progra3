@@ -8,6 +8,11 @@
       </Properties>
     </Component>
   </NonVisualComponents>
+  <Properties>
+    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+      <Color blue="ee" green="f0" red="62" type="rgb"/>
+    </Property>
+  </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
   </SyntheticProperties>
@@ -27,54 +32,68 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="jLabel1" min="-2" pref="23" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="origin" alignment="0" max="32767" attributes="0"/>
-                          <Component id="escale" alignment="0" max="32767" attributes="0"/>
-                          <Component id="destiny" alignment="0" pref="271" max="32767" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="id" min="-2" pref="153" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="shared" min="-2" pref="30" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="duration" alignment="0" pref="210" max="32767" attributes="0"/>
-                              <Component id="name" alignment="0" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                  </Group>
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="close" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="add" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="18" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="edit" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="delate" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel1" min="-2" pref="23" max="-2" attributes="0"/>
+                          <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="id" min="-2" pref="153" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="shared" min="-2" pref="30" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="escale" alignment="0" pref="224" max="32767" attributes="0"/>
+                          <Component id="origin" alignment="0" max="32767" attributes="0"/>
+                          <Component id="destiny" alignment="0" max="32767" attributes="0"/>
+                          <Component id="name" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="hora" min="-2" pref="72" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="min" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="price" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="discount" min="-2" pref="36" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
               </Group>
-              <EmptySpace pref="27" max="32767" attributes="0"/>
+              <EmptySpace pref="99" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <Component id="jLabel8" min="-2" pref="215" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+              <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="id" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -85,12 +104,31 @@
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="name" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="price" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="discount" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="duration" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="hora" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="min" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="origin" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -112,7 +150,7 @@
                   <Component id="edit" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="delate" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="43" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -149,13 +187,14 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="id">
-      <Events>
-        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="idKeyReleased"/>
-      </Events>
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="name">
-    </Component>
-    <Component class="javax.swing.JTextField" name="duration">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="origin">
       <Properties>
@@ -163,6 +202,9 @@
           <StringArray count="0"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="originItemStateChanged"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Ciudad&gt;"/>
       </AuxValues>
@@ -173,6 +215,9 @@
           <StringArray count="0"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="escaleActionPerformed"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Ciudad&gt;"/>
       </AuxValues>
@@ -183,12 +228,18 @@
           <StringArray count="0"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="destinyItemStateChanged"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Ciudad&gt;"/>
       </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="close">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/piasystemairline/Presentation/iconos/icons8-circled_left_2.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Close"/>
       </Properties>
       <Events>
@@ -197,6 +248,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="add">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/piasystemairline/Presentation/iconos/icons8-add.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Add"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
@@ -206,6 +260,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="edit">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/piasystemairline/Presentation/iconos/icons8-edit.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Edit"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
@@ -215,6 +272,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="delate">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/piasystemairline/Presentation/iconos/icons8-trash.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Delate"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
@@ -227,11 +287,107 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/piasystemairline/Presentation/iconos/icons8-google_web_search.png"/>
         </Property>
-        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sharedActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="price">
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="priceKeyReleased"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel7">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Price"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="hora">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="24">
+            <StringItem index="0" value="01"/>
+            <StringItem index="1" value="02"/>
+            <StringItem index="2" value="03"/>
+            <StringItem index="3" value="04"/>
+            <StringItem index="4" value="05"/>
+            <StringItem index="5" value="06"/>
+            <StringItem index="6" value="07"/>
+            <StringItem index="7" value="08"/>
+            <StringItem index="8" value="09"/>
+            <StringItem index="9" value="10"/>
+            <StringItem index="10" value="11"/>
+            <StringItem index="11" value="24"/>
+            <StringItem index="12" value="13"/>
+            <StringItem index="13" value="14"/>
+            <StringItem index="14" value="15"/>
+            <StringItem index="15" value="16"/>
+            <StringItem index="16" value="17"/>
+            <StringItem index="17" value="18"/>
+            <StringItem index="18" value="19"/>
+            <StringItem index="19" value="20"/>
+            <StringItem index="20" value="21"/>
+            <StringItem index="21" value="22"/>
+            <StringItem index="22" value="23"/>
+            <StringItem index="23" value="24"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="min">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="12">
+            <StringItem index="0" value="00"/>
+            <StringItem index="1" value="05"/>
+            <StringItem index="2" value="10"/>
+            <StringItem index="3" value="15"/>
+            <StringItem index="4" value="20"/>
+            <StringItem index="5" value="25"/>
+            <StringItem index="6" value="30"/>
+            <StringItem index="7" value="35"/>
+            <StringItem index="8" value="40"/>
+            <StringItem index="9" value="45"/>
+            <StringItem index="10" value="50"/>
+            <StringItem index="11" value="55"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel8">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Lucida Grande" size="18" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Routes Management"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="discount">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="0"/>
+      </Properties>
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="discountKeyReleased"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel9">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Lucida Grande" size="15" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="%"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel10">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Discount"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

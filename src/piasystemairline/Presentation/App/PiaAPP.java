@@ -10,9 +10,10 @@ import java.util.Observer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import piasystemairline.Logic.fondo;
 
 public class PiaAPP extends javax.swing.JFrame implements Observer{
-   ControllerApp controlador;
+
     public PiaAPP() {
         cargarFondo();
         initComponents();
@@ -20,7 +21,16 @@ public class PiaAPP extends javax.swing.JFrame implements Observer{
         salir.setVisible(false);
         Aministra.setVisible(false);
     }
+    ModelApp modelo;
+    ControllerApp controller;
+    
+    void setModel(ModelApp model) {
+        this.modelo = model;
+    }
 
+    void setControlador(ControllerApp aThis) {
+         this.controller = aThis;
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -31,6 +41,9 @@ public class PiaAPP extends javax.swing.JFrame implements Observer{
         contactenos = new javax.swing.JButton();
         referente = new javax.swing.JButton();
         buscarVuelo = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        descuentos = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -89,37 +102,66 @@ public class PiaAPP extends javax.swing.JFrame implements Observer{
             }
         });
 
+        descuentos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        descuentos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                descuentosMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(descuentos);
+
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        jLabel1.setText("Routes with Discount");
+
         javax.swing.GroupLayout fondoLayout = new javax.swing.GroupLayout(fondo);
         fondo.setLayout(fondoLayout);
         fondoLayout.setHorizontalGroup(
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(fondoLayout.createSequentialGroup()
-                .addGap(274, 274, 274)
-                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(contactenos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(historia, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(referente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE))
-                .addGap(283, 283, 283))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(buscarVuelo, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(95, 95, 95))
+                .addGap(44, 44, 44)
+                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(contactenos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(historia, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(referente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(210, 210, 210)
+                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(fondoLayout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buscarVuelo, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 529, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(101, 101, 101))
         );
         fondoLayout.setVerticalGroup(
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fondoLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(buscarVuelo, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
-                .addComponent(referente, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(136, Short.MAX_VALUE)
+                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(buscarVuelo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(18, 18, 18)
-                .addComponent(historia, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(contactenos, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28))
+                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(fondoLayout.createSequentialGroup()
+                        .addComponent(referente, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(historia, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34)
+                        .addComponent(contactenos, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(62, 62, 62))
         );
 
-        jMenu1.setText("NAME");
+        jMenu1.setText("PIA AIRLINE");
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("USER");
@@ -226,35 +268,40 @@ public class PiaAPP extends javax.swing.JFrame implements Observer{
     }// </editor-fold>//GEN-END:initComponents
 
     private void historiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historiaActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_historiaActionPerformed
 
     private void contactenosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contactenosActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_contactenosActionPerformed
 
     private void referenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_referenteActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_referenteActionPerformed
 
     private void singinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_singinActionPerformed
-          
-           QuitarTodo();
+
         if ("Sign in".equals(singin.getText())) {
            singup.setEnabled(false);
            singin.setEnabled(false);
-           controlador.SinginShow();
+           controller.SinginShow();
+        }else{
+          QuitarTodo();
+          controller.RegistroShow();
         }
     }//GEN-LAST:event_singinActionPerformed
 
     private void singupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_singupActionPerformed
         QuitarTodo();
+         singup.setEnabled(false);
+         singin.setEnabled(false);
+         singup.setEnabled(false);
+         singin.setEnabled(false);
         if ("Sign up".equals(singup.getText())) {
-            controlador.EdcionPersonaShow('0'); 
+            controller.EdcionPersonaShow(); 
         }else{
             try {
-                controlador.EdcionPersonaShow('0');
-                controlador.CargarDatosPersonas(jMenu2.getText());
+                controller.CargarDatosPersonas();
             } catch (Exception ex) {
             }
         }
@@ -266,50 +313,61 @@ public class PiaAPP extends javax.swing.JFrame implements Observer{
      salir.setVisible(false);
      Aministra.setVisible(false);
      jMenu2.setText("USER");
+     controller.SalirUser();
     }//GEN-LAST:event_salirActionPerformed
 
     private void buscarVueloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarVueloActionPerformed
         QuitarTodo();
-        controlador.ViewMainShow();
+        controller.EdicionVueloShowV2();
     }//GEN-LAST:event_buscarVueloActionPerformed
 
     private void AircraftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AircraftActionPerformed
         QuitarTodo();
-        controlador.EdcionAvionShow();
+        controller.EdcionAvionShow();
     }//GEN-LAST:event_AircraftActionPerformed
 
     private void CitiesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CitiesActionPerformed
         QuitarTodo();
-        controlador.EdicionCiudadesPaises();
+        controller.EdicionCiudadesPaises();
     }//GEN-LAST:event_CitiesActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         QuitarTodo();
-        controlador.EdcionRutaShow();
+        controller.EdcionRutaShow();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void RoutesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RoutesActionPerformed
         QuitarTodo();
-        controlador.EdicionVueloShow();
+        controller.EdicionVueloShowV1();
     }//GEN-LAST:event_RoutesActionPerformed
 
     private void PaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PaymentActionPerformed
         QuitarTodo();
-        controlador.EdicionFormaPago();
+        controller.EdicionFormaPago();
     }//GEN-LAST:event_PaymentActionPerformed
 
     private void otherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_otherActionPerformed
-         QuitarTodo();
-        controlador.EdcionPersonaShow('1');
+        QuitarTodo();
+        controller.EdcionPersonaShow();
     }//GEN-LAST:event_otherActionPerformed
 
+    private void descuentosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_descuentosMouseClicked
+    if (evt.getClickCount() == 2) {
+        int fila = this.descuentos.rowAtPoint(evt.getPoint());
+        controller.EnviarVueloClick(fila);
+        }
+    }//GEN-LAST:event_descuentosMouseClicked
+
  public void QuitarTodo(){
-         singup.setEnabled(false);
-         singin.setEnabled(false);
          buscarVuelo.setVisible(false);
          contactenos.setVisible(false);
          historia.setVisible(false);
-         referente.setVisible(false);     
+         referente.setVisible(false);
+         descuentos.setVisible(false);
+         jScrollPane1.setVisible(false);
+         jLabel1.setVisible(false);
+        
+
  }
  
 public void PonerTodo(){
@@ -319,14 +377,11 @@ public void PonerTodo(){
          referente.setVisible(true);
          singup.setEnabled(true);
          singin.setEnabled(true);
+         descuentos.setVisible(true);
+         jScrollPane1.setVisible(true);
+         jLabel1.setVisible(true);
+         
  }
-
-
-
- void setControlador(ControllerApp c) {
-     this.controlador = c;
- }
-
  public void IsAdmin(){
  
  }
@@ -351,12 +406,15 @@ public void PonerTodo(){
     private javax.swing.JMenuItem Routes;
     private javax.swing.JButton buscarVuelo;
     private javax.swing.JButton contactenos;
+    private javax.swing.JTable descuentos;
     public javax.swing.JPanel fondo;
     private javax.swing.JButton historia;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JMenuItem other;
     private javax.swing.JButton referente;
     private javax.swing.JMenuItem salir;
@@ -384,6 +442,20 @@ public void PonerTodo(){
 
     @Override
     public void update(Observable o, Object arg) {
-   
+        controller.Obtenerlist();
+        CargarJtable();
     }
+
+    void ponersing() {
+           singup.setEnabled(true);
+           singin.setEnabled(true);
+    }
+
+     private void CargarJtable() {
+        descuentos.setModel(new TableModel(modelo.getRutas()));
+        for(int i = 0; i < this.descuentos.getRowCount(); i++) {
+        this.descuentos.setRowHeight(i,30);
+    }
+    }
+
 }

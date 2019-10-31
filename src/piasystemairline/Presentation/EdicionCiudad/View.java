@@ -40,6 +40,9 @@ public class View extends javax.swing.JInternalFrame implements Observer {
         addContries = new javax.swing.JButton();
         delate = new javax.swing.JButton();
         shared = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(98, 240, 238));
 
         jLabel1.setText("ID");
 
@@ -58,6 +61,7 @@ public class View extends javax.swing.JInternalFrame implements Observer {
             }
         });
 
+        close.setIcon(new javax.swing.ImageIcon(getClass().getResource("/piasystemairline/Presentation/iconos/icons8-circled_left_2.png"))); // NOI18N
         close.setText("Close");
         close.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -65,6 +69,7 @@ public class View extends javax.swing.JInternalFrame implements Observer {
             }
         });
 
+        add.setIcon(new javax.swing.ImageIcon(getClass().getResource("/piasystemairline/Presentation/iconos/icons8-add.png"))); // NOI18N
         add.setText("Add");
         add.setEnabled(false);
         add.addActionListener(new java.awt.event.ActionListener() {
@@ -73,6 +78,7 @@ public class View extends javax.swing.JInternalFrame implements Observer {
             }
         });
 
+        edit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/piasystemairline/Presentation/iconos/icons8-edit.png"))); // NOI18N
         edit.setText("Edit");
         edit.setEnabled(false);
         edit.addActionListener(new java.awt.event.ActionListener() {
@@ -88,6 +94,7 @@ public class View extends javax.swing.JInternalFrame implements Observer {
             }
         });
 
+        delate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/piasystemairline/Presentation/iconos/icons8-trash.png"))); // NOI18N
         delate.setText("Delate");
         delate.setEnabled(false);
         delate.addActionListener(new java.awt.event.ActionListener() {
@@ -104,45 +111,55 @@ public class View extends javax.swing.JInternalFrame implements Observer {
             }
         });
 
+        jLabel4.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        jLabel4.setText("Cities Management");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(163, 163, 163)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(close)
-                        .addGap(67, 67, 67)
-                        .addComponent(add)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(edit))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(delate))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addGap(38, 38, 38)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(name)
-                            .addComponent(id)
-                            .addComponent(pais, 0, 251, Short.MAX_VALUE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(close)
+                                .addGap(58, 58, 58)
+                                .addComponent(add)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(edit)
+                                .addGap(17, 17, 17))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(29, 29, 29)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3))
+                                .addGap(38, 38, 38)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(name)
+                                    .addComponent(id)
+                                    .addComponent(pais, 0, 251, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(addContries)
-                            .addComponent(shared, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(66, 66, 66))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(delate)
-                        .addGap(42, 42, 42))))
+                            .addComponent(shared, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(66, 66, 66))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
+                .addContainerGap()
+                .addComponent(jLabel4)
+                .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -244,6 +261,7 @@ public class View extends javax.swing.JInternalFrame implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
+     controller.ObtenerlistPaises();
      cargarComboB();
      Centrar();
     }
@@ -264,7 +282,7 @@ public class View extends javax.swing.JInternalFrame implements Observer {
      private void cargarComboB(){
          this.pais.setModel(new DefaultComboBoxModel<Pais>(model.getPaises().toArray(new Pais[0])));  
      }
-      private void Centrar() {
+    private void Centrar() {
     Dimension desktopSize = this.getSize();
     this.setLocation((desktopSize.width/2),
     (desktopSize.height/2 - JFrame.HEIGHT));
@@ -279,6 +297,7 @@ public class View extends javax.swing.JInternalFrame implements Observer {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField name;
     private javax.swing.JComboBox<Pais> pais;
     private javax.swing.JButton shared;

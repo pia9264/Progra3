@@ -1,5 +1,4 @@
 package piasystemairline.Datos;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -10,28 +9,28 @@ import piasystemairline.Logic.FormaPago;
 import piasystemairline.Logic.ModeloAvion;
 import piasystemairline.Logic.Pais;
 import piasystemairline.Logic.Persona;
-import piasystemairline.Logic.Viaje;
+import piasystemairline.Logic.Tiquete;
 import piasystemairline.Logic.Reservacion;
 import piasystemairline.Logic.Ruta;
-import piasystemairline.Logic.Tiquete;
+import piasystemairline.Logic.Seat;
 import piasystemairline.Logic.Vuelo;
 
 
 public class Dao {
     RelDatabase db;
-    
     public Dao(){
         db= new RelDatabase();
+       
     }
 // -------------------------------AGREGAR--------------------------------------
     
     public void PersonaAdd(Persona p) throws Exception{
         String sql="insert into Usuario (user,pass,name,lastname,email,"
-                + "dateBirth,address,workPhone,mobile,Viaje_id,isAdmin)"
-                + " values('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s')";
+                + "dateBirth,address,workPhone,mobile,isAdmin)"
+                + " values('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s')";
         sql=String.format(sql,p.getUser(),p.getPass(),p.getName(),p.getLastName(),
                 p.getEmail(),p.getDatebirth(),p.getAddress(),p.getWorkphone(),
-                p.getMobile(),p.getViaje().getId(),p.getIsAdmin());
+                p.getMobile(),p.getIsAdmin());
         int count=db.executeUpdate(sql);
         if (count==0){
             throw new Exception("Persona ya existe");
@@ -48,7 +47,15 @@ public class Dao {
             throw new Exception("Vuelo ya existe");
         }
     }
-    
+    public void AsientoAdd(Seat s) throws Exception {
+    String sql="insert into Seat (numero,Vuelo_id)"+
+         "values('%s','%s')";
+        sql=String.format(sql,s.getNumero(),s.getId_vuelo());
+        int count=db.executeUpdate(sql);
+        if (count==0){
+            throw new Exception("Asiento ya existe");
+        }
+    }
     public void AvionAdd(Avion a)throws Exception {
      String sql="insert into Avion (id,ModeloAvion_id) values('%s','%s')";
         sql=String.format(sql,a.getId(),a.getM_Avion().getId());
@@ -71,9 +78,9 @@ public class Dao {
     }
 
     public void RutaAdd(Ruta r) throws Exception {
-    String sql="insert into Ruta (id,name,duration,origin_id,destiny_id,escale_id)"+
-         "values('%s','%s','%s','%s','%s','%s')";
-        sql=String.format(sql,r.getId(),r.getName(),r.getDuration(),
+    String sql="insert into Ruta (id,name,duration,price,discount,origin_id,destiny_id,escale_id)"+
+         "values('%s','%s','%s','%s','%s','%s','%s','%s')";
+        sql=String.format(sql,r.getId(),r.getName(),r.getDuration(),String.valueOf(r.getPrice()),String.valueOf(r.getDiscount()),
                 r.getOrigin().getId(),r.getDestiny().getId(),r.getScale().getId());
         int count=db.executeUpdate(sql);
         if (count==0){
@@ -102,25 +109,15 @@ public class Dao {
     }
     
     public void ReservacionAdd(Reservacion r) throws Exception {
-    String sql="insert into Reservacion (id,Tiquete_id,Date,FormaPago_id) "
-            + "values('%s','%s','%s','%s')";
-        sql=String.format(sql,r.getId(),r.getTiquet().getId(),r.getDate(),r.getFpago().getId());
+    String sql="insert into Reservacion (id,Date,FormaPago_id,Usuario_user,Tiquete_id) "
+            + "values('%s','%s','%s','%s','%s')";
+        sql=String.format(sql,r.getId(),r.getDate(),r.getFpago().getId(),
+                r.getPersona().getUser(),r.getTiqueteID());
         int count=db.executeUpdate(sql);
         if (count==0){
             throw new Exception("Reservacion ya existe");
         }
-    }
-    
-    public void TiqueteAdd(Tiquete t) throws Exception {
-    String sql="insert into Tiquete (id,data) "
-            + "values('%s','%s')";
-        sql=String.format(sql,t.getId(),t.getDetalle());
-        int count=db.executeUpdate(sql);
-        if (count==0){
-            throw new Exception("Tiquete ya existe");
-        }
-    }
-    
+    }    
     public void FormaPagoAdd(FormaPago f) throws Exception {
     String sql="insert into FormaPago (id,data) "
             + "values('%s','%s')";
@@ -131,14 +128,14 @@ public class Dao {
         }
     }
     
-   public void ViajeAdd(Viaje r) throws Exception {
-    String sql="insert into Viaje (id,price,departureDate,returnDate,Reservacion_id,Vuelo_id) "
+   public void TiqueteAdd(Tiquete r) throws Exception {
+    String sql="insert into Tiquete (id,price,departureDate,returnDate,Reservacion_id,Vuelo_id) "
             + "values('%s','%s','%s','%s','%s','%s')";
         sql=String.format(sql,r.getId(),r.getPrice(),r.getDepartureDate(),
                 r.getReturnDate(),r.getReservacion().getId(),r.getVuelo().getId());
         int count=db.executeUpdate(sql);
         if (count==0){
-            throw new Exception("Reservacion ya existe");
+            throw new Exception("Viaje ya existe");
         }
     }
     
@@ -146,19 +143,13 @@ public class Dao {
  //---------------------------UPDATES--------------------------------------- //////////////////////////////////////////////////////////////  
     
     
-    
-    
-    
-    
-    
     public void PersonaUpdate(Persona p) throws Exception{
-        String sql="update Usuario set pass='%s',name='%s',"
-                + "lastname='%s',email='%s',dateBirth='%s',address='%s',"
-                + "workphone='%s',mobile='%s',Vuelo_id='%s' where user='%s' ";
-        sql=String.format(sql,p.getName(),p.getLastName(),
+      String sql="update Usuario set pass='%s',name='%s'"
+              + ",lastname='%s',email='%s',dateBirth='%s',address='%s',"
+              + "workPhone='%s',mobile='%s',isAdmin='%s' where user='%s'";
+        sql=String.format(sql,p.getPass(),p.getName(),p.getLastName(),
                 p.getEmail(),p.getDatebirth(),p.getAddress(),p.getWorkphone(),
-                p.getMobile(),p.getViaje().getId(),p.getUser());
-        
+                p.getMobile(),p.getIsAdmin(),p.getUser());
         int count=db.executeUpdate(sql);
         if (count==0){
             throw new Exception("Persona no existe");
@@ -217,10 +208,10 @@ public class Dao {
 
     public void RutaUpdate(Ruta r) throws Exception {
     String sql="update Ruta set name='%s',duration='%s',origin_id='%s',"
-            + "destiny_id='%s',escale_id='%s' where id='%s'";
+            + "destiny_id='%s',escale_id='%s',price='%s',discount'%s' where id='%s'";
         sql=String.format(sql,r.getName(),r.getDuration(),
                 r.getOrigin().getId(),r.getDestiny().getId(),
-                r.getScale().getId(),r.getId());
+                r.getScale().getId(),String.valueOf(r.getPrice()),String.valueOf(r.getDiscount()),r.getId());
         int count=db.executeUpdate(sql);
         if (count==0){
             throw new Exception("Ruta no existe");
@@ -228,23 +219,13 @@ public class Dao {
     }
 
     public void ReservacionUpdate(Reservacion r) throws Exception {
-    String sql="update Reservacion set Tiquete_id='%s',FormaPago_id='%s',Date='%s' where id='%s'";
-        sql=String.format(sql,r.getTiquet().getId(),r.getFpago().getId(),r.getDate(),r.getId());
+    String sql="update Reservacion set FormaPago_id='%s',Date='%s',Tiquete_id='%s' where id='%s'";
+        sql=String.format(sql,r.getFpago().getId(),r.getDate(),r.getTiqueteID(),r.getId());
         int count=db.executeUpdate(sql);
         if (count==0){
             throw new Exception("Reservacion no existe");
         }
     }
-
-    public void TiqueteUpdate(Tiquete t) throws Exception {
-    String sql="update Tiquete set Data='%s' where id='%s' ";
-        sql=String.format(sql,t.getDetalle(),t.getId());
-        int count=db.executeUpdate(sql);
-        if (count==0){
-            throw new Exception("Tiquete no existe");
-        }
-    }
-
     public void FormaPagoUpdate(FormaPago f) throws Exception {
     String sql="update FormaPago set data='%s' where id='%s' ";
         sql=String.format(sql,f.getData(),f.getId());
@@ -252,21 +233,7 @@ public class Dao {
         if (count==0){
             throw new Exception("FormaPago no existe");
         }
-    }
-    
-     public void ViajeUpdate(Viaje v) throws Exception {
-       String sql="update Viaje set price='%s',departureDate='%s',returnDate='%s'"
-               + ",Reservacion_id='%s',Vuelo_id='%s' where id='%s'";
-        sql=String.format(sql,v.getPrice(),v.getDepartureDate(),v.getReturnDate(),
-                v.getReservacion().getId(),v.getVuelo().getId(),v.getId());
-        int count=db.executeUpdate(sql);
-        if (count==0){
-            throw new Exception("Viaje no existe");
-        }
-     }
-    
-    
-    
+    }    
  //--------------------------SHARES--------------------------------------------
     
     
@@ -278,7 +245,7 @@ public class Dao {
         List<Persona> resultado = new ArrayList<Persona>();
         try {
             String sql="select * from "+
-                    "Usuario p inner join Viaje v on p.Viaje_id=v.id "+
+                    "Usuario p "+
                     "where p.user like '%%%s%%'";
             sql=String.format(sql,nombre);
             ResultSet rs =  db.executeQuery(sql);
@@ -357,11 +324,25 @@ public class Dao {
         return resultado;
     }
     
+     public List<Ruta> RutaDescuentoSearch() throws Exception {
+     List<Ruta> resultado = new ArrayList<Ruta>();
+        try {
+           String sql="select * from Ruta r inner join Ciudad c on r.origin_id=c.id"
+                + " join Ciudad c2 on r.destiny_id=c2.id join Ciudad c3 on "
+                + "r.escale_id=c3.id where r.discount != '0'";
+            ResultSet rs =  db.executeQuery(sql);
+            while (rs.next()) {
+                resultado.add(ruta(rs));
+            }
+        } catch (SQLException ex) { }
+        return resultado;
+    }
+    
     public List<FormaPago> FormaPagoSearch(String id) {
      List<FormaPago> resultado = new ArrayList<FormaPago>();
         try {
             String sql="select * from "+
-                    "FormaPago f inner where f.id like '%%%s%%'";
+                    "FormaPago f where f.id like '%%%s%%'";
             sql=String.format(sql,id);
             ResultSet rs =  db.executeQuery(sql);
             while (rs.next()) {
@@ -370,26 +351,12 @@ public class Dao {
         } catch (SQLException ex) { }
         return resultado;
     }
-    public List<Tiquete> TiqueteSearch(String id) throws Exception {
-      List<Tiquete> resultado = new ArrayList<Tiquete>();
-        try {
-            String sql="select * from "+
-                    "Tiquete t inner "+
-                    "where t.id like '%%%s%%'";
-            sql=String.format(sql,id);
-            ResultSet rs =  db.executeQuery(sql);
-            while (rs.next()) {
-                resultado.add(tiquete(rs));
-            }
-        } catch (SQLException ex) { }
-        return resultado;
-    }
      public List<Reservacion> ReservacionSearch(String id) throws Exception {
       List<Reservacion> resultado = new ArrayList<Reservacion>();
         try {
             String sql="select * from "+
-                    "Reservacion r inner join Tiquete t  joint FormaPago f "
-                    +"on r.Tiquete_id=t.id r.FormaPago_id=f.id "+
+                    "Reservacion r inner join FormaPago f "
+                    +"on r.FormaPago_id=f.id "+
                     "where r.id like '%%%s%%'";
             sql=String.format(sql,id);
             ResultSet rs =  db.executeQuery(sql);
@@ -399,14 +366,46 @@ public class Dao {
         } catch (SQLException ex) { }
         return resultado;
     }
+     
+    public List<Reservacion> ListaReservaPersonaSearch(Persona p) throws Exception {
+     List<Reservacion> resultado = new ArrayList<Reservacion>();
+        try {
+            String sql="select * from "+
+                    "Reservacion r inner join FormaPago f "
+                    +"on r.FormaPago_id=f.id "+
+                    "where r.Usuario_user like '%%%s%%'";
+            sql=String.format(sql,p.getUser());
+            ResultSet rs =  db.executeQuery(sql);
+            while (rs.next()) {
+                resultado.add(reservacion(rs));
+            }
+        } catch (SQLException ex) { }
+        return resultado;
+    }
+     
+     
+    public List<Tiquete> TiquetesSearch(String id) throws Exception {
+     List<Tiquete> resultado = new ArrayList<Tiquete>();
+        try {
+            String sql="select * from "+
+                    "Tiquete v inner join Reservacion r on v.Reservacion_id=r.id "
+                    + "join Vuelo vu on v.Vuelo_id=vu.id "
+                    +"where v.id like '%%%s%%'";
+            sql=String.format(sql,id);
+            ResultSet rs =  db.executeQuery(sql);
+            while (rs.next()) {
+                resultado.add(Tiquete(rs));
+            }
+        } catch (SQLException ex) { }
+        return resultado;
+    } 
     
     public List<Vuelo> VueloSearch(String id) throws Exception {
      List<Vuelo> resultado = new ArrayList<Vuelo>();
         try {
-            String sql="select * from "+
-                    "Vuelo v inner join Ruta ru join Avion a "
-                    +"on v.Avion_id=a.id v.Ruta_id=ru.id "
-                    +"where v.id like '%%%s%%'";
+            String sql="select * from Vuelo v inner join Ruta ru on "
+          + "v.Ruta_id=ru.id join Avion a on v.Avion_id=a.id "
+          +"where v.id like '%%%s%%'";
             sql=String.format(sql,id);
             ResultSet rs =  db.executeQuery(sql);
             while (rs.next()) {
@@ -414,28 +413,44 @@ public class Dao {
             }
         } catch (SQLException ex) { }
         return resultado;
-    }  
+    } 
     
-     public List<Viaje> ViajeSearch(String id) throws Exception {
-     List<Viaje> resultado = new ArrayList<Viaje>();
+     public List<Seat> SeatSearch(String id) throws Exception {
+     List<Seat> resultado = new ArrayList<Seat>();
         try {
-            String sql="select * from "+
-                    "Viaje v inner join Reservacion r join Vuelo vu "
-                    +"on v.Reservacion_id=r.id v.Vuelo_id=vu.id "
-                    +"where v.id like '%%%s%%'";
+            String sql="select * from Seat s "
+          +"where s.Vuelo_id like '%%%s%%'";
             sql=String.format(sql,id);
             ResultSet rs =  db.executeQuery(sql);
             while (rs.next()) {
-                resultado.add(viaje(rs));
+                resultado.add(seat(rs));
             }
         } catch (SQLException ex) { }
         return resultado;
     } 
+    
+    public List<Vuelo> FindVueloList(Vuelo filtro) throws Exception {
+     List<Vuelo> resultado = new ArrayList<Vuelo>();
+     String a ="";
+        try {
+String sql="select * from Vuelo v inner join Ruta ru  on v.Ruta_id=ru.id " +
+"where v.id like '%%%s%%' and origin_id like '%s' and destiny_id like '%s' " +
+"and Day like '%s'";
+            sql=String.format(sql,a,filtro.getRuta().getOrigin().getId(),
+                    filtro.getRuta().getDestiny().getId(),filtro.getDay());
+            ResultSet rs =  db.executeQuery(sql);
+            while (rs.next()) {
+                resultado.add(Fvuelo(rs));
+            }
+        } catch (SQLException ex) { }
+        return resultado;
+    } 
+      
    
 //--------------------------GETS------------------------------------
    public Persona PersonaGet(String id) throws Exception{
         String sql="select * from "+
-                    "Usuario p inner join Viaje v on p.Viaje_id=v.id "+
+                    "Usuario p "+
                     "where p.User like '%%%s%%' ";
         sql = String.format(sql,id);
         ResultSet rs =  db.executeQuery(sql);
@@ -523,24 +538,10 @@ public class Dao {
         else{
             throw new Exception ("FormaPago no Existe");
         }
-    }
-    
-    public Tiquete TiqueteGet(String id) throws Exception {
-       String sql="select * from "+
-                    "Tiquete t where t.id like '%%%s%%'";
-        sql = String.format(sql,id);
-        ResultSet rs =  db.executeQuery(sql);
-        if (rs.next()) {
-            return tiquete(rs);
-        }
-        else{
-            throw new Exception ("Tiquete no Existe");
-        }
-    }
-    
+    }    
     public Reservacion ReservacionGet(String id) throws Exception {
        String sql="select * from "+
-                    "Reservacion r inner join Tiquete t on r.Tiquete_id=t.id join FormaPago f "
+                    "Reservacion r inner join FormaPago f "
                     +"on r.FormaPago_id=f.id "+
                     "where r.id like '%%%s%%'";
         sql = String.format(sql,id);
@@ -566,14 +567,14 @@ public class Dao {
         }
     }
 
-    private Viaje ViajeGet(String id) throws Exception {
-     String sql="select * from Viaje v inner join Reservacion r "
+    public Tiquete TiqueteGet(String id) throws Exception {
+     String sql="select * from Tiquete v inner join Reservacion r "
              + "on v.Reservacion_id=r.id join Vuelo vu  on v.Vuelo_id=vu.id "
              + "where v.id like  '%%%s%%'";
             sql=String.format(sql,id);
             ResultSet rs =  db.executeQuery(sql);
             if (rs.next()) {
-                return viaje(rs);
+                return Tiquete(rs);
             }else{
               throw new Exception ("Viaje no Existe");
             }
@@ -648,14 +649,6 @@ public class Dao {
             throw new Exception("FormaPago no existe");
         }
     }
-    public void EliminarTiquete(String id) throws Exception {
-        String sql="delete from Tiquete where id='%s'";
-        sql = String.format(sql,id);
-        int count=db.executeUpdate(sql);
-        if (count==0){
-            throw new Exception("Tiquete no existe");
-        }
-    }
     public void EliminarReservacion(String id) throws Exception {
         String sql="delete from Reservacion where id='%s'";
         sql = String.format(sql,id);
@@ -683,16 +676,6 @@ public class Dao {
         }
     }
     
-    public void Eliminarviaje(String id) throws Exception {
-        String sql="delete from Viaje where id='%s'";
-        sql = String.format(sql,id);
-        int count=db.executeUpdate(sql);
-        if (count==0){
-            throw new Exception("Viaje no existe");
-        }
-    }
-    
-    
 //-------------------OTHERS--------------------------------------------
     
     private Persona persona(ResultSet rs) throws Exception{
@@ -708,7 +691,6 @@ public class Dao {
             p.setAddress(rs.getString("address"));
             p.setMobile(rs.getString("mobile"));
             p.setIsAdmin(rs.getString("isAdmin").charAt(0));
-            p.setViaje(ViajeGet(rs.getString("Viaje_id")));
             return p;
         } catch (SQLException ex) {
             return null;
@@ -769,6 +751,8 @@ public class Dao {
     try {
          r.setId(rs.getString("id"));
          r.setName(rs.getString("name"));
+         r.setPrice(Integer.parseInt(rs.getString("price")));
+         r.setDiscount(Integer.parseInt(rs.getString("discount")));
          r.setDuration(rs.getString("duration"));
          r.setOrigin(CiudadGet(rs.getString("origin_id")));
          r.setDestiny(CiudadGet(rs.getString("destiny_id")));
@@ -789,25 +773,13 @@ public class Dao {
          return null;
      }
     }
-
-    private Tiquete tiquete(ResultSet rs) throws Exception {
-    Tiquete t = new Tiquete();
-     try {
-         t.setId(rs.getString("id"));
-         t.setDetalle(rs.getString("FormaPago_id"));
-         return t;
-     } catch (SQLException ex) {
-         return null;
-     }
-    }
-
     private Reservacion reservacion(ResultSet rs) throws Exception {
     Reservacion r = new Reservacion();
      try {
          r.setId(rs.getString("id"));
          r.setDate(rs.getString("Date"));
-         r.setTiquet(TiqueteGet(rs.getString("Tiquete_id")));
          r.setFpago(FormaPagoGet(rs.getString("FormaPago_id")));
+         r.setTiqueteID(rs.getString("Tiquete_id"));
          return r;
      } catch (SQLException ex) {
          return null;
@@ -828,8 +800,24 @@ public class Dao {
      }
     }
     
-    private Viaje viaje(ResultSet rs) throws Exception {
-    Viaje r = new Viaje();
+    private Vuelo Fvuelo(ResultSet rs) throws Exception {
+        Vuelo v = new Vuelo(); 
+        try {
+         v.setId(rs.getString("id"));
+         v.setAvion(AvionGet(rs.getString("Avion_id")));
+         v.setRuta(RutaGet(rs.getString("Ruta_id")));
+         v.getRuta().setOrigin(CiudadGet(rs.getString("origin_id")));
+         v.getRuta().setDestiny(CiudadGet(rs.getString("destiny_id")));
+         v.setTime(rs.getString("Time"));
+         v.setDay(rs.getString("Day"));
+         return v;
+     } catch (SQLException ex) {
+         return null;
+     }
+    }
+    
+    private Tiquete Tiquete(ResultSet rs) throws Exception {
+    Tiquete r = new Tiquete();
      try {
          r.setId(rs.getString("id"));
          r.setPrice(Integer.parseInt(rs.getString("price")));
@@ -841,24 +829,18 @@ public class Dao {
      } catch (SQLException ex) {
          return null;
      }
+    }   
+
+    private Seat seat(ResultSet rs) {
+    Seat s = new Seat();
+     try {
+         s.setId_vuelo(rs.getString("Vuelo_id"));
+         s.setNumero(Integer.parseInt(rs.getString("numero")));
+         return s;
+     } catch (SQLException ex) {
+         return null;
+     }
     }
-    
 
     
-
-    
-
-
-   
-
-    
-
-    
-
-   
-
-   
-
-    
-     
 }

@@ -17,31 +17,36 @@ public class Controller {
       modelo = model;
       vista = Vista;
       vista.setControlador(this);
-      vista.setModelEdit(model);
+      vista.setModelEdit(modelo);
       ObtenerlistCiudades();
-      vista.update(model,vista);
+      vista.update(modelo,vista);
     }
     public void Show() {
-    vista.setVisible(true);
+     ObtenerlistCiudades();
+     vista.setVisible(true);
     }
 
     void AppShow() {
+     piasystemairline.PIASystemAirline.ControllerAPP.bandera= true;
      PIASystemAirline.ControllerAPP.OnButtons();
     }
 
     void Add(Ruta ToRuta) throws Exception {
         piasystemairline.Logic.Model.instance().AgregarRuta(ToRuta);
         PIASystemAirline.Controler_Vuelo.update();
+        PIASystemAirline.ControllerAPP.update();
     }
 
     void Edit(Ruta ToRuta) throws Exception {
         piasystemairline.Logic.Model.instance().ModificarRuta(ToRuta);
         PIASystemAirline.Controler_Vuelo.update();
+        PIASystemAirline.ControllerAPP.update();
     }
 
     void Delate(String id) throws Exception {
             piasystemairline.Logic.Model.instance().EliminarRuta(id);
             PIASystemAirline.Controler_Vuelo.update();
+            PIASystemAirline.ControllerAPP.update();
     }
     static Ruta Get(String id) throws Exception {
            return piasystemairline.Logic.Model.instance().ConsultaRuta(id);

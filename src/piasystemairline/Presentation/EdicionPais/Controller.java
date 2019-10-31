@@ -17,7 +17,6 @@ public class Controller {
       Vista = vista;
       Vista.setControlador(this);
       Vista.setModelEdit(modelo);
-      CargarArchivo();
       Vista.update(modelo, this);
     }
 
@@ -29,8 +28,8 @@ public class Controller {
     Vista.update(modelo, this);
     }
     void add(Pais pais) throws Exception {
-            piasystemairline.Logic.Model.instance().AgregarPais(pais);
-            PIASystemAirline.Controler_Ciudad.ObtenerlistPaises();
+      piasystemairline.Logic.Model.instance().AgregarPais(pais);
+      PIASystemAirline.Controler_Ciudad.ObtenerlistPaises();
     }
 
     void delate(String text) throws Exception {
@@ -45,37 +44,4 @@ public class Controller {
     void CiudadShow() {
     PIASystemAirline.Controler_Ciudad.Show();
     }
-
-    private void CargarArchivo() {
-      File archivo = null;
-      FileReader fr = null;
-      BufferedReader br = null;
-
-      try {
-         archivo = new File ("src/piasystemairline/Datos/Countries.txt");
-         fr = new FileReader (archivo);
-         br = new BufferedReader(fr);
-         String linea;
-         while((linea=br.readLine())!=null){
-         System.out.println(linea);
-         add(new Pais(linea.substring(0,2),linea.substring(3)));
-         }
-      }
-      catch(Exception e){
-         e.printStackTrace();
-      }finally{
-         try{                    
-            if( null != fr ){   
-               fr.close();
-               ObtenerlistPaises();
-            }                  
-         }catch (Exception e2){ 
-            e2.printStackTrace();
-         }
-      }
-    }
-    
-    
-    
-    
 }

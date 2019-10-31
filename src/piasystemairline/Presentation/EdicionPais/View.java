@@ -37,8 +37,9 @@ public class View extends javax.swing.JInternalFrame implements Observer{
         delate = new javax.swing.JButton();
         shared = new javax.swing.JButton();
         add = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jLabel3 = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(98, 240, 238));
 
         jLabel1.setText("ID");
 
@@ -50,6 +51,7 @@ public class View extends javax.swing.JInternalFrame implements Observer{
             }
         });
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/piasystemairline/Presentation/iconos/icons8-circled_left_2.png"))); // NOI18N
         jButton1.setText("Closed");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -57,6 +59,7 @@ public class View extends javax.swing.JInternalFrame implements Observer{
             }
         });
 
+        delate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/piasystemairline/Presentation/iconos/icons8-trash.png"))); // NOI18N
         delate.setText("Delate");
         delate.setEnabled(false);
         delate.addActionListener(new java.awt.event.ActionListener() {
@@ -73,6 +76,7 @@ public class View extends javax.swing.JInternalFrame implements Observer{
             }
         });
 
+        add.setIcon(new javax.swing.ImageIcon(getClass().getResource("/piasystemairline/Presentation/iconos/icons8-add.png"))); // NOI18N
         add.setText("Add");
         add.setEnabled(false);
         add.addActionListener(new java.awt.event.ActionListener() {
@@ -81,55 +85,48 @@ public class View extends javax.swing.JInternalFrame implements Observer{
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
-
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        jLabel3.setBackground(new java.awt.Color(98, 240, 238));
+        jLabel3.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        jLabel3.setText(" Countries Management");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
-                                .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(39, 39, 39)
-                                .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addGap(19, 19, 19)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(add)
-                                    .addComponent(shared, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addGap(39, 39, 39)
+                                        .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(shared, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(add)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabel2)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jButton1)))
+                        .addGap(26, 26, 26)
+                        .addComponent(delate))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(delate)
-                .addGap(15, 15, 15))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 565, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(159, 159, 159)
+                        .addComponent(jLabel3)))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(11, 11, 11)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(shared, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -144,9 +141,7 @@ public class View extends javax.swing.JInternalFrame implements Observer{
                     .addComponent(jButton1)
                     .addComponent(delate)
                     .addComponent(add))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
@@ -201,7 +196,6 @@ public class View extends javax.swing.JInternalFrame implements Observer{
     @Override
     public void update(Observable o, Object arg) {
       Centrar();
-      CargarJtable();
     }
 
     private void Centrar() {
@@ -217,8 +211,7 @@ public class View extends javax.swing.JInternalFrame implements Observer{
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField name;
     private javax.swing.JButton shared;
     // End of variables declaration//GEN-END:variables
@@ -226,12 +219,5 @@ public class View extends javax.swing.JInternalFrame implements Observer{
     private void Limpiar() {
       id.setText("");
       name.setText("");
-    }
-
-    private void CargarJtable() {
-        jTable1.setModel(new TableModel(modelo.getPaises()));
-        for(int i = 0; i < this.jTable1.getRowCount(); i++) {
-        this.jTable1.setRowHeight(i,30);
-    }
     }
 }

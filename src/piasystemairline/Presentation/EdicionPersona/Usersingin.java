@@ -1,23 +1,26 @@
+package piasystemairline.Presentation.EdicionPersona;
 
-package piasystemairline.Presentation.App;
-
-import java.awt.Dimension;
-import javax.swing.JFrame;
 import piasystemairline.Logic.Persona;
 
 public class Usersingin extends javax.swing.JInternalFrame {
 
-    ControllerApp controller;
+    
+    Model modelo;
+    Controller controller;
 
     public Usersingin() {
         initComponents();
-        this.setVisible(true);
         this.Centrar();
     }
+    void setControlador(Controller c) {
+      this.controller = c;
+    }
 
+    void setModelEdit(Model m) {
+     this.modelo = m;
+    } 
   
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
@@ -32,18 +35,18 @@ public class Usersingin extends javax.swing.JInternalFrame {
         } catch (java.beans.PropertyVetoException e1) {
             e1.printStackTrace();
         }
-
+        setBackground(new java.awt.Color(98, 240, 238));
         jLabel1.setText("User");
 
         jLabel2.setText("Password");
-
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/piasystemairline/Presentation/iconos/next.png")));
         jButton1.setText("Sing in");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/piasystemairline/Presentation/iconos/icons8-circled_left_2.png")));
         jButton2.setText("close");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,26 +94,28 @@ public class Usersingin extends javax.swing.JInternalFrame {
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        this.dispose();
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
+        this.setVisible(false);
+        user.setText("");
+        pass.setText("");
         controller.appON();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
-             Persona p = new Persona();
-                     p = controller.Existe(user.getText(),pass.getText());
+                   
+                    Persona p = controller.Existe(user.getText(),pass.getText());
                      if(!"0".equals(p.getUser())){
-                     controller.ChangeNameAndIsAdmin(p.getUser(),p.getIsAdmin());
-                     this.dispose();
-                     controller.appON();
+                        controller.ChangeNameAndIsAdmin(p);
+                        this.setVisible(false);
+                        controller.appON();
+                        user.setText("");
+                        pass.setText("");
                      }else{
                      
                      }
-                     
-             this.dispose();
         } catch (Exception ex) {
             user.setText("NO EXISTE!!");
             pass.setText("");
@@ -118,11 +123,9 @@ public class Usersingin extends javax.swing.JInternalFrame {
        
     }//GEN-LAST:event_jButton1ActionPerformed
     private void Centrar() {
-    Dimension desktopSize = this.getSize();
-    this.setLocation((desktopSize.width - JFrame.WIDTH),
-    (desktopSize.height/3- JFrame.HEIGHT/2));
+    this.setLocation(0,100);
     }
-    public void setController(ControllerApp c){
+    public void setController(Controller c){
       controller = c;
     }
     

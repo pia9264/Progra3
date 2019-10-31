@@ -2,8 +2,7 @@
 package piasystemairline.Logic;
 
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import piasystemairline.Datos.Dao;
 
 public class Model {
@@ -57,21 +56,18 @@ public class Model {
     
     public void AgregarReservacion(Reservacion r) throws Exception{
       Datos.ReservacionAdd(r);
-    }
-    
-    public void AgregarTiquete(Tiquete t) throws Exception{
-      Datos.TiqueteAdd(t);
-    }
-    
+    }    
     public void AgregarFormaPago(FormaPago p) throws Exception{
       Datos.FormaPagoAdd(p);
     }
     
-     public void AgregarViaje(Viaje viaje) throws Exception {
-       Datos.ViajeAdd(viaje);
-     }
+    public void AgregarTiquete(Tiquete viaje) throws Exception {
+       Datos.TiqueteAdd(viaje);
+    }
      
-     
+    public void AgregarSeat(Seat s) throws Exception {
+       Datos.AsientoAdd(s);
+    }
      
      
      
@@ -100,7 +96,9 @@ public class Model {
     public FormaPago ConsultarFormaPago(String id) throws Exception {
         return Datos.FormaPagoGet(id);
     }
-    
+    public Tiquete ConsultarTiquete(String id) throws Exception {
+       return Datos.TiqueteGet(id);
+    }
     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%OBTENER LISTAS
     
     public List<Persona> ObtenerListPersonas(){
@@ -118,7 +116,11 @@ public class Model {
         }
     }
     public List<ModeloAvion> ObtenerListModeloAvion(){
-            return Datos.ModeloAvionSearch("");
+        try{   
+        return Datos.ModeloAvionSearch("");
+            } catch (Exception ex) {
+            return null;
+        }
     }
     public List<Ruta> ObtenerListRutas(){
         try {
@@ -141,9 +143,69 @@ public class Model {
             return null;
         }
     }
+    public List<FormaPago> ObtenerFormasPago() {
+        try {
+            return Datos.FormaPagoSearch("");
+        } catch (Exception ex) {
+            return null;
+        }
+    }
+    public List<Reservacion> ObtenerListReservaciones() {
+           try {
+            return Datos.ReservacionSearch("");
+        } catch (Exception ex) {
+            return null;
+        }
+    }
+    public List<Vuelo> ObtenerListVuelos() {
+     try {
+            return Datos.VueloSearch("");
+        } catch (Exception ex) {
+            return null;
+        }
+    }
     
+
     
+     public List<Vuelo> FindVueloList(Vuelo filtro){
+    try {
+            return Datos.FindVueloList(filtro);
+        } catch (Exception ex) {
+            return null;
+        }
+     }
+     
+       public List<Ruta> ObtenerListRutasDescuento() {
+        try {
+            return Datos.RutaDescuentoSearch();
+        } catch (Exception ex) {
+            return null;
+        }
+    }
+       
+    public List<Tiquete> ObtenerListTiquetes() {
+    try {
+            return Datos.TiquetesSearch("");
+        } catch (Exception ex) {
+            return null;
+        }
+    }
     
+    public List<Reservacion> ObtenerListaReservaPersona(Persona p) {
+    try {
+            return Datos.ListaReservaPersonaSearch(p);
+        } catch (Exception ex) {
+            return null;
+        }
+    }
+    
+    public List<Seat> ListSeats(Vuelo v) {
+       try {
+            return Datos.SeatSearch(v.getId());
+        } catch (Exception ex) {
+            return null;
+        }
+    }
     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%MODIFICAR
     
     public void ModificarPersona(Persona p) throws Exception {
@@ -170,21 +232,11 @@ public class Model {
     public void ModificarReservacion(Reservacion r) throws Exception {
     Datos.ReservacionUpdate(r);
     }
-    public void ModificarTiquete(Tiquete t) throws Exception {
-    Datos.TiqueteUpdate(t);
-    }
     public void ModificarFormaPago(FormaPago f) throws Exception {
     Datos.FormaPagoUpdate(f);
     }
-    
-    
-    
-    
-    
-    
 
-   // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%DELATES
-   
+   // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%DELATE
    
     public void EliminarModeloAvion(String id) throws Exception {
             Datos.EliminarModeloAvion(id);
@@ -209,4 +261,22 @@ public class Model {
     public void EliminarFormaPago(String id) throws Exception {
        Datos.EliminarFormaPago(id);
     }
+
+    
+
+    
+
+
+
+ 
+
+
+
+  
+
+
+
+
+
+
 }

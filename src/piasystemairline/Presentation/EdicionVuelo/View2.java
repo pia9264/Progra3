@@ -1,24 +1,17 @@
 
-package piasystemairline.Presentation.EdicionViaje;
+package piasystemairline.Presentation.EdicionVuelo;
+
 import java.awt.Dimension;
+import java.text.SimpleDateFormat;
 import java.util.Observable;
 import java.util.Observer;
-import javax.swing.JFrame;
+import javax.swing.DefaultComboBoxModel;
 import org.freixas.jcalendar.JCalendarCombo;
 import piasystemairline.Logic.Ciudad;
-public class ViewMain extends javax.swing.JInternalFrame implements Observer {
 
-    JCalendarCombo calend;
-    
-    
-    
-    
-    public ViewMain() {
+public class View2 extends javax.swing.JInternalFrame implements Observer {
+   public View2() {
         initComponents();
-//        calend=new JCalendarCombo();
-//        this.add(calend);
-//        calend.setLocation(100,100);
-//        calend.setVisible(true);
     }
     
     
@@ -33,42 +26,23 @@ public class ViewMain extends javax.swing.JInternalFrame implements Observer {
          this.controller = aThis;
     }
     
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
-
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+ private void initComponents() {
         idaVueltaGrup = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
-        goin = new javax.swing.JComboBox<>();
+        origin = new javax.swing.JComboBox<>();
         destiny = new javax.swing.JComboBox<>();
         ida_vuelta = new javax.swing.JRadioButton();
         ida = new javax.swing.JRadioButton();
-        Date1 = new javax.swing.JComboBox<>();
-        Date2 = new javax.swing.JComboBox<>();
+        Date1 = new JCalendarCombo();
+        Date2 = new  JCalendarCombo();
         Adul_n = new javax.swing.JComboBox<>();
         Chil_n = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         find = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        jTable1 = new javax.swing.JTable();
         close = new javax.swing.JButton();
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
         setBackground(new java.awt.Color(103, 153, 255));
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
@@ -80,10 +54,10 @@ public class ViewMain extends javax.swing.JInternalFrame implements Observer {
 
         idaVueltaGrup.add(ida);
         ida.setText("One-way");
-
+        ida_vuelta.setSelected(true);
         Adul_n.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9" }));
 
-        Chil_n.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7" }));
+        Chil_n.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0","1", "2", "3", "4", "5", "6", "7" }));
 
         jLabel2.setFont(new java.awt.Font("Nadeem", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -101,8 +75,8 @@ public class ViewMain extends javax.swing.JInternalFrame implements Observer {
             }
         });
 
-        jTable2.setBackground(new java.awt.Color(103, 153, 255));
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        jTable1.setBackground(new java.awt.Color(103, 153, 255));
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -113,7 +87,12 @@ public class ViewMain extends javax.swing.JInternalFrame implements Observer {
 
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TablaMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(jTable1);
 
         close.setText("Close");
         close.addActionListener(new java.awt.event.ActionListener() {
@@ -139,7 +118,7 @@ public class ViewMain extends javax.swing.JInternalFrame implements Observer {
                                         .addComponent(ida_vuelta)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
                                         .addComponent(ida))
-                                    .addComponent(goin, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(origin, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(destiny, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(213, 213, 213)
@@ -169,7 +148,7 @@ public class ViewMain extends javax.swing.JInternalFrame implements Observer {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel1)
                 .addGap(29, 29, 29)
-                .addComponent(goin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(origin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(destiny, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -197,49 +176,112 @@ public class ViewMain extends javax.swing.JInternalFrame implements Observer {
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>                        
 
-    private void findActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_findActionPerformed
+    private void findActionPerformed(java.awt.event.ActionEvent evt) {                                     
+     controller.BuscarVuelo(origin.getItemAt(origin.getSelectedIndex()),
+     destiny.getItemAt(destiny.getSelectedIndex()),GetDay(1),GetDay(2));
+    }                                    
 
-    private void closeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_closeActionPerformed
-
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private void closeActionPerformed(java.awt.event.ActionEvent evt) {                                      
+      this.setVisible(false);
+      controller.AppShow();
+    }                                                        
     private javax.swing.JComboBox<String> Adul_n;
     private javax.swing.JComboBox<String> Chil_n;
-    private javax.swing.JComboBox<String> Date1;
-    private javax.swing.JComboBox<String> Date2;
+    private JCalendarCombo Date1;
+    private JCalendarCombo Date2;
     private javax.swing.JButton close;
     private javax.swing.JComboBox<Ciudad> destiny;
     private javax.swing.JButton find;
-    private javax.swing.JComboBox<Ciudad> goin;
+    private javax.swing.JComboBox<Ciudad>origin;
     private javax.swing.JRadioButton ida;
     private javax.swing.ButtonGroup idaVueltaGrup;
     private javax.swing.JRadioButton ida_vuelta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    // End of variables declaration//GEN-END:variables
+    private javax.swing.JTable jTable1;              
 
     @Override
     public void update(Observable o, Object arg) {
     Centrar();
+    cargarComboB();
+    CargarJtable();
     }
-
-    void update(Model modelo, Controller aThis) {
+    public void update2() {
+    controller.ObtenerlistVuelo();
+    CargarJtable();
     }
-    
     private void Centrar() {
     Dimension desktopSize = this.getSize();
-    this.setLocation((desktopSize.width - JFrame.WIDTH),
-    (desktopSize.height/5- JFrame.HEIGHT/2));
+    this.setLocation((desktopSize.width/3),
+    0);
     }
+    
+    
+    private boolean getIdaVuelta(){
+     if(ida_vuelta.isSelected()){return true;}
+     return false;
+    }
+    private String GetDay(int n){
+        String d ;
+         if(n==1){d = Date1.getSelectedItem().toString();}
+         else{d = Date2.getSelectedItem().toString();}
+         String day = d.substring(0,2);
+        switch (day) {
+            case "lu":
+                day = "Monday";
+                break;
+            case "ma":
+                day = "Tuesday";
+                break;
+            case "mi":
+                day = "Wednesday";
+                break;
+            case "ju":
+                day = "Thursday";
+                break;
+            case "vi":
+                day = "Friday";
+                break; 
+            case "sá":
+                day = "Saturday";
+                break;
+            case "do":
+                day = "Sunday";
+                break;   
+                
+            
+        }
+        return day;
+    }
+    
+    
+      private void cargarComboB(){
+         controller.ObtenerlistCiudad();
+         DefaultComboBoxModel<Ciudad> c1 = new DefaultComboBoxModel<Ciudad>(modelo.getCiudades().toArray(new Ciudad[0]));
+         DefaultComboBoxModel<Ciudad> c2 = new DefaultComboBoxModel<Ciudad>(modelo.getCiudades().toArray(new Ciudad[0]));
+         this.destiny.setModel(c1);
+         this.origin.setModel(c2);
+     }
+      
+    private void CargarJtable() {
+        jTable1.setModel(new TableModel(modelo.getVuelos()));
+        for(int i = 0; i < this.jTable1.getRowCount(); i++) {
+        this.jTable1.setRowHeight(i,30);
+    }
+    }
+    
+      private void TablaMouseClicked(java.awt.event.MouseEvent evt) {
+          SimpleDateFormat dt1 = new SimpleDateFormat("yyyy-MM-dd");
+      if (evt.getClickCount() == 2) {
+        int fila = this.jTable1.rowAtPoint(evt.getPoint());
+        controller.EnviarVueloClick(fila,
+                 Integer.parseInt(Adul_n.getItemAt(Adul_n.getSelectedIndex())),
+                 Integer.parseInt(Chil_n.getItemAt(Chil_n.getSelectedIndex())),getIdaVuelta()
+        ,dt1.format(Date1.getDate()),dt1.format(Date2.getDate()));
+        }
+    } 
 }

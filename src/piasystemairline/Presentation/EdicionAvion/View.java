@@ -46,7 +46,7 @@ public class View extends javax.swing.JInternalFrame implements Observer {
         jButton2 = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        jLabel1.setText("Aircraft management");
+        jLabel1.setText("Aircraft Management");
 
         jLabel2.setText("ID");
 
@@ -120,17 +120,19 @@ public class View extends javax.swing.JInternalFrame implements Observer {
                         .addComponent(jButton2)
                         .addGap(29, 29, 29))))
             .addGroup(layout.createSequentialGroup()
-                .addGap(13, 13, 13)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(13, 13, 13)
                         .addComponent(closed, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40)
                         .addComponent(add)
                         .addGap(48, 48, 48)
                         .addComponent(edit)
                         .addGap(59, 59, 59)
-                        .addComponent(delate)))
+                        .addComponent(delate))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(177, 177, 177)
+                        .addComponent(jLabel1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(

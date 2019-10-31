@@ -9,7 +9,7 @@ public class Ciudad {
   private Pais pais;
 
     public Ciudad() {
-        this.id = "0";
+        this.id = "node";
         this.name = "null";
         this.pais = new Pais();
     }
@@ -46,8 +46,8 @@ public class Ciudad {
 
     @Override
     public String toString() {
-         if(!id.equalsIgnoreCase("0")){
-           return id+" - "+name+"";
+         if(!id.equalsIgnoreCase("none")){
+           return name+"/"+ pais.getName();
        }else{
            return "";
        }

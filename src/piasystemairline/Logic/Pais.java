@@ -8,7 +8,7 @@ public class Pais {
     private String name;
 
     public Pais() {
-        this.id = "0";
+        this.id = "00";
         this.name = "";
     }
 
@@ -34,7 +34,7 @@ public class Pais {
     
     @Override
     public String toString() {
-       if(!id.equalsIgnoreCase("0")){
+       if(!id.equalsIgnoreCase("00")){
            return id+" - "+name ;
        }else{
            return "";

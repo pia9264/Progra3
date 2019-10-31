@@ -20,6 +20,7 @@ public class Controller {
     modelo.setModelos(piasystemairline.Logic.Model.instance().ObtenerListModeloAvion());
     }
     public void Show() {
+     Vista.update(modelo, this);
      Vista.setVisible(true);
     }
 
@@ -28,7 +29,8 @@ public class Controller {
     } 
 
     void appON() {
-     piasystemairline.PIASystemAirline.ControllerAPP.OnButtons();
+     PIASystemAirline.ControllerAPP.bandera= true;
+     PIASystemAirline.ControllerAPP.OnButtons();
     }
 
     void Add(Avion a) throws Exception {

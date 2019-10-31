@@ -1,7 +1,6 @@
 
 package piasystemairline.Logic;
 
-
 public class Vuelo {
   private String id;
   private String Time;
@@ -15,6 +14,7 @@ public class Vuelo {
         this.Day = "";
         this.avion = new Avion();
         this.ruta = new Ruta();
+          
     }
 
     public Vuelo(String id, String Time, String Day, Avion avion, Ruta ruta) {
