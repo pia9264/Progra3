@@ -81,9 +81,9 @@ public class Controller {
     }        
 
     void EnviarVueloClick(int fila, int Adult, int child,boolean isIdayvuelta,String Fecha1,String Fecha2) {
-       piasystemairline.PIASystemAirline.Controler_Tiquete.setTiqueteDetalles(
+        piasystemairline.PIASystemAirline.Controler_Tiquete.setTiqueteDetalles(
                modelo.getVuelos().get(fila).getId(),Adult,child,isIdayvuelta,Fecha1,Fecha2);
-       Vista2.setVisible(false);
-       piasystemairline.PIASystemAirline.Controler_Tiquete.Show();
+        Vista2.setVisible(false);
+        piasystemairline.PIASystemAirline.Controler_Tiquete.Show();
     }
 }
