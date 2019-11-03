@@ -234,11 +234,8 @@ public class Dao {
             throw new Exception("FormaPago no existe");
         }
     }    
- //--------------------------SHARES--------------------------------------------
-    
-    
-    
-    
+ //--------------------------SEARCHES--------------------------------------------
+      
     
    
     public List<Persona>PersonaSearch(String nombre) throws Exception{
@@ -433,9 +430,9 @@ public class Dao {
      List<Vuelo> resultado = new ArrayList<Vuelo>();
      String a ="";
         try {
-String sql="select * from Vuelo v inner join Ruta ru  on v.Ruta_id=ru.id " +
-"where v.id like '%%%s%%' and origin_id like '%s' and destiny_id like '%s' " +
-"and Day like '%s'";
+            String sql="select * from Vuelo v inner join Ruta ru  on v.Ruta_id=ru.id " +
+            "where v.id like '%%%s%%' and origin_id like '%s' and destiny_id like '%s' " +
+            "and Day like '%s'";
             sql=String.format(sql,a,filtro.getRuta().getOrigin().getId(),
                     filtro.getRuta().getDestiny().getId(),filtro.getDay());
             ResultSet rs =  db.executeQuery(sql);
@@ -445,6 +442,81 @@ String sql="select * from Vuelo v inner join Ruta ru  on v.Ruta_id=ru.id " +
         } catch (SQLException ex) { }
         return resultado;
     } 
+    
+//  FACTURACION POR MESES (12 MESES)
+    public List<Reservacion> ListaFacturacionPorMes(String mes) throws Exception {
+     List<Reservacion> resultado = new ArrayList<Reservacion>();
+        try {
+            String sql="select * from "
+                    +"tiquete t inner join reservacion r "
+                    +"on t.resercicion_id=r.id "
+                    +"where r.date like '2019-"+mes+"-%% %%:%%:%%'";
+            sql=String.format(sql,mes);
+            ResultSet rs =  db.executeQuery(sql);
+            while (rs.next()) {
+                resultado.add(reservacion(rs));
+            }
+        } catch (SQLException ex) { }
+        return resultado;
+    }
+    
+     
+//  FACTURACION POR ANNO (ANNO ACTUAL)
+     public List<Reservacion> ListaFacturacionPorAnno(Tiquete t) throws Exception {
+     List<Reservacion> resultado = new ArrayList<Reservacion>();
+        try {
+            String sql="select * from "+
+                    "tiquete t inner join reservacion r "
+                    +"on t.resercicion_id=r.id "+
+                    "where r.date like '%%-%%-%% %%:%%:%%'";
+            sql=String.format(sql,t.getPrice());
+//format(sql,/*p.getUser()*/);
+            ResultSet rs =  db.executeQuery(sql);
+            while (rs.next()) {
+                resultado.add(reservacion(rs));
+            }
+        } catch (SQLException ex) { }
+        return resultado;
+    }
+
+//  LISTADO DE CLIENTES POR AVION
+     public List<Reservacion> ListadoClientesPorAvion(Vuelo v) throws Exception {
+     List<Reservacion> resultado = new ArrayList<Reservacion>();
+        try {
+            String sql="select * from "+
+                    "usuario u inner join reservacion r "
+                    +"on u.user = r.usuario_user "
+                    +"inner join tiquete t "
+                    +"on t.reservacion_id = t.id "
+                    +"inner join vuelo v "
+                    +"on t.vuelo_id = v.id "
+                    +"where v.avion_id like '%%'";
+            sql=String.format(sql,v.getAvion());
+            ResultSet rs =  db.executeQuery(sql);
+            while (rs.next()) {
+                resultado.add(reservacion(rs));
+            }
+        } catch (SQLException ex) { }
+        return resultado;
+    }
+//  LAS 5 RUTAS MAS VENDIDAS O RESERVADAS
+public List<Reservacion> ListadoRutasMasVendidas(Tiquete t) throws Exception {
+     List<Reservacion> resultado = new ArrayList<Reservacion>();
+        try {
+            String sql="select * from "
+                    +"tiquete t inner join reservacion r "
+                    +"on t.resercicion_id=r.id "
+                    +"where r.date like '%%-%%-%% %%:%%:%%'";
+            sql=String.format(sql,t.getPrice());
+//format(sql,/*p.getUser()*/);
+            ResultSet rs =  db.executeQuery(sql);
+            while (rs.next()) {
+                resultado.add(reservacion(rs));
+            }
+        } catch (SQLException ex) { }
+        return resultado;
+    }     
+    
       
    
 //--------------------------GETS------------------------------------
@@ -579,6 +651,13 @@ String sql="select * from Vuelo v inner join Ruta ru  on v.Ruta_id=ru.id " +
               throw new Exception ("Viaje no Existe");
             }
     }
+    
+//-------------------------REPORTS--------------------------------------
+   
+
+    
+    
+    
 //-------------------------DELATES--------------------------------------   
    
    
