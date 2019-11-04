@@ -5,11 +5,23 @@
  */
 package piasystemairline.Presentation.ReporteDeApp;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.util.Observable;
+import java.util.Observer;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.jdbc.JDBCCategoryDataset;
+
 /**
  *
  * @author anibalchavesbadilla
  */
-public class View extends javax.swing.JInternalFrame {
+public class View extends javax.swing.JInternalFrame implements Observer {
 
     /**
      * Creates new form View
@@ -17,6 +29,17 @@ public class View extends javax.swing.JInternalFrame {
     public View() {
         initComponents();
     }
+    piasystemairline.Presentation.ReporteDeApp.Model modelo;
+    piasystemairline.Presentation.ReporteDeApp.Controller controller;
+    
+    void setControlador(piasystemairline.Presentation.ReporteDeApp.Controller c) {
+      this.controller = c;
+    }
+
+    void setModelEdit(piasystemairline.Presentation.ReporteDeApp.Model m) {
+     this.modelo = m;
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,23 +50,202 @@ public class View extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panelChart = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+
         setBackground(new java.awt.Color(98, 240, 238));
+
+        panelChart.setBackground(new java.awt.Color(0, 51, 255));
+        panelChart.setLayout(new java.awt.BorderLayout());
+
+        jButton1.setText("Graph of amount billed per month");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Graph of amount billed per year");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("Custumer list by plane");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("Top 5 best selling routes");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jButton5.setText("Close");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(panelChart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jButton1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jButton5))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2)
+                    .addComponent(jButton3)
+                    .addComponent(jButton4))
+                .addGap(18, 18, 18)
+                .addComponent(panelChart, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton5)
+                .addGap(4, 4, 4))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        DefaultCategoryDataset barChartData = new DefaultCategoryDataset();
+        barChartData.setValue(PromedioVentasPorMes("01"),"Amount billed per month","JANUARY");
+        barChartData.setValue(PromedioVentasPorMes("02"),"Amount billed per month","FEBRUARY");
+        barChartData.setValue(PromedioVentasPorMes("03"),"Amount billed per month", "MARCH");
+        barChartData.setValue(PromedioVentasPorMes("04"),"Amount billed per month","APRIL");
+        barChartData.setValue(PromedioVentasPorMes("05"),"Amount billed per month","MAY");
+        barChartData.setValue(PromedioVentasPorMes("06"),"Amount billed per month", "JUNE");
+        barChartData.setValue(PromedioVentasPorMes("07"),"Amount billed per month","JULY");
+        barChartData.setValue(PromedioVentasPorMes("08"),"Amount billed per month","AGOST");
+        barChartData.setValue(PromedioVentasPorMes("09"),"Amount billed per month", "SEPTEMBER");
+        barChartData.setValue(PromedioVentasPorMes("10"),"Amount billed per month","OCTUBER");
+        barChartData.setValue(PromedioVentasPorMes("11"),"Amount billed per month","NOVEMBER");
+        barChartData.setValue(PromedioVentasPorMes("12"),"Amount billed per month", "DICEMBER");
+          
+        JFreeChart barChart = ChartFactory.createBarChart("Graph of amount billed per month", "Monthly", "Amount billed", barChartData, PlotOrientation.VERTICAL, false, true, false);
+        CategoryPlot barChrt = barChart.getCategoryPlot();
+        barChrt.setRangeGridlinePaint(Color.RED);
+            
+        ChartPanel barPanel = new ChartPanel(barChart);
+        panelChart.removeAll();
+        panelChart.add(barPanel, BorderLayout.CENTER);
+        panelChart.validate();
+            
+  
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    public int PromedioVentasPorMes(String mes){
+        try{
+            int promedioVentas= 0;
+            controller.cargarListaMeses(mes);
+            for(int i= 0; i<modelo.getTiquetes().size();i++){
+                promedioVentas+= modelo.getTiquetes().get(i).getPrice();
+            }
+            return promedioVentas;
+        }catch(Exception ex){
+           return 0;
+        }
+    }
+    
+    public int PromedioVentasPorAnno(String anno){
+        try{
+            int promedioVentas= 0;
+            controller.cargarListaAnno(anno);
+            for(int i= 0; i<modelo.getTiquetes2().size();i++){
+                promedioVentas+= modelo.getTiquetes().get(i).getPrice();
+            }
+            return promedioVentas;
+        }catch(Exception ex){
+           return 0;
+        }
+    }
+    
+   /* public int cantidadDeVentasPorRuta(String ruta){
+        try{
+            int ventasPorRuta=0;
+            controller.cargarListaRutas(ruta);
+            for(int i = 0; i < modelo.getRutas().size(); i++){
+                if(modelo.getRutas().get(i).getName()== ruta){
+                    ventasPorRuta++;
+                }
+            }
+        }catch(Exception ex){
+        
+        }
+    }*/
+    
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        DefaultCategoryDataset barChartData = new DefaultCategoryDataset();
+        barChartData.setValue(PromedioVentasPorAnno("2019"),"Amount billed per year","2019");
+        barChartData.setValue(PromedioVentasPorAnno("2018"),"Amount billed per year","2019");
+          
+        JFreeChart barChart = ChartFactory.createBarChart("Graph of amount billed per year", "Yearly", "Amount billed", barChartData, PlotOrientation.VERTICAL, false, true, false);
+        CategoryPlot barChrt = barChart.getCategoryPlot();
+        barChrt.setRangeGridlinePaint(Color.RED);
+            
+        ChartPanel barPanel = new ChartPanel(barChart);
+        panelChart.removeAll();
+        panelChart.add(barPanel, BorderLayout.CENTER);
+        panelChart.validate();
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        this.setVisible(false);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JPanel panelChart;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void update(Observable o, Object o1) {
+    
+    }
 }
