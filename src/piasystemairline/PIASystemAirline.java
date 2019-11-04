@@ -162,7 +162,7 @@ public class PIASystemAirline {
         AppVista.fondo.add(ReservaVista);
         AppVista.fondo.add(FormaPagoVista);
         AppVista.fondo.add(FormaPagoVista2);
-        AppVista.fondo.add(ReporteDeApp);
+        AppVista.fondo.add(ReportesVista);
         ini.jProgressBar1.setValue(100);
         ini.setVisible(false);
         AppVista.setVisible(true);
