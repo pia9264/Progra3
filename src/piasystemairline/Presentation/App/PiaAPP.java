@@ -5,11 +5,17 @@
  */
 package piasystemairline.Presentation.App;
 
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import piasystemairline.Logic.fondo;
 
 public class PiaAPP extends javax.swing.JFrame implements Observer{
@@ -239,6 +245,11 @@ public class PiaAPP extends javax.swing.JFrame implements Observer{
         Aministra.add(Payment);
 
         Reports.setText("Reports");
+        Reports.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ReportsActionPerformed(evt);
+            }
+        });
         Aministra.add(Reports);
 
         other.setText("Add Other Admin");
@@ -268,14 +279,49 @@ public class PiaAPP extends javax.swing.JFrame implements Observer{
     }// </editor-fold>//GEN-END:initComponents
 
     private void historiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historiaActionPerformed
+        int reply;
+        JPanel pane = new JPanel(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints(0, 0, 1, 1, 1.0, 1.0, 
+        GridBagConstraints.WEST, GridBagConstraints.HORIZONTAL, 
+        new Insets(2, 2, 2, 2), 0, 0);
+        pane.add(new JLabel("PIA AIRLINES nace en 2014 con la mision de brindar"
+                + " un servicio de calidad y de bajo costo a todos los costarricenses"), gbc);
+        gbc.gridy = 1;
 
+        
+        reply = JOptionPane.showConfirmDialog(null, pane, "HISTORIA",
+        JOptionPane.CLOSED_OPTION);
     }//GEN-LAST:event_historiaActionPerformed
 
     private void contactenosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contactenosActionPerformed
+        int reply;
+        JPanel pane = new JPanel(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints(0, 0, 1, 1, 1.0, 1.0, 
+        GridBagConstraints.WEST, GridBagConstraints.HORIZONTAL, 
+        new Insets(2, 2, 2, 2), 0, 0);
+        pane.add(new JLabel("EMAIL: servicioalcliente@piaairlines.com \t TEL: (+506)2255-5252"), gbc);
+        gbc.gridy = 1;
 
+        
+        reply = JOptionPane.showConfirmDialog(null, pane, "CONTACTENOS",
+        JOptionPane.CLOSED_OPTION);
     }//GEN-LAST:event_contactenosActionPerformed
 
     private void referenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_referenteActionPerformed
+        
+        int reply;
+        JPanel pane = new JPanel(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints(0, 0, 1, 1, 1.0, 1.0, 
+        GridBagConstraints.WEST, GridBagConstraints.HORIZONTAL, 
+        new Insets(2, 2, 2, 2), 0, 0);
+        pane.add(new JLabel("Premio a la iniciativa empresarial mas innovadora"
+                + "en responsabilidad social empresarial, Premios cinco dias a"
+                + "la innovacion empresarial 2019"), gbc);
+        gbc.gridy = 1;
+
+        
+        reply = JOptionPane.showConfirmDialog(null, pane, "REFERENCIA INSTITUCIONAL",
+        JOptionPane.CLOSED_OPTION);
 
     }//GEN-LAST:event_referenteActionPerformed
 
@@ -357,6 +403,13 @@ public class PiaAPP extends javax.swing.JFrame implements Observer{
         controller.EnviarVueloClick(fila);
         }
     }//GEN-LAST:event_descuentosMouseClicked
+
+    private void ReportsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReportsActionPerformed
+        QuitarTodo();
+        controller.ReporteDeApp();
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_ReportsActionPerformed
 
  public void QuitarTodo(){
          buscarVuelo.setVisible(false);

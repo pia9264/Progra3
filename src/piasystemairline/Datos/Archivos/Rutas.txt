@@ -1,6 +1,6 @@
 AG-AR-BB	Antigua y Barbuda/Barbados	01:00	AG-S	BB-B	AR-B	300	20
 AR-00-BZ	Argentina/Belice	01:00	AR-B	BZ-B	00-n	234	0
-AR-BR-CL	Argentina/Chile	01:00	AR-B	CL-S	BR-B	334	15
+AR-BR-CL	Argentina/Chile 01:00	AR-B	CL-S	BR-B	334	15
 CO-00-CR	Colombia/Costa Rica	03:00	CO-B	CR-S	00-n	300	0
 CR-00-CL	Costa Rica/Chile	03:00	CR-S	CL-S	00-n	300	35
 CR-00-CO	Costa Rica/Colombia	01:00	CR-S	CO-B	00-n	300	30

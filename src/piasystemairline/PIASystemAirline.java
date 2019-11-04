@@ -95,15 +95,7 @@ public class PIASystemAirline {
        piasystemairline.Presentation.EdicionPagos.Controller FormaPagoController = 
                new piasystemairline.Presentation.EdicionPagos.Controller(FormaPagoModel,FormaPagoVista,FormaPagoVista2);
        
-       //-----------------------------REPORTES--------------------------------
-       piasystemairline.Presentation.ReporteDeApp.Model ReportesModel =
-               new piasystemairline.Presentation.ReporteDeApp.Model();
-       piasystemairline.Presentation.ReporteDeApp.View ReportesVista =
-               new piasystemairline.Presentation.ReporteDeApp.View();
-       piasystemairline.Presentation.ReporteDeApp.Controller ReportesController =
-               new piasystemairline.Presentation.ReporteDeApp.Controller(ReportesModel, ReportesVista);
-       
-     
+      
       Controler_FPago = FormaPagoController;
       ini.jProgressBar1.setValue(80);
       
@@ -137,6 +129,16 @@ public class PIASystemAirline {
        piasystemairline.Presentation.EdicionReservacion.Controller ReservaController = 
                new piasystemairline.Presentation.EdicionReservacion.Controller(ReservaModel,ReservaVista);
       Controler_Reserva = ReservaController;       
+      
+       //-----------------------------REPORTES--------------------------------
+       piasystemairline.Presentation.ReporteDeApp.Model ReportesModel =
+               new piasystemairline.Presentation.ReporteDeApp.Model();
+       piasystemairline.Presentation.ReporteDeApp.View ReportesVista =
+               new piasystemairline.Presentation.ReporteDeApp.View();
+       piasystemairline.Presentation.ReporteDeApp.Controller ReportesController =
+               new piasystemairline.Presentation.ReporteDeApp.Controller(ReportesModel, ReportesVista);
+       
+       Controler_ReporteDeApp = ReportesController;
      //----------------------------APP--------------------------------
        piasystemairline.Presentation.App.ModelApp AppModel = 
                new piasystemairline.Presentation.App.ModelApp();

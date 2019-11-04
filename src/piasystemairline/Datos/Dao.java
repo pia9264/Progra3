@@ -444,44 +444,43 @@ public class Dao {
     } 
     
 //  FACTURACION POR MESES (12 MESES)
-    public List<Reservacion> ListaFacturacionPorMes(String mes) throws Exception {
-     List<Reservacion> resultado = new ArrayList<Reservacion>();
+    public List<Tiquete> ListaFacturacionPorMes(String mes) throws Exception {
+     List<Tiquete> resultado = new ArrayList<Tiquete>();
         try {
             String sql="select * from "
                     +"tiquete t inner join reservacion r "
-                    +"on t.resercicion_id=r.id "
+                    +"on t.reservacion_id=r.id "
                     +"where r.date like '2019-"+mes+"-%% %%:%%:%%'";
             sql=String.format(sql,mes);
             ResultSet rs =  db.executeQuery(sql);
             while (rs.next()) {
-                resultado.add(reservacion(rs));
+                resultado.add(Tiquete(rs));
+            }
+        } catch (SQLException ex) { }
+        return resultado;
+    }
+    
+    //  FACTURACION POR ANNO (ANNO ACTUAL)
+    public List<Tiquete> ListaFacturacionPorAnno(String anno) throws Exception {
+     List<Tiquete> resultado = new ArrayList<Tiquete>();
+        try {
+            String sql="select * from "
+                    +"tiquete t inner join reservacion r "
+                    +"on t.reservacion_id=r.id "
+                    +"where r.date like '"+anno+"-%%-%% %%:%%:%%'";
+            sql=String.format(sql,anno);
+            ResultSet rs =  db.executeQuery(sql);
+            while (rs.next()) {
+                resultado.add(Tiquete(rs));
             }
         } catch (SQLException ex) { }
         return resultado;
     }
     
      
-//  FACTURACION POR ANNO (ANNO ACTUAL)
-     public List<Reservacion> ListaFacturacionPorAnno(Tiquete t) throws Exception {
-     List<Reservacion> resultado = new ArrayList<Reservacion>();
-        try {
-            String sql="select * from "+
-                    "tiquete t inner join reservacion r "
-                    +"on t.resercicion_id=r.id "+
-                    "where r.date like '%%-%%-%% %%:%%:%%'";
-            sql=String.format(sql,t.getPrice());
-//format(sql,/*p.getUser()*/);
-            ResultSet rs =  db.executeQuery(sql);
-            while (rs.next()) {
-                resultado.add(reservacion(rs));
-            }
-        } catch (SQLException ex) { }
-        return resultado;
-    }
-
 //  LISTADO DE CLIENTES POR AVION
-     public List<Reservacion> ListadoClientesPorAvion(Vuelo v) throws Exception {
-     List<Reservacion> resultado = new ArrayList<Reservacion>();
+     public List<Persona> ListadoClientesPorAvion(String avion) throws Exception {
+     List<Persona> resultado = new ArrayList<Persona>();
         try {
             String sql="select * from "+
                     "usuario u inner join reservacion r "
@@ -490,15 +489,16 @@ public class Dao {
                     +"on t.reservacion_id = t.id "
                     +"inner join vuelo v "
                     +"on t.vuelo_id = v.id "
-                    +"where v.avion_id like '%%'";
-            sql=String.format(sql,v.getAvion());
+                    +"where v.avion_id like '"+avion+"'";
+            sql=String.format(sql,avion);
             ResultSet rs =  db.executeQuery(sql);
             while (rs.next()) {
-                resultado.add(reservacion(rs));
+                resultado.add(persona(rs));
             }
         } catch (SQLException ex) { }
         return resultado;
     }
+     
 //  LAS 5 RUTAS MAS VENDIDAS O RESERVADAS
 public List<Reservacion> ListadoRutasMasVendidas(Tiquete t) throws Exception {
      List<Reservacion> resultado = new ArrayList<Reservacion>();
@@ -920,6 +920,8 @@ public List<Reservacion> ListadoRutasMasVendidas(Tiquete t) throws Exception {
          return null;
      }
     }
+
+   
 
     
 }

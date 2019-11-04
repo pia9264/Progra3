@@ -79,6 +79,11 @@ public class View1 extends javax.swing.JInternalFrame implements Observer{
                 airplaneItemStateChanged(evt);
             }
         });
+        airplane.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                airplaneActionPerformed(evt);
+            }
+        });
 
         dia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" }));
         dia.addItemListener(new java.awt.event.ItemListener() {
@@ -310,6 +315,10 @@ public class View1 extends javax.swing.JInternalFrame implements Observer{
       genID();
     }//GEN-LAST:event_minItemStateChanged
 
+    private void airplaneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_airplaneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_airplaneActionPerformed
+
     @Override
     public void update(Observable o, Object arg) {
      Centrar();
@@ -324,21 +333,21 @@ public class View1 extends javax.swing.JInternalFrame implements Observer{
     }
     
      private void cargarComboB(){
-         controller.ObtenerlistAvion();
-         controller.ObtenerlistRuta();
-         DefaultComboBoxModel<Avion> a = new DefaultComboBoxModel<Avion>(modelo.getAviones().toArray(new Avion[0]));
-         DefaultComboBoxModel<Ruta> r = new DefaultComboBoxModel<Ruta>(modelo.getRutas().toArray(new Ruta[0]));
-         if(a.getSize()>1 && r.getSize()>1){
-           this.airplane.setModel(a);
-           this.routes.setModel(r);
-             for (int i = 0; i < 60; i++) {
-                   if(i<10){this.min.addItem("0"+i);}
-                   else{this.min.addItem(""+i);}
-             }
-         }else{
-           id.setEnabled(false);
-           id.setText("No Existen Rutas O Aviones!!");
-         }
+        controller.ObtenerlistAvion();
+        controller.ObtenerlistRuta();
+        DefaultComboBoxModel<Avion> a = new DefaultComboBoxModel<Avion>(modelo.getAviones().toArray(new Avion[0]));
+        DefaultComboBoxModel<Ruta> r = new DefaultComboBoxModel<Ruta>(modelo.getRutas().toArray(new Ruta[0]));
+        if(a.getSize()>1 && r.getSize()>1){
+            this.airplane.setModel(a);
+            this.routes.setModel(r);
+            for (int i = 0; i < 60; i++) {
+                if(i<10){this.min.addItem("0"+i);}
+                else{this.min.addItem(""+i);}
+            }
+            }  else{
+            id.setEnabled(false);
+            id.setText("No Existen Rutas O Aviones!!");
+        }
      }
      
     private Vuelo ToVuelo() {

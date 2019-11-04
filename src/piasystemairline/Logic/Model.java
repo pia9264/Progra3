@@ -262,6 +262,21 @@ public class Model {
        Datos.EliminarFormaPago(id);
     }
 
+    public void ConsultaTiquetePorMes(String mes) throws Exception {
+        Datos.ListaFacturacionPorMes(mes);
+    }
+
+    public void ConsultaTiquetePorAnno(String anno) throws Exception {
+        Datos.ListaFacturacionPorAnno(anno);
+    }
+
+    public void ConsultarUsuarioPorAvion(String avion) throws Exception {
+        Datos.ListadoClientesPorAvion(avion);
+    }
+
+
+    
+
     
 
     

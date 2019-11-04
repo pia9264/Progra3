@@ -80,6 +80,10 @@ public class ControllerApp {
     public void ChangeNameAndIsAdmin(String name, char admin) {
     vista.UserActivate(name,admin);
     }
+    void ReporteDeApp(){
+        PIASystemAirline.Controler_ReporteDeApp.Show();
+        bandera = false;
+    }
 
     void SinginShow(){
     PIASystemAirline.Controler_Persona.singShow();

@@ -19,8 +19,8 @@ public class Controller {
     }
 
     public void Show() {
-    Vista.setVisible(true);
-    modelo.setTiquetes(piasystemairline.Logic.Model.instance().ObtenerListTiquetes());
+        Vista.setVisible(true);
+        modelo.setTiquetes(piasystemairline.Logic.Model.instance().ObtenerListTiquetes());
     }
     public void setTiqueteDetalles(String id, int Adult, int child,boolean isidavuelta,String Fecha1,String Fecha2) {
         try {
