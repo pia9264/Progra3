@@ -460,7 +460,7 @@ public class Dao {
         return resultado;
     }
     
-    //  FACTURACION POR ANNO (ANNO ACTUAL)
+    //FACTURACION POR ANNO (ANNO ACTUAL)
     public List<Tiquete> ListaFacturacionPorAnno(String anno) throws Exception {
      List<Tiquete> resultado = new ArrayList<Tiquete>();
         try {
