@@ -94,6 +94,15 @@ public class PIASystemAirline {
                new piasystemairline.Presentation.EdicionPagos.View2();
        piasystemairline.Presentation.EdicionPagos.Controller FormaPagoController = 
                new piasystemairline.Presentation.EdicionPagos.Controller(FormaPagoModel,FormaPagoVista,FormaPagoVista2);
+       
+       //-----------------------------REPORTES--------------------------------
+       piasystemairline.Presentation.ReporteDeApp.Model ReportesModel =
+               new piasystemairline.Presentation.ReporteDeApp.Model();
+       piasystemairline.Presentation.ReporteDeApp.View ReportesVista =
+               new piasystemairline.Presentation.ReporteDeApp.View();
+       piasystemairline.Presentation.ReporteDeApp.Controller ReportesController =
+               new piasystemairline.Presentation.ReporteDeApp.Controller(ReportesModel, ReportesVista);
+       
      
       Controler_FPago = FormaPagoController;
       ini.jProgressBar1.setValue(80);
@@ -153,6 +162,7 @@ public class PIASystemAirline {
         AppVista.fondo.add(ReservaVista);
         AppVista.fondo.add(FormaPagoVista);
         AppVista.fondo.add(FormaPagoVista2);
+        AppVista.fondo.add(ReporteDeApp);
         ini.jProgressBar1.setValue(100);
         ini.setVisible(false);
         AppVista.setVisible(true);
@@ -168,6 +178,7 @@ public class PIASystemAirline {
     public static piasystemairline.Presentation.EdicionAsientos.Controller Controler_Asientos;
     public static piasystemairline.Presentation.EdicionTiquete.Controller Controler_Tiquete;
     public static piasystemairline.Presentation.EdicionReservacion.Controller Controler_Reserva;
+    public static piasystemairline.Presentation.ReporteDeApp.Controller Controler_ReporteDeApp;
     public static piasystemairline.Presentation.App.ControllerApp ControllerAPP;
    
 }
